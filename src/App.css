@@ -1,16 +1,6 @@
 .App {
     text-align: center;
-}
-
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+    font-family: "Zi Yue Song Ke Ben", "Adobe Kaiti Std";
 }
 
 .App-header {
@@ -26,6 +16,23 @@
 
 .App-link {
     color: #61dafb;
+}
+
+.Content {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    white-space: pre-wrap;
+    line-height: 2rem;
+    height: 20em;
+    font-size: 2rem;
+    text-align: start;
+}
+
+@font-face {
+    font-family: "Zi Yue Song Ke Ben";
+    font-style: normal;
+    font-weight: 400;
+    src: url("font/ZiYueSongKeBen.ttf") format("truetype"); /* Safari, Android, iOS */
 }
 
 @keyframes App-logo-spin {
