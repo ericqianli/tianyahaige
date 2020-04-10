@@ -1,18 +1,31 @@
 import React from "react";
 
-function Content() {
-    return (
-        <div className="Content">
-            {`夕雪\n玄凜幽風起 霾靄逝天光 霫霫入瀝泣 雲霨見神煌 霡霂紛然落
-霜露寒內傷 氤氳窮冥暮 霙作雨仿徨 無題·塵緣 天晚楊糝忽作雪
-下渚輕舟逐水煙 無花無酒春將老 劍死琴銷了塵緣 火宵之月 火煙隨銷淼
-離宵淚月纖 千光逝流年 幻水夢穎天 紫冥何惘惘 紛香徒芊芊 殘雪拚飛盡
-漏署俟霞翩 醒夜占星 四侐倚孤松 燭淚影重重 撫弦雲倏渰 散發夜始空
-獨立歎風晚 躇行瞲草新 徒然數氳暮 惔星泣紫穹 臨餐 仿徨望香起
-躑躅舉觴杯 零目落山珍 飄搖見海味 亂箸指天罡 棄盞嗔錢貴 穿腸雖酒肉
-人間有真味`}
-        </div>
-    );
+import { ContentState } from "../type/Types";
+
+type Props = {
+    contentState: ContentState;
+    fetchContent: () => void;
+};
+
+class Content extends React.Component<Props> {
+    componentDidMount() {
+        this.props.fetchContent();
+    }
+
+    render() {
+        return (
+            <div className="Content">
+                {`夕雪\n玄凜幽風起 霾靄逝天光 霫霫入瀝泣 雲霨見神煌 霡霂紛然落
+    霜露寒內傷 氤氳窮冥暮 霙作雨仿徨 無題·塵緣 天晚楊糝忽作雪
+    下渚輕舟逐水煙 無花無酒春將老 劍死琴銷了塵緣 火宵之月 火煙隨銷淼
+    離宵淚月纖 千光逝流年 幻水夢穎天 紫冥何惘惘 紛香徒芊芊 殘雪拚飛盡
+    漏署俟霞翩 醒夜占星 四侐倚孤松 燭淚影重重 撫弦雲倏渰 散發夜始空
+    獨立歎風晚 躇行瞲草新 徒然數氳暮 惔星泣紫穹 臨餐 仿徨望香起
+    躑躅舉觴杯 零目落山珍 飄搖見海味 亂箸指天罡 棄盞嗔錢貴 穿腸雖酒肉
+    人間有真味`}
+            </div>
+        );
+    }
 }
 
 export default Content;

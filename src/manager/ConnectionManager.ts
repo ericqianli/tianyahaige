@@ -1,25 +1,23 @@
 import {
-    fetchQueryResultPromise, MySqlQueryConfig, MySqlQueryResult
+    fetchQueryResultPromise, MySqlQueryConfig, MySqlQueryResult, QueryType
 } from "data-sweet-query";
 
-export async function fetchNativeQueryResultPromise(
-    queryConfig: MySqlQueryConfig
-): Promise<string> {
+import { DEFAULT_MYSQL_QUERY_SOURCE_CONFIG } from "../constant/QuerySources";
+
+export async function fetchContentPromise(): Promise<MySqlQueryResult> {
     try {
+        const queryConfig: MySqlQueryConfig = {
+            type: QueryType.MYSQL,
+            source: DEFAULT_MYSQL_QUERY_SOURCE_CONFIG,
+            database: "tianyahaige",
+            table: "poem",
+            sql: "select * from poem",
+        };
         const result = await fetchQueryResultPromise(queryConfig);
         console.log(result);
-        const content = getContent(result);
-        console.log(content);
-        return content;
+
+        return result;
     } catch (error) {
         throw error;
     }
-}
-
-// TODO: Move to reducer once switched to redux
-function getContent(result: MySqlQueryResult) {
-    const content = result.rows
-        ?.map((row) => "  " + row.title + "\n" + row.content)
-        .join("\n");
-    return content || "";
 }

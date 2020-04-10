@@ -1,23 +1,17 @@
 import "./App.css";
 
 import React from "react";
+import { Provider } from "react-redux";
 
 import { Grid, makeStyles } from "@material-ui/core";
 
-import Content from "./component/Content";
-import { DEFAULT_MYSQL_QUERY_SOURCE_CONFIG } from "./constant/QuerySources";
-import { fetchNativeQueryResultPromise } from "./manager/ConnectionManager";
-import { MySqlQueryConfig, QueryType } from "./type/Types";
+import ContentContainer from "./container/ContentContainer";
+import Store from "./store/Store";
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
-    // paper: {
-    //     textAlign: "center",
-    //     color: theme.palette.text.secondary,
-    //     height: "100%",
-    // },
     grid: {
         minHeight: "100vh",
     },
@@ -31,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     },
     main: {
         flexBasis: "42rem",
-        // flexGrow: 1,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -48,43 +41,31 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
     const classes = useStyles();
-    console.log("asdf");
-
-    const config: MySqlQueryConfig = {
-        type: QueryType.MYSQL,
-        source: DEFAULT_MYSQL_QUERY_SOURCE_CONFIG,
-        database: "tianyahaige",
-        table: "poem",
-        sql: "select * from poem",
-    };
-
-    console.log(config);
-
-    fetchNativeQueryResultPromise(config);
 
     return (
-        <div className="App">
-            <div className="AppBody">
-                <Grid
-                    className={classes.grid}
-                    container
-                    direction="column"
-                    justify="space-between"
-                    alignItems="stretch"
-                    // spacing={0}
-                >
-                    <Grid className={classes.header} item xs={12}>
-                        <div className={classes.headerContent} />
+        <Provider store={Store}>
+            <div className="App">
+                <div className="AppBody">
+                    <Grid
+                        className={classes.grid}
+                        container
+                        direction="column"
+                        justify="space-between"
+                        alignItems="stretch"
+                    >
+                        <Grid className={classes.header} item xs={12}>
+                            <div className={classes.headerContent} />
+                        </Grid>
+                        <Grid className={classes.main} item xs={12}>
+                            <ContentContainer />
+                        </Grid>
+                        <Grid className={classes.footer} item xs={12}>
+                            <div className={classes.footerContent} />
+                        </Grid>
                     </Grid>
-                    <Grid className={classes.main} item xs={12}>
-                        <Content />
-                    </Grid>
-                    <Grid className={classes.footer} item xs={12}>
-                        <div className={classes.footerContent} />
-                    </Grid>
-                </Grid>
+                </div>
             </div>
-        </div>
+        </Provider>
     );
 }
 
