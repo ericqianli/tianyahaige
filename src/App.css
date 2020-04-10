@@ -32,7 +32,7 @@
     font-family: "Zi Yue Song Ke Ben";
     font-style: normal;
     font-weight: 400;
-    src: url("font/ZiYueSongKeBen.ttf") format("truetype"); /* Safari, Android, iOS */
+    src: url("/font/ZiYueSongKeBen.ttf") format("truetype");
 }
 
 @keyframes App-logo-spin {
