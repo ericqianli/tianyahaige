@@ -14,7 +14,7 @@
     color: white;
 }
 
-.Content {
+/* .Content {
     writing-mode: vertical-rl;
     text-orientation: upright;
     white-space: pre-wrap;
@@ -22,7 +22,9 @@
     height: 20em;
     font-size: 2rem;
     text-align: start;
-}
+    width: "100%";
+    overflow: "scroll";
+} */
 
 @font-face {
     font-family: "Zi Yue Song Ke Ben";

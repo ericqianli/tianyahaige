@@ -1,4 +1,3 @@
-import { error } from "console";
 import { MySqlQueryResult } from "data-sweet-query";
 
 import {

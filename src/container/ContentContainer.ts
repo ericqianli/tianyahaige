@@ -7,10 +7,11 @@ import {
 import Content from "../component/Content";
 import { fetchContentPromise } from "../manager/ConnectionManager";
 import { State } from "../reducer/Reducer";
+import { getContentBody } from "../selector/ContentStateSelectors";
 
 function mapStateToProps(state: State) {
     return {
-        contentState: state.contentState,
+        contentBody: getContentBody(state),
     };
 }
 

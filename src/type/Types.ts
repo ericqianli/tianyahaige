@@ -22,6 +22,11 @@ export interface ReceiveContentErrorAction {
     error: any;
 }
 
+export type ContentStateAction =
+    | RequestContentAction
+    | ReceiveContentAction
+    | ReceiveContentErrorAction;
+
 // States
 export interface ContentState {
     content: MySqlQueryResult;

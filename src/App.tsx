@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     },
     headerContent: {
         width: "100%",
-        backgroundColor: "red",
+        // backgroundColor: "red",
     },
     main: {
         flexBasis: "42rem",
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     },
     footerContent: {
         width: "100%",
-        backgroundColor: "blue",
+        // backgroundColor: "blue",
     },
 }));
 
