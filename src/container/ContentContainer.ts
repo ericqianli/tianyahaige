@@ -17,14 +17,11 @@ function mapStateToProps(state: State) {
 
 function mapDispatchToProps(dispatch: Dispatch) {
     return {
-        // onSelectControlPanelActiveStep: (controlPanelActiveStep: number) => {
-        //     dispatch(selectControlPanelActiveStep(controlPanelActiveStep));
-        // },
-        // // TODO: Customize query type, i.e., QueryType.MYSQL
         fetchContent: async () => {
             dispatch(requestContent());
             try {
                 const content = await fetchContentPromise();
+                console.log(content);
                 dispatch(receiveContent(content));
             } catch (error) {
                 dispatch(receiveContentError(error));

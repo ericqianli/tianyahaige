@@ -8,21 +8,12 @@ const styles = (_theme: Theme) =>
             fontSize: "2rem",
             height: "20em",
             lineHeight: "2rem",
-            overflowX: "auto",
+            overflowX: "scroll",
             textAlign: "start",
             textOrientation: "upright",
             whiteSpace: "pre-wrap",
             width: "100%",
             writingMode: "vertical-rl",
-
-            "&::-webkit-scrollbar": {
-                display: "none",
-                width: "0.25rem",
-                height: "0.25rem",
-            },
-            "&:hover::-webkit-scrollbar": {
-                display: "block",
-            }
         },
     });
 
