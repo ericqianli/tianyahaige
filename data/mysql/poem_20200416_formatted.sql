@@ -30,7 +30,7 @@ USE `poem`;
 
 DROP TABLE IF EXISTS `poem`;
 CREATE TABLE `poem` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `date` date NOT NULL,
   `subtitle` varchar(255) NOT NULL,
