@@ -3,19 +3,29 @@ import React from "react";
 import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 
 import { INITIAL_CONTENT } from "../constant/Constants";
+import Image from "../image/book.jpg";
 
 const styles = (_theme: Theme) =>
     createStyles({
+        container: {
+            height: "42rem",
+            overflowX: "scroll",
+            backgroundColor: "white",
+            writingMode: "vertical-rl",
+        },
         content: {
             fontSize: "2rem",
-            height: "20em",
+            height: "40rem",
+            margin: "1rem 0",
+            width: "fit-content",
             lineHeight: "2rem",
-            overflowX: "scroll",
             textAlign: "start",
             textOrientation: "upright",
             whiteSpace: "pre-wrap",
-            width: "100%",
             writingMode: "vertical-rl",
+            backgroundImage: `url(${Image})`,
+            backgroundSize: "auto 40rem",
+            backgroundPosition: "right",
         },
     });
 
@@ -33,7 +43,11 @@ class Content extends React.Component<Props> {
         const { classes } = this.props;
 
         const contentBody = this.props.contentBody || INITIAL_CONTENT;
-        return <div className={classes.content}>{contentBody}</div>;
+        return (
+            <div className={classes.container}>
+                <div className={classes.content}>{contentBody}</div>
+            </div>
+        );
     }
 }
 
