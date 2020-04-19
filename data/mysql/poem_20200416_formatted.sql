@@ -30,7 +30,7 @@ USE `poem`;
 
 DROP TABLE IF EXISTS `poem`;
 CREATE TABLE `poem` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `date` date NOT NULL,
   `subtitle` varchar(255) NOT NULL,
@@ -824,7 +824,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- Indexes for table `poem`
 --
 ALTER TABLE `poem`
-  ADD PRIMARY KEY (`id`),
+  -- ADD PRIMARY KEY (`id`),
   ADD FULLTEXT KEY `title_content` (`title`,`content`);
 
 --
