@@ -3,7 +3,7 @@ import React from "react";
 import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 
 import { INITIAL_CONTENT } from "../constant/Constants";
-import Image from "../image/book.jpg";
+import BackgroundBody from "../image/background_body.jpg";
 
 const styles = (_theme: Theme) =>
     createStyles({
@@ -15,17 +15,18 @@ const styles = (_theme: Theme) =>
         },
         content: {
             fontSize: "2rem",
-            height: "40rem",
-            margin: "1rem 0",
+            height: "42rem",
+            // margin: "1rem 0",
             width: "fit-content",
             lineHeight: "2rem",
             textAlign: "start",
             textOrientation: "upright",
             whiteSpace: "pre-wrap",
             writingMode: "vertical-rl",
-            backgroundImage: `url(${Image})`,
-            backgroundSize: "auto 40rem",
+            backgroundImage: `url(${BackgroundBody})`,
+            backgroundSize: "auto 48rem",
             backgroundPosition: "right",
+            color: "black",
         },
     });
 
