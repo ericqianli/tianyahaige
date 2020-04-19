@@ -29,7 +29,6 @@ class Content extends React.Component<Props> {
 
     render() {
         const { classes } = this.props;
-        console.log(this.props.contentBody);
 
         const contentBody =
             this.props.contentBody ||

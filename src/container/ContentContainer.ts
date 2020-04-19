@@ -21,7 +21,7 @@ function mapDispatchToProps(dispatch: Dispatch) {
             dispatch(requestContent());
             try {
                 const content = await fetchContentPromise();
-                console.log(content);
+                // console.log(content);
                 dispatch(receiveContent(content));
             } catch (error) {
                 dispatch(receiveContentError(error));

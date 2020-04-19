@@ -9,9 +9,9 @@ export async function fetchContentPromise(): Promise<MySqlQueryResult> {
         const queryConfig: MySqlQueryConfig = {
             type: QueryType.MYSQL,
             source: DEFAULT_MYSQL_QUERY_SOURCE_CONFIG,
-            database: "tianyahaige",
+            database: "poem",
             table: "poem",
-            sql: "select * from poem",
+            sql: "select * from poem limit 1000",
         };
         const result = await fetchQueryResultPromise(queryConfig);
         console.log(result);
