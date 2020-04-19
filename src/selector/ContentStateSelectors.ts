@@ -9,9 +9,11 @@ let outputLines = [];
 for (const line of lines) {
     if (line.startsWith("(")) {
         const fields = line.split(",");
+
+        // console.log(fields[1], fields[6]);
+
         const content = fields[5].slice(2, -1);
         const formattedContent = getFormattedCameraReadyContent(content);
-        console.log("f", formattedContent);
         fields[5] = " '" + formattedContent + "'";
         outputLines.push(fields.join(","));
     } else {
