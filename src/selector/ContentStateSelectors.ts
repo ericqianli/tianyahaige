@@ -14,7 +14,6 @@ for (const line of lines) {
         console.log("f", formattedContent);
         fields[5] = " '" + formattedContent + "'";
         outputLines.push(fields.join(","));
-        // outputLines.push(getFormattedCameraReadyContent(line));
     } else {
         outputLines.push(line);
     }
@@ -26,18 +25,17 @@ export const getContentState = (state: State) => state.contentState;
 export const getContentBody = createSelector(
     [getContentState],
     (contentState) => {
-        // console.log("check", contentState.content.rows);
+        console.log("check", contentState.content.rows);
 
-
-        const rows = contentState.content.rows || [];
-        for (const row of rows) {
-            const content = row.camera_ready_content;
-            // console.log(content);
-            // getFormattedCameraReadyContent(content);
-            // console.log(getFormattedCameraReadyContent(content));
-        }
+        // const rows = contentState.content.rows || [];
+        // for (const row of rows) {
+        //     const content = row.camera_ready_content;
+        //     // console.log(content);
+        //     // getFormattedCameraReadyContent(content);
+        //     // console.log(getFormattedCameraReadyContent(content));
+        // }
         const content = contentState.content.rows
-            ?.map((row) => "  " + row.title + "\n" + row.content)
+            ?.map((row) => "  " + row.title + "\n" + row.camera_ready_content)
             .join("\n");
         return content || "";
     }

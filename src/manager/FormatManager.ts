@@ -1,6 +1,7 @@
 const CHARACTERS_TO_REMOVE = [
     "『",
     "』",
+    "?",
     "？",
     "!",
     "！",
@@ -19,5 +20,5 @@ export function getFormattedCameraReadyContent(content: string) {
         .map((line) => line.replace(re, ""))
         .filter((line) => line !== "");
 
-    return lines.join(DELIMITER);
+    return lines.join(DELIMITER) + DELIMITER;
 }
