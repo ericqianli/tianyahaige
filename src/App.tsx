@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
     },
     footerContent: {
         width: "100%",
-        // backgroundColor: "blue",
     },
 }));
 

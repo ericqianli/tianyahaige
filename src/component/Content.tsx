@@ -156,7 +156,7 @@ class Content extends React.Component<Props> {
                         <PoemsContent poems={this.props.poems} />
                     </div>
                 </div>
-                <div className={classes.bookLeftSide}></div>
+                {/* <div className={classes.bookLeftSide}></div> */}
             </div>
         );
     }
