@@ -1,6 +1,6 @@
 .App {
     text-align: center;
-    font-family: "Zi Yue Song Ke Ben", "Adobe Kaiti Std";
+    font-family: "Zi Yue Song Ke Ben", "Adobe Kaiti Std", "Simsun";
 }
 
 .AppBody {
@@ -30,8 +30,24 @@
     font-family: "Zi Yue Song Ke Ben";
     font-style: normal;
     font-weight: 400;
-    src: url("/font/ZiYueSongKeBen.ttf") format("truetype");
+    src: url("./font/ziyuesongkeben.ttf") format("truetype");
 }
+
+@font-face {
+    font-family: "Adobe Kaiti Std";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Adobe Kaiti Std"), url("./font/adobekaitistd.otf") format("opentype");
+}
+
+/* adobekaitistd.otf */
+
+/* @font-face {
+    font-family: "Zi Yue Song Ke Ben";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/font/ZiYueSongKeBen.ttf") format("truetype");
+} */
 
 @keyframes App-logo-spin {
     from {

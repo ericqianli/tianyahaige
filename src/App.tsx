@@ -1,3 +1,4 @@
+import "./font/ziyuesongkeben.ttf";
 import "./App.css";
 
 import React from "react";

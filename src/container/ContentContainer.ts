@@ -7,7 +7,7 @@ import {
 import Content from "../component/Content";
 import { fetchContentPromise } from "../manager/ConnectionManager";
 import { State } from "../reducer/Reducer";
-import { getPoems } from "../selector/ContentStateSelectors";
+import { getPoems } from "../selector/ContentStateSelector";
 
 function mapStateToProps(state: State) {
     return {
