@@ -16,15 +16,15 @@ const useStyles = makeStyles((theme) => ({
         minHeight: "100vh",
     },
     header: {
-        flexBasis: "calc(75vh - 32rem)",
+        flexBasis: "calc(75vh - 34rem)",
         display: "flex",
     },
     headerContent: {
         width: "100%",
-        backgroundColor: "red",
+        // backgroundColor: "red",
     },
     main: {
-        flexBasis: "42rem",
+        flexBasis: "44rem",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     },
     footerContent: {
         width: "100%",
-        backgroundColor: "blue",
+        // backgroundColor: "blue",
     },
 }));
 

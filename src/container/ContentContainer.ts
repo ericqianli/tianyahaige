@@ -7,11 +7,11 @@ import {
 import Content from "../component/Content";
 import { fetchContentPromise } from "../manager/ConnectionManager";
 import { State } from "../reducer/Reducer";
-import { getContentBody } from "../selector/ContentStateSelectors";
+import { getPoems } from "../selector/ContentStateSelectors";
 
 function mapStateToProps(state: State) {
     return {
-        contentBody: getContentBody(state),
+        poems: getPoems(state),
     };
 }
 
@@ -21,7 +21,6 @@ function mapDispatchToProps(dispatch: Dispatch) {
             dispatch(requestContent());
             try {
                 const content = await fetchContentPromise();
-                console.log('content', content);
                 dispatch(receiveContent(content));
             } catch (error) {
                 dispatch(receiveContentError(error));

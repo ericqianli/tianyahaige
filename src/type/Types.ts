@@ -31,3 +31,9 @@ export type ContentStateAction =
 export interface ContentState {
     content: MySqlQueryResult;
 }
+
+export interface Poem {
+    title: string;
+    subtitle: string;
+    body: string;
+}
