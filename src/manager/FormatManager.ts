@@ -27,6 +27,11 @@ export function getFormattedCameraReadyContent(content: string) {
 }
 
 export function getFormattedSubtitle(title: string, subtitle: string) {
+    const englishRegex = /^[A-Za-z0-9]/;
+    if (englishRegex.test(subtitle)) {
+        return subtitle.split("\r\n");
+    }
+
     let len = subtitle.length;
 
     if (len <= SUBTITLE_NO_WRAP_LIMIT) {

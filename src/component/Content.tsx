@@ -49,7 +49,7 @@ const styles = (_theme: Theme) =>
             width: "fit-content",
             lineHeight: WIDTH,
             textAlign: "start",
-            textOrientation: "upright",
+            // textOrientation: "upright",
             writingMode: "vertical-rl",
             color: "black",
             position: "relative",
