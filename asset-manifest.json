@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/tianyahaige/static/css/main.bcd146c3.chunk.css",
+    "main.js": "/tianyahaige/static/js/main.237850af.chunk.js",
+    "main.js.map": "/tianyahaige/static/js/main.237850af.chunk.js.map",
+    "runtime-main.js": "/tianyahaige/static/js/runtime-main.f6132870.js",
+    "runtime-main.js.map": "/tianyahaige/static/js/runtime-main.f6132870.js.map",
+    "static/js/2.585569fd.chunk.js": "/tianyahaige/static/js/2.585569fd.chunk.js",
+    "static/js/2.585569fd.chunk.js.map": "/tianyahaige/static/js/2.585569fd.chunk.js.map",
+    "index.html": "/tianyahaige/index.html",
+    "precache-manifest.6d9e024301b9d180dba982b4dbf96779.js": "/tianyahaige/precache-manifest.6d9e024301b9d180dba982b4dbf96779.js",
+    "service-worker.js": "/tianyahaige/service-worker.js",
+    "static/css/main.bcd146c3.chunk.css.map": "/tianyahaige/static/css/main.bcd146c3.chunk.css.map",
+    "static/js/2.585569fd.chunk.js.LICENSE.txt": "/tianyahaige/static/js/2.585569fd.chunk.js.LICENSE.txt",
+    "static/media/background_body.jpg": "/tianyahaige/static/media/background_body.62a99315.jpg",
+    "static/media/background_left.jpg": "/tianyahaige/static/media/background_left.50d23bf8.jpg",
+    "static/media/background_right.jpg": "/tianyahaige/static/media/background_right.bc21eb1b.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f6132870.js",
+    "static/js/2.585569fd.chunk.js",
+    "static/css/main.bcd146c3.chunk.css",
+    "static/js/main.237850af.chunk.js"
+  ]
+}
