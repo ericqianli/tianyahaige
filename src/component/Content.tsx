@@ -1,4 +1,5 @@
 import React from "react";
+import ReactResizeDetector from "react-resize-detector";
 
 import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 
@@ -11,7 +12,7 @@ import { Poem } from "../type/Types";
 
 const WIDTH = "2.375rem";
 const HALF_WIDTH = "1.1875rem";
-const BACKGROUND_SIZE = "auto 49.103125rem";
+const BACKGROUND_SIZE = "auto 48rem";
 
 const styles = (_theme: Theme) =>
     createStyles({
@@ -141,6 +142,13 @@ function Period() {
 }
 
 class Content extends React.Component<Props> {
+    myInput: any;
+
+    constructor(props: Props) {
+        super(props);
+        this.myInput = React.createRef();
+    }
+
     componentDidMount() {
         this.props.fetchContent();
     }
@@ -151,12 +159,47 @@ class Content extends React.Component<Props> {
         return (
             <div className={classes.container}>
                 <div className={classes.bookRightSide}></div>
+
                 <div className={classes.bookContent}>
-                    <div className={classes.poemContent}>
-                        <PoemsContent poems={this.props.poems} />
-                    </div>
+                    <ReactResizeDetector handleWidth>
+                        {({ width }: { width: number }) => {
+                            let roundedWidth = width;
+                            if (!isNaN(width)) {
+                                roundedWidth = 1824 * Math.ceil(width / 1824);
+                            }
+                            // console.log(width, roundedWidth);
+
+                            if (width === roundedWidth) {
+                                return (
+                                    <div
+                                        ref={this.myInput}
+                                        className={classes.poemContent}
+                                        style={{
+                                            minWidth: `${roundedWidth}px`,
+                                        }}
+                                    >
+                                        <PoemsContent
+                                            poems={this.props.poems}
+                                        />
+                                    </div>
+                                );
+                            } else {
+                                return (
+                                    <div
+                                        ref={this.myInput}
+                                        className={classes.poemContent}
+                                        style={{ width: `${roundedWidth}px` }}
+                                    >
+                                        <PoemsContent
+                                            poems={this.props.poems}
+                                        />
+                                    </div>
+                                );
+                            }
+                        }}
+                    </ReactResizeDetector>
                 </div>
-                {/* <div className={classes.bookLeftSide}></div> */}
+                <div className={classes.bookLeftSide}></div>
             </div>
         );
     }
