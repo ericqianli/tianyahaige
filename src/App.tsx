@@ -1,4 +1,4 @@
-import "./font/ziyuesongkeben.ttf";
+// import "./font/ziyuesongkeben.ttf";
 import "./App.css";
 import "./css/fonts.css";
 
@@ -16,24 +16,24 @@ WebFont.load({
         families: ["Zi Yue Song Ke Ben", "Adobe Kaiti Std"],
         urls: ["/fonts.css"],
     },
-    loading: () => {
-        console.log("start loading");
-    },
-    active: () => {
-        console.log("active");
-    },
-    inactive: () => {
-        console.log("inactive");
-    },
-    fontloading: (familyName, fvd) => {
-        console.log("fontloading", familyName, fvd);
-    },
-    fontactive: (familyName, fvd) => {
-        console.log("fontactive", familyName, fvd);
-    },
-    fontinactive: (familyName, fvd) => {
-        console.log("fontinactive", familyName, fvd);
-    },
+    // loading: () => {
+    //     console.log("start loading");
+    // },
+    // active: () => {
+    //     console.log("active");
+    // },
+    // inactive: () => {
+    //     console.log("inactive");
+    // },
+    // fontloading: (familyName, fvd) => {
+    //     console.log("fontloading", familyName, fvd);
+    // },
+    // fontactive: (familyName, fvd) => {
+    //     console.log("fontactive", familyName, fvd);
+    // },
+    // fontinactive: (familyName, fvd) => {
+    //     console.log("fontinactive", familyName, fvd);
+    // },
 });
 
 const useStyles = makeStyles((theme) => ({

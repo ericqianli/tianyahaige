@@ -2,7 +2,7 @@
     font-family: "Zi Yue Song Ke Ben";
     font-style: normal;
     font-weight: 400;
-    src: url("../font/ziyuesongkeben.ttf") format("truetype");
+    src: url("../font/ziyuesongkeben.subset.ttf") format("truetype");
     font-display: swap;
 }
 

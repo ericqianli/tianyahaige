@@ -116,7 +116,9 @@ function PoemContent({ poem }: { poem: Poem }) {
                 title={poem.title}
                 subtitle={poem.subtitle}
             />
-            <PoemBody body={poem.body} />
+            {poem.body.split("\r\n").map((body, index) => (
+                <PoemBody body={body} />
+            ))}
         </div>
     );
 }

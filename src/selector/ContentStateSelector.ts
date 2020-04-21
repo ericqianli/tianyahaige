@@ -1,11 +1,13 @@
 import { createSelector } from "reselect";
 
 import { getPoemFromRows } from "../adaptor/ContentAdaptor";
+// import data from "../data/poem_20200416.js";
 import { State } from "../reducer/Reducer";
 
-// import data from "../data/poem_20200416.js";
-// import { getFormattedCameraReadyContent } from "../manager/FormatManager";
-
+// console.log(111);
+// let i = 0;
+// const set = new Set(data);
+// console.log(Array.from(set).join(""));
 // const lines = data.split(/(?<!\r)\n/);
 // let outputLines = [];
 // for (const line of lines) {
@@ -19,6 +21,7 @@ import { State } from "../reducer/Reducer";
 //         outputLines.push(line);
 //     }
 // }
+// console.log(lines.join(""));
 
 export const getContentState = (state: State) => state.contentState;
 
