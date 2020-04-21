@@ -3,10 +3,10 @@ import ReactResizeDetector from "react-resize-detector";
 
 import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 
-import { INITIAL_CONTENT } from "../constant/Constants";
 import BackgroundBody from "../image/background_body.jpg";
 import BackgroundLeft from "../image/background_left.jpg";
 import BackgroundRight from "../image/background_right.jpg";
+import TitleImage from "../image/title.jpg";
 import { getFormattedSubtitle } from "../manager/FormatManager";
 import { Poem } from "../type/Types";
 
@@ -22,6 +22,13 @@ const styles = (_theme: Theme) =>
             overflowY: "hidden",
             backgroundColor: "white",
             writingMode: "vertical-rl",
+        },
+        title: {
+            height: "44rem",
+            width: "32rem",
+            backgroundImage: `url(${TitleImage})`,
+            backgroundSize: BACKGROUND_SIZE,
+            backgroundPosition: "center",
         },
         bookContent: {
             height: "44rem",
@@ -50,7 +57,6 @@ const styles = (_theme: Theme) =>
             width: "fit-content",
             lineHeight: WIDTH,
             textAlign: "start",
-            // textOrientation: "upright",
             writingMode: "vertical-rl",
             color: "black",
             position: "relative",
@@ -93,13 +99,10 @@ interface Props extends WithStyles<typeof styles> {
 }
 
 function PoemsContent({ poems }: { poems: Poem[] }) {
-    if (poems.length === 0) {
-        return <p> {INITIAL_CONTENT} </p>;
-    }
     return (
         <>
             {poems.map((poem) => (
-                <PoemContent poem={poem} />
+                <PoemContent key={poem.id} poem={poem} />
             ))}
         </>
     );
@@ -107,8 +110,12 @@ function PoemsContent({ poems }: { poems: Poem[] }) {
 
 function PoemContent({ poem }: { poem: Poem }) {
     return (
-        <div>
-            <PoemHeader title={poem.title} subtitle={poem.subtitle} />
+        <div id={poem.id}>
+            <PoemHeader
+                key="header"
+                title={poem.title}
+                subtitle={poem.subtitle}
+            />
             <PoemBody body={poem.body} />
         </div>
     );
@@ -118,9 +125,9 @@ function PoemHeader({ title, subtitle }: { title: string; subtitle: string }) {
     const subtitleParts = getFormattedSubtitle(title, subtitle);
     return (
         <div className="header">
-            <span className="title">{title}</span>
-            {subtitleParts.map((subtitle) => (
-                <span className="subtitle">{subtitle}</span>
+            <span key="title" className="title">{title}</span>
+            {subtitleParts.map((subtitle, index) => (
+                <span key={`subtitle_${index}`} className="subtitle">{subtitle}</span>
             ))}
         </div>
     );
@@ -130,11 +137,15 @@ function PoemBody({ body }: { body: string }) {
     const lines = body.split("︒").filter((line) => line !== "");
     const compoments = [];
 
-    for (const line of lines) {
-        compoments.push(line, <Period />);
+    for (const index in lines) {
+        compoments.push(lines[index], <Period key={index} />);
     }
 
-    return <div className="body"> {compoments} </div>;
+    return (
+        <div className="body">
+            {compoments}
+        </div>
+    );
 }
 
 function Period() {
@@ -142,24 +153,20 @@ function Period() {
 }
 
 class Content extends React.Component<Props> {
-    myInput: any;
-
-    constructor(props: Props) {
-        super(props);
-        this.myInput = React.createRef();
-    }
-
     componentDidMount() {
         this.props.fetchContent();
     }
 
     render() {
-        const { classes } = this.props;
+        const { classes, poems } = this.props;
+
+        if (poems.length === 0) {
+            return <div className={classes.title} />;
+        }
 
         return (
             <div className={classes.container}>
                 <div className={classes.bookRightSide}></div>
-
                 <div className={classes.bookContent}>
                     <ReactResizeDetector handleWidth>
                         {({ width }: { width: number }) => {
@@ -167,12 +174,10 @@ class Content extends React.Component<Props> {
                             if (!isNaN(width)) {
                                 roundedWidth = 1824 * Math.ceil(width / 1824);
                             }
-                            // console.log(width, roundedWidth);
 
                             if (width === roundedWidth) {
                                 return (
                                     <div
-                                        ref={this.myInput}
                                         className={classes.poemContent}
                                         style={{
                                             minWidth: `${roundedWidth}px`,
@@ -186,7 +191,6 @@ class Content extends React.Component<Props> {
                             } else {
                                 return (
                                     <div
-                                        ref={this.myInput}
                                         className={classes.poemContent}
                                         style={{ width: `${roundedWidth}px` }}
                                     >

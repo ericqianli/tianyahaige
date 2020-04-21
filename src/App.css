@@ -1,6 +1,6 @@
 .App {
     text-align: center;
-    font-family: "Zi Yue Song Ke Ben", "Adobe Kaiti Std", "Simsun";
+    font-family: "Zi Yue Song Ke Ben", "Adobe Kaiti Std", "KaiTi_GB2312", "KaiTi", "STKaiti", "SimSun", "STFangsong", "STSong";
 }
 
 .AppBody {
@@ -12,48 +12,4 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
-}
-
-/* .Content {
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    white-space: pre-wrap;
-    line-height: 2rem;
-    height: 20em;
-    font-size: 2rem;
-    text-align: start;
-    width: "100%";
-    overflow: "scroll";
-} */
-
-@font-face {
-    font-family: "Zi Yue Song Ke Ben";
-    font-style: normal;
-    font-weight: 400;
-    src: url("./font/ziyuesongkeben.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: "Adobe Kaiti Std";
-    font-style: normal;
-    font-weight: 400;
-    src: local("Adobe Kaiti Std"), url("./font/adobekaitistd.otf") format("opentype");
-}
-
-/* adobekaitistd.otf */
-
-/* @font-face {
-    font-family: "Zi Yue Song Ke Ben";
-    font-style: normal;
-    font-weight: 400;
-    src: url("/font/ZiYueSongKeBen.ttf") format("truetype");
-} */
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
 }

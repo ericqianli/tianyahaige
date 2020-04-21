@@ -1,13 +1,40 @@
 import "./font/ziyuesongkeben.ttf";
 import "./App.css";
+import "./css/fonts.css";
 
 import React from "react";
 import { Provider } from "react-redux";
+import WebFont from "webfontloader";
 
 import { Grid, makeStyles } from "@material-ui/core";
 
 import ContentContainer from "./container/ContentContainer";
 import Store from "./store/Store";
+
+WebFont.load({
+    custom: {
+        families: ["Zi Yue Song Ke Ben", "Adobe Kaiti Std"],
+        urls: ["/fonts.css"],
+    },
+    loading: () => {
+        console.log("start loading");
+    },
+    active: () => {
+        console.log("active");
+    },
+    inactive: () => {
+        console.log("inactive");
+    },
+    fontloading: (familyName, fvd) => {
+        console.log("fontloading", familyName, fvd);
+    },
+    fontactive: (familyName, fvd) => {
+        console.log("fontactive", familyName, fvd);
+    },
+    fontinactive: (familyName, fvd) => {
+        console.log("fontinactive", familyName, fvd);
+    },
+});
 
 const useStyles = makeStyles((theme) => ({
     root: {
