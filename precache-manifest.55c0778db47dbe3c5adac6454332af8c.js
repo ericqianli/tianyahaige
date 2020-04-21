@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3c65ca7d7f5e15a3ad5247ab75c1f4d1",
+    "revision": "981fd7a7713d134462aaefcd75633c3a",
     "url": "/tianyahaige/index.html"
   },
   {
-    "revision": "cd6c412da2677e014bb6",
+    "revision": "974178c903ca52908628",
     "url": "/tianyahaige/static/css/main.5626ada5.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/tianyahaige/static/js/2.c14a91df.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "cd6c412da2677e014bb6",
-    "url": "/tianyahaige/static/js/main.84dee877.chunk.js"
+    "revision": "974178c903ca52908628",
+    "url": "/tianyahaige/static/js/main.7db1f790.chunk.js"
   },
   {
     "revision": "625ec1c6646c5666471f",

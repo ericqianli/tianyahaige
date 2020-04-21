@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/tianyahaige/static/css/main.5626ada5.chunk.css",
-    "main.js": "/tianyahaige/static/js/main.84dee877.chunk.js",
-    "main.js.map": "/tianyahaige/static/js/main.84dee877.chunk.js.map",
+    "main.js": "/tianyahaige/static/js/main.7db1f790.chunk.js",
+    "main.js.map": "/tianyahaige/static/js/main.7db1f790.chunk.js.map",
     "runtime-main.js": "/tianyahaige/static/js/runtime-main.f6132870.js",
     "runtime-main.js.map": "/tianyahaige/static/js/runtime-main.f6132870.js.map",
     "static/js/2.c14a91df.chunk.js": "/tianyahaige/static/js/2.c14a91df.chunk.js",
     "static/js/2.c14a91df.chunk.js.map": "/tianyahaige/static/js/2.c14a91df.chunk.js.map",
     "index.html": "/tianyahaige/index.html",
-    "precache-manifest.d912690501e5dc49aec76176798133b1.js": "/tianyahaige/precache-manifest.d912690501e5dc49aec76176798133b1.js",
+    "precache-manifest.55c0778db47dbe3c5adac6454332af8c.js": "/tianyahaige/precache-manifest.55c0778db47dbe3c5adac6454332af8c.js",
     "service-worker.js": "/tianyahaige/service-worker.js",
     "static/css/main.5626ada5.chunk.css.map": "/tianyahaige/static/css/main.5626ada5.chunk.css.map",
     "static/js/2.c14a91df.chunk.js.LICENSE.txt": "/tianyahaige/static/js/2.c14a91df.chunk.js.LICENSE.txt",
@@ -22,6 +22,6 @@
     "static/js/runtime-main.f6132870.js",
     "static/js/2.c14a91df.chunk.js",
     "static/css/main.5626ada5.chunk.css",
-    "static/js/main.84dee877.chunk.js"
+    "static/js/main.7db1f790.chunk.js"
   ]
 }
