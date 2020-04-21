@@ -125,9 +125,13 @@ function PoemHeader({ title, subtitle }: { title: string; subtitle: string }) {
     const subtitleParts = getFormattedSubtitle(title, subtitle);
     return (
         <div className="header">
-            <span key="title" className="title">{title}</span>
+            <span key="title" className="title">
+                {title}
+            </span>
             {subtitleParts.map((subtitle, index) => (
-                <span key={`subtitle_${index}`} className="subtitle">{subtitle}</span>
+                <span key={`subtitle_${index}`} className="subtitle">
+                    {subtitle}
+                </span>
             ))}
         </div>
     );
@@ -141,11 +145,7 @@ function PoemBody({ body }: { body: string }) {
         compoments.push(lines[index], <Period key={index} />);
     }
 
-    return (
-        <div className="body">
-            {compoments}
-        </div>
-    );
+    return <div className="body">{compoments}</div>;
 }
 
 function Period() {
