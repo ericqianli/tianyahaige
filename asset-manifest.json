@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/tianyahaige/static/css/main.5626ada5.chunk.css",
-    "main.js": "/tianyahaige/static/js/main.7db1f790.chunk.js",
-    "main.js.map": "/tianyahaige/static/js/main.7db1f790.chunk.js.map",
+    "main.css": "/tianyahaige/static/css/main.e3b2497d.chunk.css",
+    "main.js": "/tianyahaige/static/js/main.199933cc.chunk.js",
+    "main.js.map": "/tianyahaige/static/js/main.199933cc.chunk.js.map",
     "runtime-main.js": "/tianyahaige/static/js/runtime-main.f6132870.js",
     "runtime-main.js.map": "/tianyahaige/static/js/runtime-main.f6132870.js.map",
-    "static/js/2.c14a91df.chunk.js": "/tianyahaige/static/js/2.c14a91df.chunk.js",
-    "static/js/2.c14a91df.chunk.js.map": "/tianyahaige/static/js/2.c14a91df.chunk.js.map",
+    "static/js/2.7d4d56ea.chunk.js": "/tianyahaige/static/js/2.7d4d56ea.chunk.js",
+    "static/js/2.7d4d56ea.chunk.js.map": "/tianyahaige/static/js/2.7d4d56ea.chunk.js.map",
     "index.html": "/tianyahaige/index.html",
-    "precache-manifest.55c0778db47dbe3c5adac6454332af8c.js": "/tianyahaige/precache-manifest.55c0778db47dbe3c5adac6454332af8c.js",
+    "precache-manifest.eb7a2debb4386e2aeb33763c9dd7c4d4.js": "/tianyahaige/precache-manifest.eb7a2debb4386e2aeb33763c9dd7c4d4.js",
     "service-worker.js": "/tianyahaige/service-worker.js",
-    "static/css/main.5626ada5.chunk.css.map": "/tianyahaige/static/css/main.5626ada5.chunk.css.map",
-    "static/js/2.c14a91df.chunk.js.LICENSE.txt": "/tianyahaige/static/js/2.c14a91df.chunk.js.LICENSE.txt",
-    "static/media/fonts.css": "/tianyahaige/static/media/ziyuesongkeben.ccdb4fa4.ttf",
+    "static/css/main.e3b2497d.chunk.css.map": "/tianyahaige/static/css/main.e3b2497d.chunk.css.map",
+    "static/js/2.7d4d56ea.chunk.js.LICENSE.txt": "/tianyahaige/static/js/2.7d4d56ea.chunk.js.LICENSE.txt",
+    "static/media/fonts.css": "/tianyahaige/static/media/ziyuesongkeben.subset.df2dcb9e.ttf",
     "static/media/background_body.jpg": "/tianyahaige/static/media/background_body.62a99315.jpg",
     "static/media/background_left.jpg": "/tianyahaige/static/media/background_left.50d23bf8.jpg",
     "static/media/background_right.jpg": "/tianyahaige/static/media/background_right.bc21eb1b.jpg",
@@ -20,8 +20,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.f6132870.js",
-    "static/js/2.c14a91df.chunk.js",
-    "static/css/main.5626ada5.chunk.css",
-    "static/js/main.7db1f790.chunk.js"
+    "static/js/2.7d4d56ea.chunk.js",
+    "static/css/main.e3b2497d.chunk.css",
+    "static/js/main.199933cc.chunk.js"
   ]
 }
