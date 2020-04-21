@@ -38,17 +38,19 @@ const styles = (_theme: Theme) =>
         },
         bookRightSide: {
             height: "44rem",
-            width: "4rem",
+            width: "5rem",
             backgroundImage: `url(${BackgroundRight})`,
             backgroundSize: BACKGROUND_SIZE,
             backgroundPosition: "left",
+            backgroundRepeat: "no-repeat",
         },
         bookLeftSide: {
             height: "44rem",
-            width: "4rem",
+            width: "5rem",
             backgroundImage: `url(${BackgroundLeft})`,
             backgroundSize: BACKGROUND_SIZE,
             backgroundPosition: "right",
+            backgroundRepeat: "no-repeat",
         },
         poemContent: {
             fontSize: "2rem",
