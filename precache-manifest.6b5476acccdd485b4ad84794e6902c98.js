@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8ad61ea30ecd5ff225f5ac736c7873cb",
+    "revision": "ac46d572df3423b91dd6aa10c25601ff",
     "url": "/tianyahaige/index.html"
   },
   {
-    "revision": "f41f84daa31578b73681",
-    "url": "/tianyahaige/static/css/main.e28a279d.chunk.css"
+    "revision": "a0e0cf245c7d1b4fe97c",
+    "url": "/tianyahaige/static/css/main.3a98a136.chunk.css"
   },
   {
-    "revision": "bdbcf4087bbde936a936",
-    "url": "/tianyahaige/static/js/2.c14a91df.chunk.js"
+    "revision": "23105104642e3a116f5e",
+    "url": "/tianyahaige/static/js/2.1b0b237c.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/tianyahaige/static/js/2.c14a91df.chunk.js.LICENSE.txt"
+    "url": "/tianyahaige/static/js/2.1b0b237c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f41f84daa31578b73681",
-    "url": "/tianyahaige/static/js/main.9963036f.chunk.js"
+    "revision": "a0e0cf245c7d1b4fe97c",
+    "url": "/tianyahaige/static/js/main.31c699ec.chunk.js"
   },
   {
     "revision": "625ec1c6646c5666471f",
