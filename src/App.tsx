@@ -7,10 +7,14 @@ import React from "react";
 import { Provider } from "react-redux";
 import WebFont from "webfontloader";
 
-import { Grid, makeStyles } from "@material-ui/core";
+import {
+    Grid, makeStyles, MuiThemeProvider, Typography
+} from "@material-ui/core";
 
+import { ROOT_FONT_SIZE } from "./constant/Constants";
 import ContentContainer from "./container/ContentContainer";
 import Store from "./store/Store";
+import theme from "./theme/muiTheme";
 
 WebFont.load({
     custom: {
@@ -37,20 +41,40 @@ WebFont.load({
     // },
 });
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((_theme) => ({
+    "@global": {
+        html: {
+            // NOTE: All rem uses this value.
+            fontSize: ROOT_FONT_SIZE,
+            // [theme.breakpoints.up("sm")]: {
+            //     fontSize: 18,
+            // },
+        },
+    },
     root: {
         flexGrow: 1,
     },
     grid: {
         minHeight: "100vh",
+        // fontSize: "16px",
+        // htmlFontSize: 8,
     },
     header: {
-        flexBasis: "calc(75vh - 34rem)",
+        flexBasis: "calc(50vh - 18rem)",
         display: "flex",
+        justifyContent: "center",
+        alignItems: "flex-end",
+        // backgroundColor: "red",
     },
     headerContent: {
-        width: "100%",
-        // backgroundColor: "red",
+        // width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        
+        writingMode: "vertical-rl",
+        // backgroundColor: "blue",
     },
     main: {
         flexBasis: "44rem",
@@ -59,11 +83,12 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
     },
     footer: {
-        flexBasis: "calc(25vh - 10rem)",
-        display: "flex",
-    },
-    footerContent: {
-        width: "100%",
+        // flexBasis: 0,
+
+        flexBasis: "calc(50vh - 26rem)",
+        // display: "flex",
+        // justifyContent: "true",
+        // backgroundColor: "blue",
     },
 }));
 
@@ -72,8 +97,9 @@ function App() {
 
     return (
         <Provider store={Store}>
-            <div className="App">
-                {/* <div className="shaft-load3">
+            <MuiThemeProvider theme={theme}>
+                <div className="App">
+                    {/* <div className="shaft-load3">
                     <div className="shaft1"></div>
                     <div className="shaft2"></div>
                     <div className="shaft3"></div>
@@ -85,26 +111,42 @@ function App() {
                     <div className="shaft9"></div>
                     <div className="shaft10"></div>
                 </div> */}
-                <div className="AppBody">
-                    <Grid
-                        className={classes.grid}
-                        container
-                        direction="column"
-                        justify="space-between"
-                        alignItems="stretch"
-                    >
-                        <Grid className={classes.header} item xs={12}>
-                            <div className={classes.headerContent} />
+                    <div className="AppBody">
+                        <Grid
+                            className={classes.grid}
+                            container
+                            direction="column"
+                            justify="space-between"
+                            alignItems="stretch"
+                        >
+                            <Grid className={classes.header} item xs={12}>
+                                <div className={classes.headerContent}>
+                                    <Typography variant="h3" align="center">
+                                        天涯海閣
+                                    </Typography>
+                                    <Typography variant="h3" align="center">
+                                        落星集
+                                    </Typography>
+                                    <Typography variant="h3" align="center">
+                                        天竺遊記
+                                    </Typography>
+                                    <Typography variant="h3" align="center">
+                                        列仙集
+                                    </Typography>
+                                </div>
+                            </Grid>
+                            <Grid className={classes.main} item xs={12}>
+                                <ContentContainer />
+                            </Grid>
+                            <Grid className={classes.footer} item xs={12}>
+                                {/* <Typography variant="subtitle1" align="center">
+                                    Horizon Pavilion • 2020
+                                </Typography> */}
+                            </Grid>
                         </Grid>
-                        <Grid className={classes.main} item xs={12}>
-                            <ContentContainer />
-                        </Grid>
-                        <Grid className={classes.footer} item xs={12}>
-                            <div className={classes.footerContent} />
-                        </Grid>
-                    </Grid>
+                    </div>
                 </div>
-            </div>
+            </MuiThemeProvider>
         </Provider>
     );
 }

@@ -3,6 +3,10 @@ import ReactResizeDetector from "react-resize-detector";
 
 import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 
+import {
+    BACKGROUND_SIDE_SIZE, BACKGROUND_SIZE, BACKGROUND_WIDTH_IN_PIXEL,
+    COLUMN_WIDTH, CONTENT_HEIGHT, HALF_COLUMN_WIDTH
+} from "../constant/Constants";
 import BackgroundBody from "../image/background_body.jpg";
 import BackgroundLeft from "../image/background_left.jpg";
 import BackgroundRight from "../image/background_right.jpg";
@@ -10,45 +14,41 @@ import TitleImage from "../image/title.jpg";
 import { getFormattedSubtitle } from "../manager/FormatManager";
 import { Poem } from "../type/Types";
 
-const WIDTH = "2.375rem";
-const HALF_WIDTH = "1.1875rem";
-const BACKGROUND_SIZE = "auto 48rem";
-
 const styles = (_theme: Theme) =>
     createStyles({
         container: {
-            height: "44rem",
+            height: CONTENT_HEIGHT,
             overflowX: "scroll",
             overflowY: "hidden",
             backgroundColor: "white",
             writingMode: "vertical-rl",
         },
         title: {
-            height: "44rem",
+            height: CONTENT_HEIGHT,
             width: "32rem",
             backgroundImage: `url(${TitleImage})`,
             backgroundSize: BACKGROUND_SIZE,
             backgroundPosition: "center",
         },
         bookContent: {
-            height: "44rem",
+            height: CONTENT_HEIGHT,
             backgroundImage: `url(${BackgroundBody})`,
             backgroundSize: BACKGROUND_SIZE,
             backgroundPosition: "right",
         },
         bookRightSide: {
-            height: "44rem",
+            height: CONTENT_HEIGHT,
             width: "5rem",
             backgroundImage: `url(${BackgroundRight})`,
-            backgroundSize: BACKGROUND_SIZE,
+            backgroundSize: BACKGROUND_SIDE_SIZE,
             backgroundPosition: "left",
             backgroundRepeat: "no-repeat",
         },
         bookLeftSide: {
-            height: "44rem",
+            height: CONTENT_HEIGHT,
             width: "5rem",
             backgroundImage: `url(${BackgroundLeft})`,
-            backgroundSize: BACKGROUND_SIZE,
+            backgroundSize: BACKGROUND_SIDE_SIZE,
             backgroundPosition: "right",
             backgroundRepeat: "no-repeat",
         },
@@ -57,7 +57,7 @@ const styles = (_theme: Theme) =>
             height: "40rem",
             margin: "2rem 0",
             width: "fit-content",
-            lineHeight: WIDTH,
+            lineHeight: COLUMN_WIDTH,
             textAlign: "start",
             writingMode: "vertical-rl",
             color: "black",
@@ -66,11 +66,11 @@ const styles = (_theme: Theme) =>
             top: "-0.1rem",
             "& .header": {
                 fontSize: "1rem",
-                lineHeight: HALF_WIDTH,
+                lineHeight: HALF_COLUMN_WIDTH,
             },
             "& .title": {
                 fontSize: "2rem",
-                lineHeight: WIDTH,
+                lineHeight: COLUMN_WIDTH,
                 float: "left",
                 marginTop: "4rem",
                 marginBottom: "1rem",
@@ -86,11 +86,12 @@ const styles = (_theme: Theme) =>
                 marginTop: 0,
                 marginBottom: "-0.75rem",
                 fontSize: "0.75rem",
-                lineHeight: HALF_WIDTH,
+                lineHeight: HALF_COLUMN_WIDTH,
                 position: "relative",
                 top: "-0.2rem",
                 left: "0.75rem",
-                display: "inline-block",
+                // display: "inline-block",
+                display: "none"
             },
         },
     });
@@ -176,7 +177,11 @@ class Content extends React.Component<Props> {
                         {({ width }: { width: number }) => {
                             let roundedWidth = width;
                             if (!isNaN(width)) {
-                                roundedWidth = 1824 * Math.ceil(width / 1824);
+                                roundedWidth =
+                                    BACKGROUND_WIDTH_IN_PIXEL *
+                                    Math.ceil(
+                                        width / BACKGROUND_WIDTH_IN_PIXEL
+                                    );
                             }
 
                             if (width === roundedWidth) {

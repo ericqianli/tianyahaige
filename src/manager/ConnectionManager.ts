@@ -11,7 +11,7 @@ export async function fetchContentPromise(): Promise<MySqlQueryResult> {
             source: DEFAULT_MYSQL_QUERY_SOURCE_CONFIG,
             database: "poem",
             table: "poem",
-            sql: "select * from poem_by_date limit 0, 1000",
+            sql: "select * from poem_by_date limit 0, 10",
         };
         const result = await fetchQueryResultPromise(queryConfig);
 
