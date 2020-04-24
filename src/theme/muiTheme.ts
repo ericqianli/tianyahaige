@@ -45,7 +45,7 @@ const theme = createMuiTheme({
         },
         h3: {
             fontSize: "2rem",
-            lineHeight: 2,
+            lineHeight: 1,
             writingMode: "vertical-rl",
             fontFamily: `"Zi Yue Song Ke Ben", "Adobe Kaiti Std", "KaiTi_GB2312", "KaiTi", "STKaiti", "SimSun", "STFangsong", "STSong"`,
         },

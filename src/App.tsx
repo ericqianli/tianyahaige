@@ -104,12 +104,17 @@ const useStyles = makeStyles((_theme) => ({
         // backgroundColor: "red",
     },
     menuItems: {
+        listStyle: "none",
+        margin: 0,
+        padding: 0,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "flex-start",
         writingMode: "vertical-rl",
-        // backgroundColor: "blue",
+        "& li": {
+            margin: "0 1rem",
+        }
     },
     menuItem: {
         cursor: "pointer",
@@ -141,7 +146,6 @@ function App(props: RouteComponentProps) {
         drawerShown: false,
     });
 
-    // React.MouseEvent<HTMLAnchorElement, MouseEvent>
     const toggleDrawerOnMouseClick = (open: boolean) => (
         event: React.MouseEvent<HTMLElement, MouseEvent>
     ) => {
@@ -154,51 +158,56 @@ function App(props: RouteComponentProps) {
             role="presentation"
             onClick={toggleDrawerOnMouseClick(false)}
         >
-            <div className={classes.menuItems}>
-                <Typography
-                    className={classes.menuItem}
-                    variant="h3"
-                    align="center"
-                    onClick={() => {
-                        props.history.push(LANDING);
-                    }}
-                >
-                    天涯海槎
-                </Typography>
-                <Typography
-                    className={classes.menuItem}
-                    variant="h3"
-                    align="center"
-                    onClick={() => {
-                        console.log(FALLEN_STAR);
-                        props.history.push(FALLEN_STAR);
-                    }}
-                >
-                    落星集
-                </Typography>
-                <Typography
-                    className={classes.menuItem}
-                    variant="h3"
-                    align="center"
-                    onClick={() => {
-                        console.log(INDIA_TRAVEL);
-                        props.history.push(INDIA_TRAVEL);
-                    }}
-                >
-                    天竺遊記
-                </Typography>
-                <Typography
-                    className={classes.menuItem}
-                    variant="h3"
-                    align="center"
-                    onClick={() => {
-                        console.log(IMMORTALS);
-                        props.history.push(IMMORTALS);
-                    }}
-                >
-                    列仙集
-                </Typography>
-            </div>
+            <ul className={classes.menuItems}>
+                <li>
+                    <Typography
+                        className={classes.menuItem}
+                        variant="h3"
+                        align="center"
+                        onClick={() => {
+                            props.history.push(LANDING);
+                        }}
+                    >
+                        天涯海槎
+                    </Typography>
+                </li>
+                <li>
+                    <Typography
+                        className={classes.menuItem}
+                        variant="h3"
+                        align="center"
+                        onClick={() => {
+                            props.history.push(FALLEN_STAR);
+                        }}
+                    >
+                        落星集
+                    </Typography>
+                </li>
+                <li>
+                    <Typography
+                        className={classes.menuItem}
+                        variant="h3"
+                        align="center"
+                        onClick={() => {
+                            props.history.push(INDIA_TRAVEL);
+                        }}
+                    >
+                        天竺遊記
+                    </Typography>
+                </li>
+                <li>
+                    <Typography
+                        className={classes.menuItem}
+                        variant="h3"
+                        align="center"
+                        onClick={() => {
+                            props.history.push(IMMORTALS);
+                        }}
+                    >
+                        列仙集
+                    </Typography>
+                </li>
+            </ul>
         </div>
     );
 

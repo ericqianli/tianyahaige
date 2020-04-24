@@ -170,10 +170,9 @@ class Content extends React.Component<Props> {
     numPages: number = 0;
 
     componentDidMount() {
-        console.log('content component mounted', this.props.path);
         const sql = getSqlFromRouterPath(this.props.path);
-        console.log(sql);
         this.props.fetchContent(sql);
+        this.numPages = 0;
     }
 
     render() {
@@ -208,6 +207,7 @@ class Content extends React.Component<Props> {
 
                             return (
                                 <div
+                                    // key={this.props.path}
                                     className={classes.poemContent}
                                     style={{
                                         width:

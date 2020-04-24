@@ -5,14 +5,15 @@ function contentStateReducer(
     state: ContentState = INITIAL_CONTENT_STATE,
     action: ContentStateAction
 ): ContentState {
-    switch(action.type) {
+    switch (action.type) {
         case ActionType.REQUEST_CONTENT:
+            state = INITIAL_CONTENT_STATE;
             break;
         case ActionType.RECEIVE_CONTENT:
             state = {
                 ...state,
                 content: action.content,
-            }
+            };
             break;
         case ActionType.RECEIVE_CONTENT_ERROR:
             break;
