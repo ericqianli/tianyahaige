@@ -6,6 +6,7 @@ import "./css/shaft.css";
 import clsx from "clsx";
 import React from "react";
 import { Provider } from "react-redux";
+import { Route, RouteComponentProps, withRouter } from "react-router-dom";
 import WebFont from "webfontloader";
 
 import {
@@ -13,6 +14,9 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
+import {
+    FALLEN_STAR, IMMORTALS, INDIA_TRAVEL, LANDING
+} from "./constant/Routes";
 import ContentContainer from "./container/ContentContainer";
 import Store from "./store/Store";
 import theme from "./theme/muiTheme";
@@ -107,6 +111,9 @@ const useStyles = makeStyles((_theme) => ({
         writingMode: "vertical-rl",
         // backgroundColor: "blue",
     },
+    menuItem: {
+        cursor: "pointer",
+    },
     list: {
         width: 250,
     },
@@ -127,7 +134,7 @@ const useStyles = makeStyles((_theme) => ({
     },
 }));
 
-function App() {
+function App(props: RouteComponentProps) {
     const classes = useStyles();
 
     const [state, setState] = React.useState({
@@ -138,23 +145,6 @@ function App() {
     const toggleDrawerOnMouseClick = (open: boolean) => (
         event: React.MouseEvent<HTMLElement, MouseEvent>
     ) => {
-        if (event.type === "keydown") {
-            return;
-        }
-
-        setState({ ...state, drawerShown: open });
-    };
-
-    const toggleDrawerOnKeyDown = (open: boolean) => (
-        event: React.KeyboardEvent<HTMLDivElement>
-    ) => {
-        if (
-            event.type === "keydown" &&
-            (event.key === "Tab" || event.key === "Shift")
-        ) {
-            return;
-        }
-
         setState({ ...state, drawerShown: open });
     };
 
@@ -163,19 +153,49 @@ function App() {
             className={classes.drawerContent}
             role="presentation"
             onClick={toggleDrawerOnMouseClick(false)}
-            onKeyDown={toggleDrawerOnKeyDown(false)}
         >
             <div className={classes.menuItems}>
-                <Typography variant="h3" align="center">
-                    天涯海閣
+                <Typography
+                    className={classes.menuItem}
+                    variant="h3"
+                    align="center"
+                    onClick={() => {
+                        props.history.push(LANDING);
+                    }}
+                >
+                    天涯海槎
                 </Typography>
-                <Typography variant="h3" align="center">
+                <Typography
+                    className={classes.menuItem}
+                    variant="h3"
+                    align="center"
+                    onClick={() => {
+                        console.log(FALLEN_STAR);
+                        props.history.push(FALLEN_STAR);
+                    }}
+                >
                     落星集
                 </Typography>
-                <Typography variant="h3" align="center">
+                <Typography
+                    className={classes.menuItem}
+                    variant="h3"
+                    align="center"
+                    onClick={() => {
+                        console.log(INDIA_TRAVEL);
+                        props.history.push(INDIA_TRAVEL);
+                    }}
+                >
                     天竺遊記
                 </Typography>
-                <Typography variant="h3" align="center">
+                <Typography
+                    className={classes.menuItem}
+                    variant="h3"
+                    align="center"
+                    onClick={() => {
+                        console.log(IMMORTALS);
+                        props.history.push(IMMORTALS);
+                    }}
+                >
                     列仙集
                 </Typography>
             </div>
@@ -185,21 +205,7 @@ function App() {
     return (
         <Provider store={Store}>
             <MuiThemeProvider theme={theme}>
-                {/* <CssBaseline /> */}
-
                 <div className="App">
-                    {/* <div className="shaft-load3">
-                    <div className="shaft1"></div>
-                    <div className="shaft2"></div>
-                    <div className="shaft3"></div>
-                    <div className="shaft4"></div>
-                    <div className="shaft5"></div>
-                    <div className="shaft6"></div>
-                    <div className="shaft7"></div>
-                    <div className="shaft8"></div>
-                    <div className="shaft9"></div>
-                    <div className="shaft10"></div>
-                </div> */}
                     <div className="AppBody">
                         <Grid
                             className={classes.grid}
@@ -224,13 +230,33 @@ function App() {
                                 <Drawer
                                     anchor="top"
                                     open={state.drawerShown}
-                                    onClose={toggleDrawerOnKeyDown(false)}
+                                    onClose={toggleDrawerOnMouseClick(false)}
                                 >
                                     {drawer}
                                 </Drawer>
                             </Grid>
                             <Grid className={classes.main} item xs={12}>
-                                <ContentContainer />
+                                <Route
+                                    exact
+                                    path={LANDING}
+                                    component={ContentContainer}
+                                />
+
+                                <Route
+                                    exact
+                                    path={FALLEN_STAR}
+                                    component={ContentContainer}
+                                />
+                                <Route
+                                    exact
+                                    path={INDIA_TRAVEL}
+                                    component={ContentContainer}
+                                />
+                                <Route
+                                    exact
+                                    path={IMMORTALS}
+                                    component={ContentContainer}
+                                />
                             </Grid>
                             <Grid className={classes.footer} item xs={12}>
                                 {/* <Typography variant="subtitle1" align="center">
@@ -245,4 +271,4 @@ function App() {
     );
 }
 
-export default App;
+export default withRouter(App);

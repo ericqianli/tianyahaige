@@ -29,7 +29,5 @@ export const COLUMN_WIDTH = COLUMN_WIDTH_IN_REM + "rem";
 export const HALF_COLUMN_WIDTH = COLUMN_WIDTH_IN_REM / 2 + "rem";
 // export const BACKGROUND_SIZE = `${BACKGROUND_WIDTH_IN_PIXEL}px auto`;
 
-export const BACKGROUND_SIZE = `${BACKGROUND_WIDTH_IN_REM}rem auto`;
-export const BACKGROUND_SIDE_SIZE = `auto ${BACKGROUND_HEIGHT_IN_REM}rem`;
-
-console.log(BACKGROUND_SIZE);
+export const BACKGROUND_SIZE_BY_WIDTH = `${BACKGROUND_WIDTH_IN_REM}rem auto`;
+export const BACKGROUND_SIZE_BY_HEIGHT = `auto ${BACKGROUND_HEIGHT_IN_REM}rem`;

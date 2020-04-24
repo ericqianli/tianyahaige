@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { RouteComponentProps } from "react-router-dom";
 import { Dispatch } from "redux";
 
 import {
@@ -9,18 +10,19 @@ import { fetchContentPromise } from "../manager/ConnectionManager";
 import { State } from "../reducer/Reducer";
 import { getPoems } from "../selector/ContentStateSelector";
 
-function mapStateToProps(state: State) {
+function mapStateToProps(state: State, ownProps: RouteComponentProps) {
     return {
         poems: getPoems(state),
+        path: ownProps.location.pathname,
     };
 }
 
 function mapDispatchToProps(dispatch: Dispatch) {
     return {
-        fetchContent: async () => {
+        fetchContent: async (sql: string) => {
             dispatch(requestContent());
             try {
-                const content = await fetchContentPromise();
+                const content = await fetchContentPromise(sql);
                 dispatch(receiveContent(content));
             } catch (error) {
                 dispatch(receiveContentError(error));

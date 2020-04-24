@@ -4,17 +4,18 @@ import ReactResizeDetector from "react-resize-detector";
 import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 
 import {
-    BACKGROUND_SIDE_SIZE, BACKGROUND_SIZE, BACKGROUND_WIDTH_IN_REM,
-    COLUMN_WIDTH, CONTENT_HEIGHT, HALF_COLUMN_WIDTH
+    BACKGROUND_SIZE_BY_HEIGHT, BACKGROUND_SIZE_BY_WIDTH,
+    BACKGROUND_WIDTH_IN_REM, COLUMN_WIDTH, CONTENT_HEIGHT, HALF_COLUMN_WIDTH
 } from "../constant/Constants";
 import BackgroundBody from "../image/background_body.jpg";
 import BackgroundLeft from "../image/background_left.jpg";
 import BackgroundRight from "../image/background_right.jpg";
 import TitleImage from "../image/title.jpg";
 import { getFormattedSubtitle } from "../manager/FormatManager";
+import { getSqlFromRouterPath } from "../manager/QueryManager";
 import { Poem } from "../type/Types";
 
-const styles = (theme: Theme) =>
+const styles = (_theme: Theme) =>
     createStyles({
         container: {
             height: CONTENT_HEIGHT,
@@ -27,20 +28,20 @@ const styles = (theme: Theme) =>
             height: CONTENT_HEIGHT,
             width: "32rem",
             backgroundImage: `url(${TitleImage})`,
-            backgroundSize: BACKGROUND_SIZE,
+            backgroundSize: BACKGROUND_SIZE_BY_HEIGHT,
             backgroundPosition: "center",
         },
         bookContent: {
             height: CONTENT_HEIGHT,
             backgroundImage: `url(${BackgroundBody})`,
-            backgroundSize: BACKGROUND_SIZE,
+            backgroundSize: BACKGROUND_SIZE_BY_WIDTH,
             backgroundPosition: "right",
         },
         bookRightSide: {
             height: CONTENT_HEIGHT,
             width: "5rem",
             backgroundImage: `url(${BackgroundRight})`,
-            backgroundSize: BACKGROUND_SIDE_SIZE,
+            backgroundSize: BACKGROUND_SIZE_BY_HEIGHT,
             backgroundPosition: "left",
             backgroundRepeat: "no-repeat",
         },
@@ -48,7 +49,7 @@ const styles = (theme: Theme) =>
             height: CONTENT_HEIGHT,
             width: "5rem",
             backgroundImage: `url(${BackgroundLeft})`,
-            backgroundSize: BACKGROUND_SIDE_SIZE,
+            backgroundSize: BACKGROUND_SIZE_BY_HEIGHT,
             backgroundPosition: "right",
             backgroundRepeat: "no-repeat",
         },
@@ -57,16 +58,6 @@ const styles = (theme: Theme) =>
             height: "40rem",
             margin: "2rem 0",
             width: "fit-content",
-            // [theme.breakpoints.down("sm")]: {
-            //     backgroundColor: "red",
-            // },
-            // [theme.breakpoints.up("md")]: {
-            //     backgroundColor: "green",
-            // },
-            // [theme.breakpoints.up("lg")]: {
-            //     backgroundColor: "blue",
-            // },
-
             lineHeight: COLUMN_WIDTH,
             textAlign: "start",
             writingMode: "vertical-rl",
@@ -100,7 +91,6 @@ const styles = (theme: Theme) =>
                 position: "relative",
                 top: "-0.2rem",
                 left: "0.75rem",
-                // display: "inline-block",
                 display: "none",
             },
         },
@@ -108,7 +98,8 @@ const styles = (theme: Theme) =>
 
 interface Props extends WithStyles<typeof styles> {
     poems: Poem[];
-    fetchContent: () => void;
+    path: string;
+    fetchContent: (sql: string) => void;
 }
 
 function PoemsContent({ poems }: { poems: Poem[] }) {
@@ -179,7 +170,10 @@ class Content extends React.Component<Props> {
     numPages: number = 0;
 
     componentDidMount() {
-        this.props.fetchContent();
+        console.log('content component mounted', this.props.path);
+        const sql = getSqlFromRouterPath(this.props.path);
+        console.log(sql);
+        this.props.fetchContent(sql);
     }
 
     render() {
