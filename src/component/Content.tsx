@@ -64,7 +64,7 @@ const styles = (theme: Theme) =>
             writingMode: "vertical-rl",
             color: "black",
             position: "relative",
-            right: "-1.1rem",
+            right: "-1.1875rem",
             top: "-0.1rem",
             "& .<header>": {
                 fontSize: "1rem",
