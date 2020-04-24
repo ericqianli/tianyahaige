@@ -3,13 +3,18 @@ import "./App.css";
 import "./css/fonts.css";
 import "./css/shaft.css";
 
+import clsx from "clsx";
 import React from "react";
 import { Provider } from "react-redux";
 import WebFont from "webfontloader";
 
 import {
-    Grid, makeStyles, MuiThemeProvider, Typography
+    Button, CssBaseline, Divider, Drawer, Grid, IconButton, List, ListItem,
+    ListItemIcon, ListItemText, makeStyles, MuiThemeProvider, Typography
 } from "@material-ui/core";
+import InboxIcon from "@material-ui/icons/Inbox";
+import MailIcon from "@material-ui/icons/Mail";
+import MenuIcon from "@material-ui/icons/Menu";
 
 import { ROOT_FONT_SIZE } from "./constant/Constants";
 import ContentContainer from "./container/ContentContainer";
@@ -44,6 +49,7 @@ WebFont.load({
 const useStyles = makeStyles((_theme) => ({
     "@global": {
         html: {
+            boxSizing: "border-box",
             // NOTE: All rem uses this value.
             fontSize: ROOT_FONT_SIZE,
             // [theme.breakpoints.up("sm")]: {
@@ -55,11 +61,10 @@ const useStyles = makeStyles((_theme) => ({
             [theme.breakpoints.up("md")]: {
                 fontSize: 16,
             },
-            [theme.breakpoints.up("lg")]: {
+            [theme.breakpoints.up("xl")]: {
                 fontSize: 24,
             },
         },
-        
     },
     root: {
         flexGrow: 1,
@@ -73,19 +78,10 @@ const useStyles = makeStyles((_theme) => ({
         flexBasis: "calc(50vh - 18rem)",
         display: "flex",
         justifyContent: "center",
-        alignItems: "flex-end",
+        alignItems: "flex-start",
         // backgroundColor: "red",
     },
-    headerContent: {
-        // width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "flex-start",
-
-        writingMode: "vertical-rl",
-        // backgroundColor: "blue",
-    },
+    
     main: {
         flexBasis: "44rem",
         display: "flex",
@@ -100,14 +96,95 @@ const useStyles = makeStyles((_theme) => ({
         // justifyContent: "true",
         // backgroundColor: "blue",
     },
+    drawerContent: {
+        height: "calc(50vh - 18rem)",
+
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "flex-start",
+
+        writingMode: "vertical-rl",
+        // backgroundColor: "blue",
+    },
+    list: {
+        width: 250,
+    },
+    fullList: {
+        width: "auto",
+    },
+    menuButton: {
+        margin: theme.spacing(1),
+        padding: theme.spacing(0.5),
+        borderRadius: theme.spacing(0.5),
+    },
+    closeButton: {
+        padding: theme.spacing(1),
+        borderRadius: theme.spacing(0.5),
+    },
+    hide: {
+        visibility: "hidden",
+    },
 }));
 
 function App() {
     const classes = useStyles();
 
+    const [state, setState] = React.useState({
+        drawerShown: false,
+    });
+
+    // React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    const toggleDrawerOnMouseClick = (open: boolean) => (
+        event: React.MouseEvent<HTMLElement, MouseEvent>
+    ) => {
+        if (event.type === "keydown") {
+            return;
+        }
+
+        setState({ ...state, drawerShown: open });
+    };
+
+    const toggleDrawerOnKeyDown = (open: boolean) => (
+        event: React.KeyboardEvent<HTMLDivElement>
+    ) => {
+        if (
+            event.type === "keydown" &&
+            (event.key === "Tab" || event.key === "Shift")
+        ) {
+            return;
+        }
+
+        setState({ ...state, drawerShown: open });
+    };
+
+    const drawer = (
+        <div
+            className={classes.drawerContent}
+            role="presentation"
+            onClick={toggleDrawerOnMouseClick(false)}
+            onKeyDown={toggleDrawerOnKeyDown(false)}
+        >
+            <Typography variant="h3" align="center">
+                天涯海閣
+            </Typography>
+            <Typography variant="h3" align="center">
+                落星集
+            </Typography>
+            <Typography variant="h3" align="center">
+                天竺遊記
+            </Typography>
+            <Typography variant="h3" align="center">
+                列仙集
+            </Typography>
+        </div>
+    );
+
     return (
         <Provider store={Store}>
             <MuiThemeProvider theme={theme}>
+                {/* <CssBaseline /> */}
+
                 <div className="App">
                     {/* <div className="shaft-load3">
                     <div className="shaft1"></div>
@@ -130,20 +207,25 @@ function App() {
                             alignItems="stretch"
                         >
                             <Grid className={classes.header} item xs={12}>
-                                <div className={classes.headerContent}>
-                                    <Typography variant="h3" align="center">
-                                        天涯海閣
-                                    </Typography>
-                                    <Typography variant="h3" align="center">
-                                        落星集
-                                    </Typography>
-                                    <Typography variant="h3" align="center">
-                                        天竺遊記
-                                    </Typography>
-                                    <Typography variant="h3" align="center">
-                                        列仙集
-                                    </Typography>
-                                </div>
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="open drawer"
+                                    onClick={toggleDrawerOnMouseClick(true)}
+                                    edge="start"
+                                    className={clsx(
+                                        classes.menuButton,
+                                        state.drawerShown && classes.hide
+                                    )}
+                                >
+                                    <MenuIcon fontSize="default" />
+                                </IconButton>
+                                <Drawer
+                                    anchor="top"
+                                    open={state.drawerShown}
+                                    onClose={toggleDrawerOnKeyDown(false)}
+                                >
+                                    {drawer}
+                                </Drawer>
                             </Grid>
                             <Grid className={classes.main} item xs={12}>
                                 <ContentContainer />

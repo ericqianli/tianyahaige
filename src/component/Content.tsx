@@ -57,23 +57,16 @@ const styles = (theme: Theme) =>
             fontSize: "2rem",
             height: "40rem",
             margin: "2rem 0",
-            // width: "fit-content",
-            // width: 0,
             width: "fit-content",
-            [theme.breakpoints.down("sm")]: {
-                width: "fit-content",
-                backgroundColor: "red",
-            },
-            [theme.breakpoints.up("md")]: {
-                // width: "100%",
-                width: "fit-content",
-                backgroundColor: "green",
-            },
-            [theme.breakpoints.up("lg")]: {
-                // width: "100%",
-                width: "fit-content",
-                backgroundColor: "blue",
-            },
+            // [theme.breakpoints.down("sm")]: {
+            //     backgroundColor: "red",
+            // },
+            // [theme.breakpoints.up("md")]: {
+            //     backgroundColor: "green",
+            // },
+            // [theme.breakpoints.up("lg")]: {
+            //     backgroundColor: "blue",
+            // },
 
             lineHeight: COLUMN_WIDTH,
             textAlign: "start",
