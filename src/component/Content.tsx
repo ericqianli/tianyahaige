@@ -5,14 +5,13 @@ import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 
 import {
     BACKGROUND_SIZE_BY_HEIGHT, BACKGROUND_SIZE_BY_WIDTH,
-    BACKGROUND_WIDTH_IN_REM, COLUMN_WIDTH, CONTENT_HEIGHT, HALF_COLUMN_WIDTH
+    BACKGROUND_WIDTH_IN_REM, COLUMN_WIDTH, CONTENT_HEIGHT, HALF_COLUMN_WIDTH,
+    ROUTE_INFO_MAP
 } from "../constant/Constants";
 import BackgroundBody from "../image/background_body.jpg";
 import BackgroundLeft from "../image/background_left.jpg";
 import BackgroundRight from "../image/background_right.jpg";
-import TitleImage from "../image/title.jpg";
 import { getFormattedSubtitle } from "../manager/FormatManager";
-import { getSqlFromRouterPath } from "../manager/QueryManager";
 import { Poem } from "../type/Types";
 
 const styles = (_theme: Theme) =>
@@ -27,7 +26,6 @@ const styles = (_theme: Theme) =>
         title: {
             height: CONTENT_HEIGHT,
             width: "32rem",
-            backgroundImage: `url(${TitleImage})`,
             backgroundSize: BACKGROUND_SIZE_BY_HEIGHT,
             backgroundPosition: "center",
         },
@@ -65,7 +63,7 @@ const styles = (_theme: Theme) =>
             position: "relative",
             right: "-1.1rem",
             top: "-0.1rem",
-            "& .header": {
+            "& .<header>": {
                 fontSize: "1rem",
                 lineHeight: HALF_COLUMN_WIDTH,
             },
@@ -170,16 +168,23 @@ class Content extends React.Component<Props> {
     numPages: number = 0;
 
     componentDidMount() {
-        const sql = getSqlFromRouterPath(this.props.path);
+        const sql = ROUTE_INFO_MAP[this.props.path].sql;
         this.props.fetchContent(sql);
         this.numPages = 0;
     }
 
     render() {
-        const { classes, poems } = this.props;
+        const { classes, poems, path } = this.props;
 
         if (poems.length === 0) {
-            return <div className={classes.title} />;
+            return (
+                <div
+                    className={classes.title}
+                    style={{
+                        backgroundImage: `url(${ROUTE_INFO_MAP[path].image})`,
+                    }}
+                />
+            );
         }
 
         return (

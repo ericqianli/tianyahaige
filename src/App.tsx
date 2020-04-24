@@ -14,9 +14,7 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
-import {
-    FALLEN_STAR, IMMORTALS, INDIA_TRAVEL, LANDING
-} from "./constant/Routes";
+import { ROUTE_INFO_MAP } from "./constant/Constants";
 import ContentContainer from "./container/ContentContainer";
 import Store from "./store/Store";
 import theme from "./theme/muiTheme";
@@ -114,7 +112,7 @@ const useStyles = makeStyles((_theme) => ({
         writingMode: "vertical-rl",
         "& li": {
             margin: "0 1rem",
-        }
+        },
     },
     menuItem: {
         cursor: "pointer",
@@ -159,54 +157,20 @@ function App(props: RouteComponentProps) {
             onClick={toggleDrawerOnMouseClick(false)}
         >
             <ul className={classes.menuItems}>
-                <li>
-                    <Typography
-                        className={classes.menuItem}
-                        variant="h3"
-                        align="center"
-                        onClick={() => {
-                            props.history.push(LANDING);
-                        }}
-                    >
-                        天涯海槎
-                    </Typography>
-                </li>
-                <li>
-                    <Typography
-                        className={classes.menuItem}
-                        variant="h3"
-                        align="center"
-                        onClick={() => {
-                            props.history.push(FALLEN_STAR);
-                        }}
-                    >
-                        落星集
-                    </Typography>
-                </li>
-                <li>
-                    <Typography
-                        className={classes.menuItem}
-                        variant="h3"
-                        align="center"
-                        onClick={() => {
-                            props.history.push(INDIA_TRAVEL);
-                        }}
-                    >
-                        天竺遊記
-                    </Typography>
-                </li>
-                <li>
-                    <Typography
-                        className={classes.menuItem}
-                        variant="h3"
-                        align="center"
-                        onClick={() => {
-                            props.history.push(IMMORTALS);
-                        }}
-                    >
-                        列仙集
-                    </Typography>
-                </li>
+                {Object.entries(ROUTE_INFO_MAP).map(([path, info]) => (
+                    <li>
+                        <Typography
+                            className={classes.menuItem}
+                            variant="h3"
+                            align="center"
+                            onClick={() => {
+                                props.history.push(path);
+                            }}
+                        >
+                            {info.title}
+                        </Typography>
+                    </li>
+                ))}
             </ul>
         </div>
     );
@@ -245,27 +209,13 @@ function App(props: RouteComponentProps) {
                                 </Drawer>
                             </Grid>
                             <Grid className={classes.main} item xs={12}>
-                                <Route
-                                    exact
-                                    path={LANDING}
-                                    component={ContentContainer}
-                                />
-
-                                <Route
-                                    exact
-                                    path={FALLEN_STAR}
-                                    component={ContentContainer}
-                                />
-                                <Route
-                                    exact
-                                    path={INDIA_TRAVEL}
-                                    component={ContentContainer}
-                                />
-                                <Route
-                                    exact
-                                    path={IMMORTALS}
-                                    component={ContentContainer}
-                                />
+                                {Object.keys(ROUTE_INFO_MAP).map((path) => (
+                                    <Route
+                                        exact
+                                        path={path}
+                                        component={ContentContainer}
+                                    />
+                                ))}
                             </Grid>
                             <Grid className={classes.footer} item xs={12}>
                                 {/* <Typography variant="subtitle1" align="center">
