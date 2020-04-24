@@ -9,14 +9,10 @@ import { Provider } from "react-redux";
 import WebFont from "webfontloader";
 
 import {
-    Button, CssBaseline, Divider, Drawer, Grid, IconButton, List, ListItem,
-    ListItemIcon, ListItemText, makeStyles, MuiThemeProvider, Typography
+    Drawer, Grid, IconButton, makeStyles, MuiThemeProvider, Typography
 } from "@material-ui/core";
-import InboxIcon from "@material-ui/icons/Inbox";
-import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
 
-import { ROOT_FONT_SIZE } from "./constant/Constants";
 import ContentContainer from "./container/ContentContainer";
 import Store from "./store/Store";
 import theme from "./theme/muiTheme";
@@ -50,11 +46,6 @@ const useStyles = makeStyles((_theme) => ({
     "@global": {
         html: {
             boxSizing: "border-box",
-            // NOTE: All rem uses this value.
-            fontSize: ROOT_FONT_SIZE,
-            // [theme.breakpoints.up("sm")]: {
-            //     fontSize: 18,
-            // },
             [theme.breakpoints.down("sm")]: {
                 fontSize: 8,
             },
@@ -81,7 +72,7 @@ const useStyles = makeStyles((_theme) => ({
         alignItems: "flex-start",
         // backgroundColor: "red",
     },
-    
+
     main: {
         flexBasis: "44rem",
         display: "flex",
@@ -97,13 +88,22 @@ const useStyles = makeStyles((_theme) => ({
         // backgroundColor: "blue",
     },
     drawerContent: {
-        height: "calc(50vh - 18rem)",
+        height: "calc(50vh - 17.5rem)",
+        minHeight: "9.625rem",
 
+        display: "flex",
+        // flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+
+        // writingMode: "vertical-rl",
+        // backgroundColor: "red",
+    },
+    menuItems: {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "flex-start",
-
         writingMode: "vertical-rl",
         // backgroundColor: "blue",
     },
@@ -165,18 +165,20 @@ function App() {
             onClick={toggleDrawerOnMouseClick(false)}
             onKeyDown={toggleDrawerOnKeyDown(false)}
         >
-            <Typography variant="h3" align="center">
-                天涯海閣
-            </Typography>
-            <Typography variant="h3" align="center">
-                落星集
-            </Typography>
-            <Typography variant="h3" align="center">
-                天竺遊記
-            </Typography>
-            <Typography variant="h3" align="center">
-                列仙集
-            </Typography>
+            <div className={classes.menuItems}>
+                <Typography variant="h3" align="center">
+                    天涯海閣
+                </Typography>
+                <Typography variant="h3" align="center">
+                    落星集
+                </Typography>
+                <Typography variant="h3" align="center">
+                    天竺遊記
+                </Typography>
+                <Typography variant="h3" align="center">
+                    列仙集
+                </Typography>
+            </div>
         </div>
     );
 
