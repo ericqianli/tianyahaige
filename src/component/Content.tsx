@@ -34,7 +34,7 @@ const styles = (theme: Theme) =>
             backgroundImage: `url(${BackgroundBody})`,
             backgroundSize: BACKGROUND_SIZE_BY_WIDTH,
             backgroundPosition: "right",
-            [theme.breakpoints.only("sm")]: {
+            [theme.breakpoints.between("sm", "md")]: {
                 backgroundSize: BACKGROUND_ADJUSTED_SIZE_BY_WIDTH,
             },
         },
