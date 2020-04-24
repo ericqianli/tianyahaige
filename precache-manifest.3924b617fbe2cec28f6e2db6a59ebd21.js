@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "076aca06d1c2eff3fd39c9146f99aabe",
+    "revision": "6a0cb4e920b306939a5c977c3b2bd1d2",
     "url": "/tianyahaige/index.html"
   },
   {
-    "revision": "9696db3f242dbb1b98f8",
-    "url": "/tianyahaige/static/css/main.3a98a136.chunk.css"
+    "revision": "bcd2da869aecc3616e32",
+    "url": "/tianyahaige/static/css/main.657ee42f.chunk.css"
   },
   {
-    "revision": "895d4418314ce1dc2120",
-    "url": "/tianyahaige/static/js/2.4e3dc173.chunk.js"
+    "revision": "0c3adccfbfc7cf9c223d",
+    "url": "/tianyahaige/static/js/2.40873025.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/tianyahaige/static/js/2.4e3dc173.chunk.js.LICENSE.txt"
+    "url": "/tianyahaige/static/js/2.40873025.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9696db3f242dbb1b98f8",
-    "url": "/tianyahaige/static/js/main.b6d4ba08.chunk.js"
+    "revision": "bcd2da869aecc3616e32",
+    "url": "/tianyahaige/static/js/main.2d430662.chunk.js"
   },
   {
     "revision": "625ec1c6646c5666471f",
@@ -40,8 +40,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/tianyahaige/static/media/background_right.bc21eb1b.jpg"
   },
   {
-    "revision": "35658cb1adc8a40f81b1f8ed314ddf2d",
-    "url": "/tianyahaige/static/media/title.35658cb1.jpg"
+    "revision": "d7ccd6ba2bd1c99fb8e5c9d3426bce78",
+    "url": "/tianyahaige/static/media/title_1.d7ccd6ba.jpg"
+  },
+  {
+    "revision": "a467cf5989aad406ff47c85e966fd167",
+    "url": "/tianyahaige/static/media/title_2.a467cf59.jpg"
+  },
+  {
+    "revision": "c4929b5c5698103d13b8342fc8ac5fa8",
+    "url": "/tianyahaige/static/media/title_3.c4929b5c.jpg"
+  },
+  {
+    "revision": "28a7bcaebd1c07c6310ff03e763bdf18",
+    "url": "/tianyahaige/static/media/title_4.28a7bcae.jpg"
   },
   {
     "revision": "df2dcb9e47e4550b7f815967ef0983ae",

@@ -1,27 +1,30 @@
 {
   "files": {
-    "main.css": "/tianyahaige/static/css/main.3a98a136.chunk.css",
-    "main.js": "/tianyahaige/static/js/main.b6d4ba08.chunk.js",
-    "main.js.map": "/tianyahaige/static/js/main.b6d4ba08.chunk.js.map",
+    "main.css": "/tianyahaige/static/css/main.657ee42f.chunk.css",
+    "main.js": "/tianyahaige/static/js/main.2d430662.chunk.js",
+    "main.js.map": "/tianyahaige/static/js/main.2d430662.chunk.js.map",
     "runtime-main.js": "/tianyahaige/static/js/runtime-main.f6132870.js",
     "runtime-main.js.map": "/tianyahaige/static/js/runtime-main.f6132870.js.map",
-    "static/js/2.4e3dc173.chunk.js": "/tianyahaige/static/js/2.4e3dc173.chunk.js",
-    "static/js/2.4e3dc173.chunk.js.map": "/tianyahaige/static/js/2.4e3dc173.chunk.js.map",
+    "static/js/2.40873025.chunk.js": "/tianyahaige/static/js/2.40873025.chunk.js",
+    "static/js/2.40873025.chunk.js.map": "/tianyahaige/static/js/2.40873025.chunk.js.map",
     "index.html": "/tianyahaige/index.html",
-    "precache-manifest.f73a7c8a5127a183676f019b82ce019c.js": "/tianyahaige/precache-manifest.f73a7c8a5127a183676f019b82ce019c.js",
+    "precache-manifest.3924b617fbe2cec28f6e2db6a59ebd21.js": "/tianyahaige/precache-manifest.3924b617fbe2cec28f6e2db6a59ebd21.js",
     "service-worker.js": "/tianyahaige/service-worker.js",
-    "static/css/main.3a98a136.chunk.css.map": "/tianyahaige/static/css/main.3a98a136.chunk.css.map",
-    "static/js/2.4e3dc173.chunk.js.LICENSE.txt": "/tianyahaige/static/js/2.4e3dc173.chunk.js.LICENSE.txt",
+    "static/css/main.657ee42f.chunk.css.map": "/tianyahaige/static/css/main.657ee42f.chunk.css.map",
+    "static/js/2.40873025.chunk.js.LICENSE.txt": "/tianyahaige/static/js/2.40873025.chunk.js.LICENSE.txt",
     "static/media/fonts.css": "/tianyahaige/static/media/ziyuesongkeben.subset.df2dcb9e.ttf",
     "static/media/background_body.jpg": "/tianyahaige/static/media/background_body.62a99315.jpg",
     "static/media/background_left.jpg": "/tianyahaige/static/media/background_left.50d23bf8.jpg",
     "static/media/background_right.jpg": "/tianyahaige/static/media/background_right.bc21eb1b.jpg",
-    "static/media/title.jpg": "/tianyahaige/static/media/title.35658cb1.jpg"
+    "static/media/title_1.jpg": "/tianyahaige/static/media/title_1.d7ccd6ba.jpg",
+    "static/media/title_2.jpg": "/tianyahaige/static/media/title_2.a467cf59.jpg",
+    "static/media/title_3.jpg": "/tianyahaige/static/media/title_3.c4929b5c.jpg",
+    "static/media/title_4.jpg": "/tianyahaige/static/media/title_4.28a7bcae.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.f6132870.js",
-    "static/js/2.4e3dc173.chunk.js",
-    "static/css/main.3a98a136.chunk.css",
-    "static/js/main.b6d4ba08.chunk.js"
+    "static/js/2.40873025.chunk.js",
+    "static/css/main.657ee42f.chunk.css",
+    "static/js/main.2d430662.chunk.js"
   ]
 }
