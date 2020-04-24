@@ -4,9 +4,9 @@ import ReactResizeDetector from "react-resize-detector";
 import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 
 import {
-    BACKGROUND_SIZE_BY_HEIGHT, BACKGROUND_SIZE_BY_WIDTH,
-    BACKGROUND_WIDTH_IN_REM, COLUMN_WIDTH, CONTENT_HEIGHT, HALF_COLUMN_WIDTH,
-    ROUTE_INFO_MAP
+    BACKGROUND_ADJUSTED_SIZE_BY_WIDTH, BACKGROUND_SIZE_BY_HEIGHT,
+    BACKGROUND_SIZE_BY_WIDTH, COLUMN_WIDTH, COLUMN_WIDTH_IN_REM,
+    COLUMNS_PER_BACKGROUD, CONTENT_HEIGHT, HALF_COLUMN_WIDTH, ROUTE_INFO_MAP
 } from "../constant/Constants";
 import BackgroundBody from "../image/background_body.jpg";
 import BackgroundLeft from "../image/background_left.jpg";
@@ -14,7 +14,7 @@ import BackgroundRight from "../image/background_right.jpg";
 import { getFormattedSubtitle } from "../manager/FormatManager";
 import { Poem } from "../type/Types";
 
-const styles = (_theme: Theme) =>
+const styles = (theme: Theme) =>
     createStyles({
         container: {
             height: CONTENT_HEIGHT,
@@ -34,6 +34,9 @@ const styles = (_theme: Theme) =>
             backgroundImage: `url(${BackgroundBody})`,
             backgroundSize: BACKGROUND_SIZE_BY_WIDTH,
             backgroundPosition: "right",
+            [theme.breakpoints.only("sm")]: {
+                backgroundSize: BACKGROUND_ADJUSTED_SIZE_BY_WIDTH,
+            },
         },
         bookRightSide: {
             height: CONTENT_HEIGHT,
@@ -119,7 +122,7 @@ function PoemContent({ poem }: { poem: Poem }) {
                 subtitle={poem.subtitle}
             />
             {poem.body.split("\r\n").map((body, index) => (
-                <PoemBody body={body} />
+                <PoemBody key={index} body={body} />
             ))}
         </div>
     );
@@ -194,8 +197,12 @@ class Content extends React.Component<Props> {
                     <ReactResizeDetector handleWidth handleHeight>
                         {({ width }: { width: number }) => {
                             const rootFontSizeInPixel = getRootFontSize();
+                            const columnWidthInPixel = Math.floor(
+                                rootFontSizeInPixel * COLUMN_WIDTH_IN_REM
+                            );
+
                             const backgroundWidthInPixel =
-                                rootFontSizeInPixel * BACKGROUND_WIDTH_IN_REM;
+                                columnWidthInPixel * COLUMNS_PER_BACKGROUD;
 
                             if (
                                 this.numPages === 0 &&

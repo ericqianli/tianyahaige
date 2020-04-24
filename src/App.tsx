@@ -48,8 +48,11 @@ const useStyles = makeStyles((_theme) => ({
     "@global": {
         html: {
             boxSizing: "border-box",
-            [theme.breakpoints.down("sm")]: {
+            [theme.breakpoints.up("xs")]: {
                 fontSize: 8,
+            },
+            [theme.breakpoints.up("sm")]: {
+                fontSize: 12,
             },
             [theme.breakpoints.up("md")]: {
                 fontSize: 16,
@@ -158,7 +161,7 @@ function App(props: RouteComponentProps) {
         >
             <ul className={classes.menuItems}>
                 {Object.entries(ROUTE_INFO_MAP).map(([path, info]) => (
-                    <li>
+                    <li key={path}>
                         <Typography
                             className={classes.menuItem}
                             variant="h3"
@@ -211,6 +214,7 @@ function App(props: RouteComponentProps) {
                             <Grid className={classes.main} item xs={12}>
                                 {Object.keys(ROUTE_INFO_MAP).map((path) => (
                                     <Route
+                                        key={path}
                                         exact
                                         path={path}
                                         component={ContentContainer}
