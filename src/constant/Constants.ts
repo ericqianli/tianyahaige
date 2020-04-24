@@ -57,7 +57,7 @@ export const ROUTE_INFO_MAP: {
     },
     [INDIA_TRAVEL]: {
         sql: "select * from poem_by_date limit 20, 30",
-        title: "天竺遊記",
+        title: "天竺散記",
         image: TitleImageThree,
     },
     [IMMORTALS]: {
