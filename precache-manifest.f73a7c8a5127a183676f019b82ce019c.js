@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ac46d572df3423b91dd6aa10c25601ff",
+    "revision": "076aca06d1c2eff3fd39c9146f99aabe",
     "url": "/tianyahaige/index.html"
   },
   {
-    "revision": "a0e0cf245c7d1b4fe97c",
+    "revision": "9696db3f242dbb1b98f8",
     "url": "/tianyahaige/static/css/main.3a98a136.chunk.css"
   },
   {
-    "revision": "23105104642e3a116f5e",
-    "url": "/tianyahaige/static/js/2.1b0b237c.chunk.js"
+    "revision": "895d4418314ce1dc2120",
+    "url": "/tianyahaige/static/js/2.4e3dc173.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/tianyahaige/static/js/2.1b0b237c.chunk.js.LICENSE.txt"
+    "url": "/tianyahaige/static/js/2.4e3dc173.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a0e0cf245c7d1b4fe97c",
-    "url": "/tianyahaige/static/js/main.31c699ec.chunk.js"
+    "revision": "9696db3f242dbb1b98f8",
+    "url": "/tianyahaige/static/js/main.b6d4ba08.chunk.js"
   },
   {
     "revision": "625ec1c6646c5666471f",
