@@ -1,10 +1,11 @@
+import clsx from "clsx";
 import React from "react";
 import ReactResizeDetector from "react-resize-detector";
 
 import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
 
 import {
-    BACKGROUND_SIDE_SIZE, BACKGROUND_SIZE, BACKGROUND_WIDTH_IN_PIXEL,
+    BACKGROUND_SIDE_SIZE, BACKGROUND_SIZE, BACKGROUND_WIDTH_IN_REM,
     COLUMN_WIDTH, CONTENT_HEIGHT, HALF_COLUMN_WIDTH
 } from "../constant/Constants";
 import BackgroundBody from "../image/background_body.jpg";
@@ -14,7 +15,7 @@ import TitleImage from "../image/title.jpg";
 import { getFormattedSubtitle } from "../manager/FormatManager";
 import { Poem } from "../type/Types";
 
-const styles = (_theme: Theme) =>
+const styles = (theme: Theme) =>
     createStyles({
         container: {
             height: CONTENT_HEIGHT,
@@ -56,7 +57,24 @@ const styles = (_theme: Theme) =>
             fontSize: "2rem",
             height: "40rem",
             margin: "2rem 0",
+            // width: "fit-content",
+            // width: 0,
             width: "fit-content",
+            [theme.breakpoints.down("sm")]: {
+                width: "fit-content",
+                backgroundColor: "red",
+            },
+            [theme.breakpoints.up("md")]: {
+                // width: "100%",
+                width: "fit-content",
+                backgroundColor: "green",
+            },
+            [theme.breakpoints.up("lg")]: {
+                // width: "100%",
+                width: "fit-content",
+                backgroundColor: "blue",
+            },
+
             lineHeight: COLUMN_WIDTH,
             textAlign: "start",
             writingMode: "vertical-rl",
@@ -91,7 +109,7 @@ const styles = (_theme: Theme) =>
                 top: "-0.2rem",
                 left: "0.75rem",
                 // display: "inline-block",
-                display: "none"
+                display: "none",
             },
         },
     });
@@ -157,7 +175,17 @@ function Period() {
     return <span className="period">︒</span>;
 }
 
+function getRootFontSize() {
+    const rootFontSize = window
+        .getComputedStyle(document.body)
+        .getPropertyValue("font-size");
+    const rootFontSizeInPixel = Number(rootFontSize.slice(0, -2));
+    return rootFontSizeInPixel;
+}
+
 class Content extends React.Component<Props> {
+    numPages: number = 0;
+
     componentDidMount() {
         this.props.fetchContent();
     }
@@ -173,42 +201,38 @@ class Content extends React.Component<Props> {
             <div className={classes.container}>
                 <div className={classes.bookRightSide}></div>
                 <div className={classes.bookContent}>
-                    <ReactResizeDetector handleWidth>
+                    <ReactResizeDetector handleWidth handleHeight>
                         {({ width }: { width: number }) => {
-                            let roundedWidth = width;
-                            if (!isNaN(width)) {
-                                roundedWidth =
-                                    BACKGROUND_WIDTH_IN_PIXEL *
-                                    Math.ceil(
-                                        width / BACKGROUND_WIDTH_IN_PIXEL
-                                    );
+                            const rootFontSizeInPixel = getRootFontSize();
+                            const backgroundWidthInPixel =
+                                rootFontSizeInPixel * BACKGROUND_WIDTH_IN_REM;
+
+                            if (
+                                this.numPages === 0 &&
+                                !isNaN(width) &&
+                                width > 0
+                            ) {
+                                this.numPages = Math.ceil(
+                                    width / backgroundWidthInPixel
+                                );
                             }
 
-                            if (width === roundedWidth) {
-                                return (
-                                    <div
-                                        className={classes.poemContent}
-                                        style={{
-                                            minWidth: `${roundedWidth}px`,
-                                        }}
-                                    >
-                                        <PoemsContent
-                                            poems={this.props.poems}
-                                        />
-                                    </div>
-                                );
-                            } else {
-                                return (
-                                    <div
-                                        className={classes.poemContent}
-                                        style={{ width: `${roundedWidth}px` }}
-                                    >
-                                        <PoemsContent
-                                            poems={this.props.poems}
-                                        />
-                                    </div>
-                                );
-                            }
+                            const fullWidth =
+                                backgroundWidthInPixel * this.numPages;
+
+                            return (
+                                <div
+                                    className={classes.poemContent}
+                                    style={{
+                                        width:
+                                            fullWidth === 0
+                                                ? "fit-content"
+                                                : `${fullWidth}px`,
+                                    }}
+                                >
+                                    <PoemsContent poems={this.props.poems} />
+                                </div>
+                            );
                         }}
                     </ReactResizeDetector>
                 </div>

@@ -49,7 +49,17 @@ const useStyles = makeStyles((_theme) => ({
             // [theme.breakpoints.up("sm")]: {
             //     fontSize: 18,
             // },
+            [theme.breakpoints.down("sm")]: {
+                fontSize: 8,
+            },
+            [theme.breakpoints.up("md")]: {
+                fontSize: 16,
+            },
+            [theme.breakpoints.up("lg")]: {
+                fontSize: 24,
+            },
         },
+        
     },
     root: {
         flexGrow: 1,
@@ -72,7 +82,7 @@ const useStyles = makeStyles((_theme) => ({
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "flex-start",
-        
+
         writingMode: "vertical-rl",
         // backgroundColor: "blue",
     },
