@@ -103,7 +103,7 @@ const styles = (theme: Theme) =>
             position: "relative",
             right: "-1.1rem",
             top: "-0.1rem",
-            "& .<header>": {
+            "& .header": {
                 fontSize: "1rem",
                 lineHeight: HALF_COLUMN_WIDTH,
             },
