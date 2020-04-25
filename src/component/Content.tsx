@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React from "react";
 import ReactResizeDetector from "react-resize-detector";
 
@@ -16,6 +17,25 @@ import { Poem } from "../type/Types";
 
 const styles = (theme: Theme) =>
     createStyles({
+        "@keyframes fadeOut": {
+            "0%": {
+                opacity: 1,
+            },
+            "40%": {
+                opacity: 1,
+            },
+            "100%": {
+                opacity: 0,
+            },
+        },
+        "@keyframes fadeIn": {
+            "0%": {
+                opacity: 0,
+            },
+            "100%": {
+                opacity: 1,
+            },
+        },
         container: {
             height: CONTENT_HEIGHT,
             overflowX: "scroll",
@@ -28,6 +48,23 @@ const styles = (theme: Theme) =>
             width: "32rem",
             backgroundSize: BACKGROUND_SIZE_BY_HEIGHT,
             backgroundPosition: "center",
+            // transition: "opacity 2s ease-out",
+            // "&:hover": {
+            //     opacity: 0,
+            // },
+            // animationName: "fade",
+        },
+        fadeOutAnimation: {
+            animationName: "$fadeOut",
+            animationDuration: "3s",
+            animationTimingFunction: "ease-in-out",
+            animationIterationCount: 1,
+        },
+        fadeInAnimation: {
+            animationName: "$fadeIn",
+            animationDuration: "3s",
+            animationTimingFunction: "ease-in-out",
+            animationIterationCount: 1,
         },
         bookContent: {
             height: CONTENT_HEIGHT,
@@ -64,7 +101,7 @@ const styles = (theme: Theme) =>
             writingMode: "vertical-rl",
             color: "black",
             position: "relative",
-            right: "-1.1875rem",
+            right: "-1.1rem",
             top: "-0.1rem",
             "& .<header>": {
                 fontSize: "1rem",
@@ -96,12 +133,6 @@ const styles = (theme: Theme) =>
             },
         },
     });
-
-interface Props extends WithStyles<typeof styles> {
-    poems: Poem[];
-    path: string;
-    fetchContent: (sql: string) => void;
-}
 
 function PoemsContent({ poems }: { poems: Poem[] }) {
     return (
@@ -167,31 +198,114 @@ function getRootFontSize() {
     return rootFontSizeInPixel;
 }
 
-class Content extends React.Component<Props> {
+interface Props extends WithStyles<typeof styles> {
+    poems: Poem[];
+    path: string;
+    fetchContent: (sql: string) => void;
+}
+
+interface State {
+    titleFaded: boolean;
+}
+
+class Content extends React.Component<Props, State> {
     numPages: number = 0;
+    fadeTimeout?: NodeJS.Timeout;
+
+    stage: number = 0;
+
+    constructor(props: Props) {
+        super(props);
+        // console.log('constructor');
+
+        this.state = {
+            titleFaded: false,
+        };
+    }
 
     componentDidMount() {
+        console.log("componentDidMount");
         const sql = ROUTE_INFO_MAP[this.props.path].sql;
         this.props.fetchContent(sql);
         this.numPages = 0;
+        this.fadeTimeout = undefined;
+        this.setState({
+            titleFaded: false,
+        });
+
+        this.stage = 0;
     }
 
     render() {
         const { classes, poems, path } = this.props;
 
+        console.log(this.state.titleFaded, poems.length);
+
         if (poems.length === 0) {
+            if (this.stage === 0) {
+                console.log("render title");
+                this.stage++;
+                return (
+                    <div
+                        key={path}
+                        className={classes.title}
+                        style={{
+                            backgroundImage: `url(${ROUTE_INFO_MAP[path].image})`,
+                            opacity: 1,
+                        }}
+                    />
+                );
+            } else {
+                return (
+                    <div
+                        key={path}
+                        className={classes.title}
+                        style={{
+                            backgroundImage: `url(${ROUTE_INFO_MAP[path].image})`,
+                        }}
+                    />
+                );
+            }
+        }
+
+        // poems content non empty
+        if (this.stage === 1) {
+            console.log("render title with fade");
+            if (this.fadeTimeout === undefined) {
+                this.fadeTimeout = setTimeout(() => {
+                    this.fadeTimeout && clearTimeout(this.fadeTimeout);
+                    this.fadeTimeout = undefined;
+                    this.stage = 2;
+                    this.setState({ titleFaded: true });
+                }, 3000);
+            }
             return (
                 <div
-                    className={classes.title}
+                    key={path}
+                    className={clsx(classes.title, classes.fadeOutAnimation)}
                     style={{
                         backgroundImage: `url(${ROUTE_INFO_MAP[path].image})`,
+                        // opacity: 0,
                     }}
                 />
             );
         }
 
+        // return (
+        //     <div
+        //         key={path}
+        //         className={classes.title}
+        //         style={{
+        //             backgroundImage: `url(${ROUTE_INFO_MAP[path].image})`,
+        //             opacity: 0,
+        //         }}
+        //     />
+        // );
+
+        console.log("render content");
+
         return (
-            <div className={classes.container}>
+            <div className={clsx(classes.container, classes.fadeInAnimation)}>
                 <div className={classes.bookRightSide}></div>
                 <div className={classes.bookContent}>
                     <ReactResizeDetector handleWidth handleHeight>
