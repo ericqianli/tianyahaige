@@ -218,9 +218,9 @@ class Content extends React.Component<Props, State> {
         super(props);
         // console.log('constructor');
 
-        this.state = {
-            titleFaded: false,
-        };
+        // this.state = {
+        //     titleFaded: false,
+        // };
     }
 
     componentDidMount() {
@@ -229,80 +229,49 @@ class Content extends React.Component<Props, State> {
         this.props.fetchContent(sql);
         this.numPages = 0;
         this.fadeTimeout = undefined;
-        this.setState({
-            titleFaded: false,
-        });
 
-        this.stage = 0;
+        this.stage = 1;
     }
 
     render() {
         const { classes, poems, path } = this.props;
 
-        console.log(this.state.titleFaded, poems.length);
-
+        console.log("render", this.stage);
         if (poems.length === 0) {
-            if (this.stage === 0) {
-                console.log("render title");
-                this.stage++;
-                return (
-                    <div
-                        key={path}
-                        className={classes.title}
-                        style={{
-                            backgroundImage: `url(${ROUTE_INFO_MAP[path].image})`,
-                            opacity: 1,
-                        }}
-                    />
-                );
-            } else {
-                return (
-                    <div
-                        key={path}
-                        className={classes.title}
-                        style={{
-                            backgroundImage: `url(${ROUTE_INFO_MAP[path].image})`,
-                        }}
-                    />
-                );
-            }
+            console.log("render title");
+            return (
+                <div
+                    key={path}
+                    className={classes.title}
+                    style={{
+                        backgroundImage: `url(${ROUTE_INFO_MAP[path].image})`,
+                    }}
+                />
+            );
         }
 
         // poems content non empty
         if (this.stage === 1) {
             console.log("render title with fade");
-            if (this.fadeTimeout === undefined) {
-                this.fadeTimeout = setTimeout(() => {
-                    this.fadeTimeout && clearTimeout(this.fadeTimeout);
-                    this.fadeTimeout = undefined;
-                    this.stage = 2;
-                    this.setState({ titleFaded: true });
-                }, 3000);
-            }
+            
+            this.fadeTimeout = setTimeout(() => {
+                this.fadeTimeout && clearTimeout(this.fadeTimeout);
+                this.stage = 2;
+                this.render();
+            }, 3000);
+            
             return (
                 <div
                     key={path}
                     className={clsx(classes.title, classes.fadeOutAnimation)}
                     style={{
                         backgroundImage: `url(${ROUTE_INFO_MAP[path].image})`,
-                        // opacity: 0,
                     }}
                 />
             );
         }
 
-        // return (
-        //     <div
-        //         key={path}
-        //         className={classes.title}
-        //         style={{
-        //             backgroundImage: `url(${ROUTE_INFO_MAP[path].image})`,
-        //             opacity: 0,
-        //         }}
-        //     />
-        // );
-
-        console.log("render content");
+        console.log("render content", this.stage);
 
         return (
             <div className={clsx(classes.container, classes.fadeInAnimation)}>
@@ -333,7 +302,6 @@ class Content extends React.Component<Props, State> {
 
                             return (
                                 <div
-                                    // key={this.props.path}
                                     className={classes.poemContent}
                                     style={{
                                         width:
