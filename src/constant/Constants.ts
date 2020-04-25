@@ -45,7 +45,7 @@ export const ROUTE_INFO_MAP: {
         image: TitleImageTwo,
     },
     [INDIA_TRAVEL]: {
-        sql: "select * from poem_by_date limit 20, 30",
+        sql: "select * from poem_by_date where india_travel=true",
         title: "天竺散記",
         image: TitleImageThree,
     },
