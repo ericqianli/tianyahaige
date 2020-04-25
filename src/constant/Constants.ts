@@ -35,12 +35,12 @@ export const ROUTE_INFO_MAP: {
     };
 } = {
     [LANDING]: {
-        sql: "select * from poem_by_date limit 0, 1000",
+        sql: "select * from poem_by_date",
         title: "天涯海槎",
         image: TitleImageOne,
     },
     [FALLEN_STAR]: {
-        sql: "select * from poem_by_date limit 10, 20",
+        sql: "select * from poem_by_date where fallen_star=true",
         title: "落星集",
         image: TitleImageTwo,
     },

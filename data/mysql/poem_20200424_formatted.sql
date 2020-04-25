@@ -808,6 +808,9 @@ CREATE TABLE `poem_by_date` (
 ,`content` text
 ,`camera_ready_content` text
 ,`annotation` text
+,`fallen_star` boolean
+,`india_travel` boolean
+,`immortals` boolean
 );
 
 -- --------------------------------------------------------
