@@ -205,40 +205,33 @@ interface Props extends WithStyles<typeof styles> {
 }
 
 interface State {
-    titleFaded: boolean;
+    stage: number;
 }
 
 class Content extends React.Component<Props, State> {
     numPages: number = 0;
     fadeTimeout?: NodeJS.Timeout;
 
-    stage: number = 0;
-
     constructor(props: Props) {
         super(props);
-        // console.log('constructor');
-
-        // this.state = {
-        //     titleFaded: false,
-        // };
+        this.state = {
+            stage: 0,
+        };
     }
 
     componentDidMount() {
-        console.log("componentDidMount");
         const sql = ROUTE_INFO_MAP[this.props.path].sql;
         this.props.fetchContent(sql);
         this.numPages = 0;
         this.fadeTimeout = undefined;
 
-        this.stage = 1;
+        this.setState({ stage: 1 });
     }
 
     render() {
         const { classes, poems, path } = this.props;
 
-        console.log("render", this.stage);
         if (poems.length === 0) {
-            console.log("render title");
             return (
                 <div
                     key={path}
@@ -251,15 +244,15 @@ class Content extends React.Component<Props, State> {
         }
 
         // poems content non empty
-        if (this.stage === 1) {
-            console.log("render title with fade");
-            
-            this.fadeTimeout = setTimeout(() => {
-                this.fadeTimeout && clearTimeout(this.fadeTimeout);
-                this.stage = 2;
-                this.render();
-            }, 3000);
-            
+        if (this.state.stage === 1) {
+            if (this.fadeTimeout === undefined) {
+                this.fadeTimeout = setTimeout(() => {
+                    this.fadeTimeout && clearTimeout(this.fadeTimeout);
+                    this.fadeTimeout = undefined;
+                    this.setState({ stage: 2 });
+                }, 3000);
+            }
+
             return (
                 <div
                     key={path}
@@ -270,8 +263,6 @@ class Content extends React.Component<Props, State> {
                 />
             );
         }
-
-        console.log("render content", this.stage);
 
         return (
             <div className={clsx(classes.container, classes.fadeInAnimation)}>

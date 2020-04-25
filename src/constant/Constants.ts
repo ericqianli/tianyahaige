@@ -35,7 +35,7 @@ export const ROUTE_INFO_MAP: {
     };
 } = {
     [LANDING]: {
-        sql: "select * from poem_by_date limit 0, 10",
+        sql: "select * from poem_by_date limit 0, 1000",
         title: "天涯海槎",
         image: TitleImageOne,
     },
