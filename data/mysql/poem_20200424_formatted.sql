@@ -820,7 +820,7 @@ CREATE TABLE `poem_by_date` (
 --
 DROP TABLE IF EXISTS `poem_by_date`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `poem_by_date` AS select `id` AS `id`,`title` AS `title`,`date` AS `date`,`subtitle` AS `subtitle`,`content` AS `content`,`camera_ready_content` AS `camera_ready_content`,`annotation` AS `annotation` from `poem` order by `date`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `poem_by_date` AS select `id` AS `id`,`title` AS `title`,`date` AS `date`,`subtitle` AS `subtitle`,`content` AS `content`,`camera_ready_content` AS `camera_ready_content`,`annotation` AS `annotation`,`fallen_star` AS `fallen_star`,`india_travel` AS `india_travel`,`immortals` AS `immortals` from `poem` order by `date`;
 
 --
 -- Indexes for dumped tables
