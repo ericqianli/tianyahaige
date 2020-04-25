@@ -9,9 +9,9 @@ import {
     BACKGROUND_SIZE_BY_WIDTH, COLUMN_WIDTH, COLUMN_WIDTH_IN_REM,
     COLUMNS_PER_BACKGROUD, CONTENT_HEIGHT, HALF_COLUMN_WIDTH, ROUTE_INFO_MAP
 } from "../constant/Constants";
-import BackgroundBody from "../image/background_body.jpg";
-import BackgroundLeft from "../image/background_left.jpg";
-import BackgroundRight from "../image/background_right.jpg";
+import BackgroundBody from "../image/background_body_dark.png";
+import BackgroundLeft from "../image/background_left_dark.png";
+import BackgroundRight from "../image/background_right_dark.png";
 import { getFormattedSubtitle } from "../manager/FormatManager";
 import { Poem } from "../type/Types";
 
@@ -40,7 +40,7 @@ const styles = (theme: Theme) =>
             height: CONTENT_HEIGHT,
             overflowX: "scroll",
             overflowY: "hidden",
-            backgroundColor: "white",
+            // backgroundColor: "white",
             writingMode: "vertical-rl",
         },
         title: {
@@ -99,7 +99,7 @@ const styles = (theme: Theme) =>
             lineHeight: COLUMN_WIDTH,
             textAlign: "start",
             writingMode: "vertical-rl",
-            color: "black",
+            // color: "black",
             position: "relative",
             right: "-1.1rem",
             top: "-0.1rem",
@@ -271,9 +271,12 @@ class Content extends React.Component<Props, State> {
                     <ReactResizeDetector handleWidth handleHeight>
                         {({ width }: { width: number }) => {
                             const rootFontSizeInPixel = getRootFontSize();
+                            console.log('rootFontSizeInPixel', rootFontSizeInPixel);
                             const columnWidthInPixel = Math.floor(
                                 rootFontSizeInPixel * COLUMN_WIDTH_IN_REM
                             );
+
+                            console.log('columnWidthInPixel', columnWidthInPixel);
 
                             const backgroundWidthInPixel =
                                 columnWidthInPixel * COLUMNS_PER_BACKGROUD;
@@ -288,8 +291,12 @@ class Content extends React.Component<Props, State> {
                                 );
                             }
 
+                            console.log(this.numPages, backgroundWidthInPixel);
+
                             const fullWidth =
                                 backgroundWidthInPixel * this.numPages;
+
+                            console.log('fullWidth', fullWidth);
 
                             return (
                                 <div

@@ -5,8 +5,13 @@ const theme = createMuiTheme({
         MuiButtonBase: {
             disableRipple: true,
         },
+        
     },
-    palette: {},
+
+    
+    palette: {
+        type: "dark",
+    },
     typography: {
         // fontFamily: [
         //     "Roboto",

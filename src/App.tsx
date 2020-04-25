@@ -10,7 +10,8 @@ import { Route, RouteComponentProps, withRouter } from "react-router-dom";
 import WebFont from "webfontloader";
 
 import {
-    Drawer, Grid, IconButton, makeStyles, MuiThemeProvider, Typography
+    CssBaseline, Drawer, Grid, IconButton, makeStyles, MuiThemeProvider,
+    Typography
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
@@ -61,6 +62,9 @@ const useStyles = makeStyles((_theme) => ({
                 fontSize: 24,
             },
         },
+        body: {
+            fontSize: "1rem"
+        }
     },
     root: {
         flexGrow: 1,
@@ -181,6 +185,7 @@ function App(props: RouteComponentProps) {
     return (
         <Provider store={Store}>
             <MuiThemeProvider theme={theme}>
+                <CssBaseline />
                 <div className="App">
                     <div className="AppBody">
                         <Grid
