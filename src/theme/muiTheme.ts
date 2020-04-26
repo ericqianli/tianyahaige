@@ -34,7 +34,6 @@ export const getTheme = (paletteType: PaletteType) =>
                 fontSize: "2rem",
                 lineHeight: 1,
                 writingMode: "vertical-rl",
-                // fontFamily: `"Zi Yue Song Ke Ben", "Adobe Kaiti Std", "KaiTi_GB2312", "KaiTi", "STKaiti", "SimSun", "STFangsong", "STSong", "Arial Unicode MS"`,
             },
             h4: {
                 fontWeight: 500,
@@ -53,14 +52,27 @@ export const getTheme = (paletteType: PaletteType) =>
                 fontSize: "2rem",
                 lineHeight: 2,
                 writingMode: "vertical-rl",
-                // fontFamily: `"Zi Yue Song Ke Ben", "Adobe Kaiti Std", "KaiTi_GB2312", "KaiTi", "STKaiti", "SimSun", "STFangsong", "STSong"`,
             },
             body2: {
                 fontSize: "1.5rem",
             },
             subtitle1: {
-                fontSize: "1rem",
-                // color: "#444444",
+                fontSize: "0.75rem",
+                lineHeight: "1.5rem",
+                fontFamily: [
+                    "-apple-system",
+                    "BlinkMacSystemFont",
+                    "'Segoe UI'",
+                    "Roboto",
+                    "Oxygen",
+                    "Ubuntu",
+                    "Cantarell",
+                    "'Fira Sans'",
+                    "'Droid Sans'",
+                    "'Helvetica Neue'",
+                    "sans-serif",
+                ].join(","),
+                opacity: 0.75,
             },
             subtitle2: {
                 fontSize: "2rem",

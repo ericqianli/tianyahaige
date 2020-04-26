@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
         minHeight: "100vh",
     },
     header: {
-        flexBasis: "calc(50vh - 18rem)",
+        flexBasis: "calc(50vh - 18.5rem)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -86,7 +86,10 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
     },
     footer: {
-        flexBasis: "calc(50vh - 26rem)",
+        flexBasis: "calc(50vh - 25.5rem)",
+        display: "flex",
+        alignItems: "flex-end",
+        justifyContent: "center",
     },
     drawerContent: {
         height: "calc(50vh - 17.5rem)",
@@ -245,9 +248,9 @@ function App(props: RouteComponentProps) {
                                 ))}
                             </Grid>
                             <Grid className={classes.footer} item xs={12}>
-                                {/* <Typography variant="subtitle1" align="center">
+                                <Typography variant="subtitle1" align="center">
                                     Horizon Pavilion • 2020
-                                </Typography> */}
+                                </Typography>
                             </Grid>
                         </Grid>
                     </div>
