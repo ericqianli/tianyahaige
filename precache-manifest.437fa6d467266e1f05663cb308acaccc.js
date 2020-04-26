@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c758082447d7bc4c2dff4f85d37e7794",
+    "revision": "5620cfce60a83dd586d66165286a134f",
     "url": "/index.html"
   },
   {
-    "revision": "274b7bc4a555517a5d53",
+    "revision": "3a1ef7b86a34d7276421",
     "url": "/static/css/main.f1869535.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.e6a70ccd.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "274b7bc4a555517a5d53",
-    "url": "/static/js/main.fe16f40e.chunk.js"
+    "revision": "3a1ef7b86a34d7276421",
+    "url": "/static/js/main.5ca6ca90.chunk.js"
   },
   {
     "revision": "b94ed12321e1cf2bdd20",
@@ -28,28 +28,28 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/adobekaitistd.a48eb81a.otf"
   },
   {
-    "revision": "0962c46d88ce6f89a79936d9e0c2298a",
-    "url": "/static/media/background_body_dark.0962c46d.png"
+    "revision": "f2dfa26aefc39f0e899b23cedca6be7b",
+    "url": "/static/media/background_body_2x_dark.f2dfa26a.png"
   },
   {
-    "revision": "ae4d056de0c30589d0f76b9627da1eae",
-    "url": "/static/media/background_body_light.ae4d056d.png"
+    "revision": "8a99a93ddec728b1902d44f2e7c6186b",
+    "url": "/static/media/background_body_2x_light.8a99a93d.png"
   },
   {
-    "revision": "a0d3245088d65817c8120a1cacfb11e2",
-    "url": "/static/media/background_left_dark.a0d32450.png"
+    "revision": "d95f3dc0b13fadbe082a9cf2f964ad33",
+    "url": "/static/media/background_left_2x_dark.d95f3dc0.png"
   },
   {
-    "revision": "5e58af7398de53dc361acb88d3362371",
-    "url": "/static/media/background_left_light.5e58af73.png"
+    "revision": "840e42e38721ca7ab5f7b50d6e13b305",
+    "url": "/static/media/background_left_2x_light.840e42e3.png"
   },
   {
-    "revision": "277a40e4f6729a15ad9e4878c1ac4a45",
-    "url": "/static/media/background_right_dark.277a40e4.png"
+    "revision": "861ac0ec5bd01a33d3e4bb0e96a78722",
+    "url": "/static/media/background_right_2x_dark.861ac0ec.png"
   },
   {
-    "revision": "c2a492e7f90a77228eae4bb3645ede6b",
-    "url": "/static/media/background_right_light.c2a492e7.png"
+    "revision": "a3e3df0d10bd40396cc8c43176eb4399",
+    "url": "/static/media/background_right_2x_light.a3e3df0d.png"
   },
   {
     "revision": "b69d0cf4c11128d3509e074656a15b35",

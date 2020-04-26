@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/static/css/main.f1869535.chunk.css",
-    "main.js": "/static/js/main.fe16f40e.chunk.js",
-    "main.js.map": "/static/js/main.fe16f40e.chunk.js.map",
+    "main.js": "/static/js/main.5ca6ca90.chunk.js",
+    "main.js.map": "/static/js/main.5ca6ca90.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.5b44b80e.js",
     "runtime-main.js.map": "/static/js/runtime-main.5b44b80e.js.map",
     "static/js/2.e6a70ccd.chunk.js": "/static/js/2.e6a70ccd.chunk.js",
     "static/js/2.e6a70ccd.chunk.js.map": "/static/js/2.e6a70ccd.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.99b9f0a75382b083fb7c2afa9d7abddf.js": "/precache-manifest.99b9f0a75382b083fb7c2afa9d7abddf.js",
+    "precache-manifest.437fa6d467266e1f05663cb308acaccc.js": "/precache-manifest.437fa6d467266e1f05663cb308acaccc.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.f1869535.chunk.css.map": "/static/css/main.f1869535.chunk.css.map",
     "static/js/2.e6a70ccd.chunk.js.LICENSE.txt": "/static/js/2.e6a70ccd.chunk.js.LICENSE.txt",
     "static/media/fonts.css": "/static/media/ziyuesongkeben.subset.df2dcb9e.ttf",
-    "static/media/background_body_dark.png": "/static/media/background_body_dark.0962c46d.png",
-    "static/media/background_body_light.png": "/static/media/background_body_light.ae4d056d.png",
-    "static/media/background_left_dark.png": "/static/media/background_left_dark.a0d32450.png",
-    "static/media/background_left_light.png": "/static/media/background_left_light.5e58af73.png",
-    "static/media/background_right_dark.png": "/static/media/background_right_dark.277a40e4.png",
-    "static/media/background_right_light.png": "/static/media/background_right_light.c2a492e7.png",
+    "static/media/background_body_2x_dark.png": "/static/media/background_body_2x_dark.f2dfa26a.png",
+    "static/media/background_body_2x_light.png": "/static/media/background_body_2x_light.8a99a93d.png",
+    "static/media/background_left_2x_dark.png": "/static/media/background_left_2x_dark.d95f3dc0.png",
+    "static/media/background_left_2x_light.png": "/static/media/background_left_2x_light.840e42e3.png",
+    "static/media/background_right_2x_dark.png": "/static/media/background_right_2x_dark.861ac0ec.png",
+    "static/media/background_right_2x_light.png": "/static/media/background_right_2x_light.a3e3df0d.png",
     "static/media/title1_2x_dark.png": "/static/media/title1_2x_dark.b69d0cf4.png",
     "static/media/title1_2x_light.png": "/static/media/title1_2x_light.b5e7b117.png",
     "static/media/title2_2x_dark.png": "/static/media/title2_2x_dark.b84e2803.png",
@@ -32,6 +32,6 @@
     "static/js/runtime-main.5b44b80e.js",
     "static/js/2.e6a70ccd.chunk.js",
     "static/css/main.f1869535.chunk.css",
-    "static/js/main.fe16f40e.chunk.js"
+    "static/js/main.5ca6ca90.chunk.js"
   ]
 }
