@@ -145,10 +145,11 @@ function App(props: RouteComponentProps) {
 
     const [state, setState] = React.useState({
         drawerShown: false,
-        themePaletteType: "light" as PaletteType,
+        themePaletteType: "dark" as PaletteType,
     });
 
     const toggleDrawerOnMouseClick = (open: boolean) => () => {
+        console.log("toggleDrawerOnMouseClick");
         setState({ ...state, drawerShown: open });
     };
 
@@ -204,7 +205,6 @@ function App(props: RouteComponentProps) {
                                     color="inherit"
                                     aria-label="open drawer"
                                     onClick={toggleDrawerOnMouseClick(true)}
-                                    // edge="start"
                                     className={clsx(
                                         classes.menuButton,
                                         state.drawerShown && classes.hide
@@ -240,15 +240,7 @@ function App(props: RouteComponentProps) {
                                         key={path}
                                         exact
                                         path={path}
-                                        // component={ContentContainer}
-                                        component={() => (
-                                            <ContentContainer
-                                                {...props}
-                                                themePaletteType={
-                                                    state.themePaletteType
-                                                }
-                                            ></ContentContainer>
-                                        )}
+                                        component={ContentContainer}
                                     />
                                 ))}
                             </Grid>

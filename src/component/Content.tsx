@@ -3,7 +3,8 @@ import React from "react";
 import ReactResizeDetector from "react-resize-detector";
 
 import {
-    createStyles, PaletteType, Theme, WithStyles, withStyles
+    createStyles, PaletteType, Theme, WithStyles, withStyles, withTheme,
+    WithTheme
 } from "@material-ui/core";
 
 import {
@@ -45,29 +46,55 @@ const styles = (theme: Theme) =>
             height: CONTENT_HEIGHT,
             overflowX: "auto",
             overflowY: "hidden",
-            // backgroundColor: "white",
             writingMode: "vertical-rl",
+
+            // To style scrollbar thumb with transition
+            // backgroundColor: "rgba(0,0,0,0)",
+            // WebkitBackgroundClip: "text",
+            // backgroundClip: "text",
+            // transition: "background-color 500ms ease-in-out",
+
+            "&::-webkit-scrollbar": {
+                height: "1rem",
+            },
+            "&::-webkit-scrollbar-track": {
+                background: "transparent",
+            },
+            "&::-webkit-scrollbar-thumb": {
+                border: ".25rem solid rgba(0, 0, 0, 0)",
+                borderRadius: ".5rem",
+                backgroundClip: "padding-box",
+                backgroundColor: "transparent",
+                // backgroundColor: "inherit",
+            },
+            "&:hover::-webkit-scrollbar-thumb": {
+                backgroundColor:
+                    theme.palette.type === "light"
+                        ? "rgba(0, 0, 0, .25)"
+                        : "rgba(255, 255, 255, .25)",
+            },
+            // "&:hover": {
+            //     backgroundColor:
+            //         theme.palette.type === "light"
+            //             ? "rgba(0, 0, 0, .25)"
+            //             : "rgba(255, 255, 255, .25)",
+            // },
         },
         title: {
             height: CONTENT_HEIGHT,
             width: "32rem",
             backgroundSize: BACKGROUND_SIZE_BY_HEIGHT,
             backgroundPosition: "center",
-            // transition: "opacity 2s ease-out",
-            // "&:hover": {
-            //     opacity: 0,
-            // },
-            // animationName: "fade",
         },
         fadeOutAnimation: {
             animationName: "$fadeOut",
-            animationDuration: "3s",
+            animationDuration: "2s",
             animationTimingFunction: "ease-in-out",
             animationIterationCount: 1,
         },
         fadeInAnimation: {
             animationName: "$fadeIn",
-            animationDuration: "3s",
+            animationDuration: "2s",
             animationTimingFunction: "ease-in-out",
             animationIterationCount: 1,
         },
@@ -212,7 +239,7 @@ function getRootFontSize() {
     return rootFontSizeInPixel;
 }
 
-interface Props extends WithStyles<typeof styles> {
+interface Props extends WithStyles<typeof styles>, WithTheme {
     poems: Poem[];
     path: string;
     themePaletteType: PaletteType;
@@ -246,6 +273,8 @@ class Content extends React.Component<Props, State> {
     render() {
         const { classes, poems, path } = this.props;
 
+        const themePaletteType = this.props.theme.palette.type;
+
         if (poems.length === 0) {
             return (
                 <div
@@ -253,7 +282,7 @@ class Content extends React.Component<Props, State> {
                     className={classes.title}
                     style={{
                         backgroundImage:
-                            this.props.themePaletteType === "light"
+                            themePaletteType === "light"
                                 ? `url(${ROUTE_INFO_MAP[path].backgroundLight})`
                                 : `url(${ROUTE_INFO_MAP[path].backgroundDark})`,
                     }}
@@ -268,7 +297,7 @@ class Content extends React.Component<Props, State> {
                     this.fadeTimeout && clearTimeout(this.fadeTimeout);
                     this.fadeTimeout = undefined;
                     this.setState({ stage: 2 });
-                }, 3000);
+                }, 2000);
             }
 
             return (
@@ -277,7 +306,7 @@ class Content extends React.Component<Props, State> {
                     className={clsx(classes.title, classes.fadeOutAnimation)}
                     style={{
                         backgroundImage:
-                            this.props.themePaletteType === "light"
+                            themePaletteType === "light"
                                 ? `url(${ROUTE_INFO_MAP[path].backgroundLight})`
                                 : `url(${ROUTE_INFO_MAP[path].backgroundDark})`,
                     }}
@@ -334,4 +363,4 @@ class Content extends React.Component<Props, State> {
     }
 }
 
-export default withStyles(styles)(Content);
+export default withTheme(withStyles(styles)(Content));
