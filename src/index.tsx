@@ -9,7 +9,7 @@ import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
     <React.StrictMode>
-        <Router forceRefresh={false}>
+        <Router>
             <App />
         </Router>
     </React.StrictMode>,

@@ -9,9 +9,12 @@ import {
     BACKGROUND_SIZE_BY_WIDTH, COLUMN_WIDTH, COLUMN_WIDTH_IN_REM,
     COLUMNS_PER_BACKGROUD, CONTENT_HEIGHT, HALF_COLUMN_WIDTH, ROUTE_INFO_MAP
 } from "../constant/Constants";
-import BackgroundBody from "../image/background_body_dark.png";
-import BackgroundLeft from "../image/background_left_dark.png";
-import BackgroundRight from "../image/background_right_dark.png";
+import BackgroundBodyDark from "../image/background_body_dark.png";
+import BackgroundBodyLight from "../image/background_body_light.png";
+import BackgroundLeftDark from "../image/background_left_dark.png";
+import BackgroundLeftLight from "../image/background_left_light.png";
+import BackgroundRightDark from "../image/background_right_dark.png";
+import BackgroundRightLight from "../image/background_right_light.png";
 import { getFormattedSubtitle } from "../manager/FormatManager";
 import { Poem } from "../type/Types";
 
@@ -68,7 +71,10 @@ const styles = (theme: Theme) =>
         },
         bookContent: {
             height: CONTENT_HEIGHT,
-            backgroundImage: `url(${BackgroundBody})`,
+            backgroundImage:
+                theme.palette.type === "light"
+                    ? `url(${BackgroundBodyLight})`
+                    : `url(${BackgroundBodyDark})`,
             backgroundSize: BACKGROUND_SIZE_BY_WIDTH,
             backgroundPosition: "right",
             [theme.breakpoints.between("sm", "md")]: {
@@ -78,7 +84,10 @@ const styles = (theme: Theme) =>
         bookRightSide: {
             height: CONTENT_HEIGHT,
             width: "5rem",
-            backgroundImage: `url(${BackgroundRight})`,
+            backgroundImage:
+                theme.palette.type === "light"
+                    ? `url(${BackgroundRightLight})`
+                    : `url(${BackgroundRightDark})`,
             backgroundSize: BACKGROUND_SIZE_BY_HEIGHT,
             backgroundPosition: "left",
             backgroundRepeat: "no-repeat",
@@ -86,7 +95,10 @@ const styles = (theme: Theme) =>
         bookLeftSide: {
             height: CONTENT_HEIGHT,
             width: "5rem",
-            backgroundImage: `url(${BackgroundLeft})`,
+            backgroundImage:
+                theme.palette.type === "light"
+                    ? `url(${BackgroundLeftLight})`
+                    : `url(${BackgroundLeftDark})`,
             backgroundSize: BACKGROUND_SIZE_BY_HEIGHT,
             backgroundPosition: "right",
             backgroundRepeat: "no-repeat",
@@ -271,12 +283,18 @@ class Content extends React.Component<Props, State> {
                     <ReactResizeDetector handleWidth handleHeight>
                         {({ width }: { width: number }) => {
                             const rootFontSizeInPixel = getRootFontSize();
-                            console.log('rootFontSizeInPixel', rootFontSizeInPixel);
+                            console.log(
+                                "rootFontSizeInPixel",
+                                rootFontSizeInPixel
+                            );
                             const columnWidthInPixel = Math.floor(
                                 rootFontSizeInPixel * COLUMN_WIDTH_IN_REM
                             );
 
-                            console.log('columnWidthInPixel', columnWidthInPixel);
+                            console.log(
+                                "columnWidthInPixel",
+                                columnWidthInPixel
+                            );
 
                             const backgroundWidthInPixel =
                                 columnWidthInPixel * COLUMNS_PER_BACKGROUD;
@@ -296,7 +314,7 @@ class Content extends React.Component<Props, State> {
                             const fullWidth =
                                 backgroundWidthInPixel * this.numPages;
 
-                            console.log('fullWidth', fullWidth);
+                            console.log("fullWidth", fullWidth);
 
                             return (
                                 <div

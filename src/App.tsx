@@ -11,14 +11,14 @@ import WebFont from "webfontloader";
 
 import {
     CssBaseline, Drawer, Grid, IconButton, makeStyles, MuiThemeProvider,
-    Typography
+    PaletteType, Typography
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
 import { ROUTE_INFO_MAP } from "./constant/Constants";
 import ContentContainer from "./container/ContentContainer";
+import { getThemeReselect } from "./selector/ThemeReselectors";
 import Store from "./store/Store";
-import theme from "./theme/muiTheme";
 
 WebFont.load({
     custom: {
@@ -45,7 +45,7 @@ WebFont.load({
     // },
 });
 
-const useStyles = makeStyles((_theme) => ({
+const useStyles = makeStyles((theme) => ({
     "@global": {
         html: {
             boxSizing: "border-box",
@@ -63,25 +63,22 @@ const useStyles = makeStyles((_theme) => ({
             },
         },
         body: {
-            fontSize: "1rem"
-        }
+            fontSize: "1rem",
+        },
     },
     root: {
         flexGrow: 1,
     },
     grid: {
         minHeight: "100vh",
-        // fontSize: "16px",
-        // htmlFontSize: 8,
     },
     header: {
         flexBasis: "calc(50vh - 18rem)",
         display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-start",
-        // backgroundColor: "red",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "flex-start",
     },
-
     main: {
         flexBasis: "44rem",
         display: "flex",
@@ -89,24 +86,14 @@ const useStyles = makeStyles((_theme) => ({
         justifyContent: "center",
     },
     footer: {
-        // flexBasis: 0,
-
         flexBasis: "calc(50vh - 26rem)",
-        // display: "flex",
-        // justifyContent: "true",
-        // backgroundColor: "blue",
     },
     drawerContent: {
         height: "calc(50vh - 17.5rem)",
         minHeight: "9.625rem",
-
         display: "flex",
-        // flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-
-        // writingMode: "vertical-rl",
-        // backgroundColor: "red",
     },
     menuItems: {
         listStyle: "none",
@@ -135,12 +122,21 @@ const useStyles = makeStyles((_theme) => ({
         padding: theme.spacing(0.5),
         borderRadius: theme.spacing(0.5),
     },
-    closeButton: {
-        padding: theme.spacing(1),
-        borderRadius: theme.spacing(0.5),
-    },
     hide: {
         visibility: "hidden",
+    },
+    symbolIcon: {
+        fontFamily: "Arial Unicode MS",
+    },
+    symbolWrapper: {
+        width: "1em",
+        height: "1em",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        lineHeight: "1em",
+        position: "relative",
+        top: "-1px",
     },
 }));
 
@@ -149,12 +145,19 @@ function App(props: RouteComponentProps) {
 
     const [state, setState] = React.useState({
         drawerShown: false,
+        themePaletteType: "dark" as PaletteType,
     });
 
-    const toggleDrawerOnMouseClick = (open: boolean) => (
-        event: React.MouseEvent<HTMLElement, MouseEvent>
-    ) => {
+    const toggleDrawerOnMouseClick = (open: boolean) => () => {
         setState({ ...state, drawerShown: open });
+    };
+
+    const toggleThemePaletteType = () => {
+        setState({
+            ...state,
+            themePaletteType:
+                state.themePaletteType === "light" ? "dark" : "light",
+        });
     };
 
     const drawer = (
@@ -184,8 +187,9 @@ function App(props: RouteComponentProps) {
 
     return (
         <Provider store={Store}>
-            <MuiThemeProvider theme={theme}>
+            <MuiThemeProvider theme={getThemeReselect(state)}>
                 <CssBaseline />
+
                 <div className="App">
                     <div className="AppBody">
                         <Grid
@@ -200,13 +204,27 @@ function App(props: RouteComponentProps) {
                                     color="inherit"
                                     aria-label="open drawer"
                                     onClick={toggleDrawerOnMouseClick(true)}
-                                    edge="start"
+                                    // edge="start"
                                     className={clsx(
                                         classes.menuButton,
                                         state.drawerShown && classes.hide
                                     )}
                                 >
                                     <MenuIcon fontSize="default" />
+                                </IconButton>
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="toggle light/dark mode"
+                                    onClick={toggleThemePaletteType}
+                                    className={clsx(
+                                        classes.menuButton,
+                                        classes.symbolIcon,
+                                        state.drawerShown && classes.hide
+                                    )}
+                                >
+                                    <div className={classes.symbolWrapper}>
+                                        <span>☯</span>
+                                    </div>
                                 </IconButton>
                                 <Drawer
                                     anchor="top"
