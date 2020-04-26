@@ -24,7 +24,11 @@ import Store from "./store/Store";
 
 WebFont.load({
     custom: {
-        families: ["Zi Yue Song Ke Ben", "Adobe Kaiti Std"],
+        families: [
+            "Arial Unicode MS Subset",
+            "Zi Yue Song Ke Ben",
+            "Adobe Kaiti Std",
+        ],
         urls: ["/fonts.css"],
     },
     // loading: () => {
@@ -131,7 +135,7 @@ const useStyles = makeStyles((theme) => ({
         visibility: "hidden",
     },
     symbolIcon: {
-        fontFamily: "Arial Unicode MS",
+        fontFamily: ["Arial Unicode MS", "Arial Unicode MS Subset"].join(","),
     },
     symbolWrapper: {
         width: "1em",

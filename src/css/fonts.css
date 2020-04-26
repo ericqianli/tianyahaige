@@ -12,3 +12,12 @@
     font-weight: 400;
     src: local("Adobe Kaiti Std"), url("../font/adobekaitistd.otf") format("opentype");
 }
+
+@font-face {
+    font-family: "Arial Unicode MS Subset";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../font/arial-unicode-ms.subset.ttf") format("truetype");
+    font-display: swap;
+}
+
