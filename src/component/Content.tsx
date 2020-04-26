@@ -12,12 +12,12 @@ import {
     BACKGROUND_SIZE_BY_WIDTH, COLUMN_WIDTH, COLUMN_WIDTH_IN_REM,
     COLUMNS_PER_BACKGROUD, CONTENT_HEIGHT, HALF_COLUMN_WIDTH, ROUTE_INFO_MAP
 } from "../constant/Constants";
-import BackgroundBodyDark from "../image/background_body_dark.png";
-import BackgroundBodyLight from "../image/background_body_light.png";
-import BackgroundLeftDark from "../image/background_left_dark.png";
-import BackgroundLeftLight from "../image/background_left_light.png";
-import BackgroundRightDark from "../image/background_right_dark.png";
-import BackgroundRightLight from "../image/background_right_light.png";
+import BackgroundBodyDark from "../image/background_body_2x_dark.png";
+import BackgroundBodyLight from "../image/background_body_2x_light.png";
+import BackgroundLeftDark from "../image/background_left_2x_dark.png";
+import BackgroundLeftLight from "../image/background_left_2x_light.png";
+import BackgroundRightDark from "../image/background_right_2x_dark.png";
+import BackgroundRightLight from "../image/background_right_2x_light.png";
 import { getFormattedSubtitle } from "../manager/FormatManager";
 import { Poem } from "../type/Types";
 
