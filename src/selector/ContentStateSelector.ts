@@ -4,7 +4,6 @@ import { getPoemFromRows } from "../adaptor/ContentAdaptor";
 // import data from "../data/poem_20200416.js";
 import { State } from "../reducer/Reducer";
 
-// console.log(111);
 // let i = 0;
 // const set = new Set(data);
 // console.log(Array.from(set).join(""));

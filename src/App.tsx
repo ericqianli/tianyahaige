@@ -145,7 +145,7 @@ function App(props: RouteComponentProps) {
 
     const [state, setState] = React.useState({
         drawerShown: false,
-        themePaletteType: "dark" as PaletteType,
+        themePaletteType: "light" as PaletteType,
     });
 
     const toggleDrawerOnMouseClick = (open: boolean) => () => {
@@ -240,7 +240,15 @@ function App(props: RouteComponentProps) {
                                         key={path}
                                         exact
                                         path={path}
-                                        component={ContentContainer}
+                                        // component={ContentContainer}
+                                        component={() => (
+                                            <ContentContainer
+                                                {...props}
+                                                themePaletteType={
+                                                    state.themePaletteType
+                                                }
+                                            ></ContentContainer>
+                                        )}
                                     />
                                 ))}
                             </Grid>

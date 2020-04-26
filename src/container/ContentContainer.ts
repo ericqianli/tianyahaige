@@ -2,6 +2,8 @@ import { connect } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
 import { Dispatch } from "redux";
 
+import { PaletteType } from "@material-ui/core";
+
 import {
     receiveContent, receiveContentError, requestContent
 } from "../action/Actions";
@@ -9,6 +11,10 @@ import Content from "../component/Content";
 import { fetchContentPromise } from "../manager/ConnectionManager";
 import { State } from "../reducer/Reducer";
 import { getPoems } from "../selector/ContentStateSelector";
+
+interface OwnProps extends RouteComponentProps {
+    themePaletteType: PaletteType
+}
 
 function mapStateToProps(state: State, ownProps: RouteComponentProps) {
     return {

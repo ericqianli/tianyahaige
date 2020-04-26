@@ -2,7 +2,9 @@ import clsx from "clsx";
 import React from "react";
 import ReactResizeDetector from "react-resize-detector";
 
-import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core";
+import {
+    createStyles, PaletteType, Theme, WithStyles, withStyles
+} from "@material-ui/core";
 
 import {
     BACKGROUND_ADJUSTED_SIZE_BY_WIDTH, BACKGROUND_SIZE_BY_HEIGHT,
@@ -41,7 +43,7 @@ const styles = (theme: Theme) =>
         },
         container: {
             height: CONTENT_HEIGHT,
-            overflowX: "scroll",
+            overflowX: "auto",
             overflowY: "hidden",
             // backgroundColor: "white",
             writingMode: "vertical-rl",
@@ -213,6 +215,7 @@ function getRootFontSize() {
 interface Props extends WithStyles<typeof styles> {
     poems: Poem[];
     path: string;
+    themePaletteType: PaletteType;
     fetchContent: (sql: string) => void;
 }
 
@@ -249,7 +252,10 @@ class Content extends React.Component<Props, State> {
                     key={path}
                     className={classes.title}
                     style={{
-                        backgroundImage: `url(${ROUTE_INFO_MAP[path].image})`,
+                        backgroundImage:
+                            this.props.themePaletteType === "light"
+                                ? `url(${ROUTE_INFO_MAP[path].backgroundLight})`
+                                : `url(${ROUTE_INFO_MAP[path].backgroundDark})`,
                     }}
                 />
             );
@@ -270,7 +276,10 @@ class Content extends React.Component<Props, State> {
                     key={path}
                     className={clsx(classes.title, classes.fadeOutAnimation)}
                     style={{
-                        backgroundImage: `url(${ROUTE_INFO_MAP[path].image})`,
+                        backgroundImage:
+                            this.props.themePaletteType === "light"
+                                ? `url(${ROUTE_INFO_MAP[path].backgroundLight})`
+                                : `url(${ROUTE_INFO_MAP[path].backgroundDark})`,
                     }}
                 />
             );
@@ -283,17 +292,8 @@ class Content extends React.Component<Props, State> {
                     <ReactResizeDetector handleWidth handleHeight>
                         {({ width }: { width: number }) => {
                             const rootFontSizeInPixel = getRootFontSize();
-                            console.log(
-                                "rootFontSizeInPixel",
-                                rootFontSizeInPixel
-                            );
                             const columnWidthInPixel = Math.floor(
                                 rootFontSizeInPixel * COLUMN_WIDTH_IN_REM
-                            );
-
-                            console.log(
-                                "columnWidthInPixel",
-                                columnWidthInPixel
                             );
 
                             const backgroundWidthInPixel =
@@ -309,12 +309,8 @@ class Content extends React.Component<Props, State> {
                                 );
                             }
 
-                            console.log(this.numPages, backgroundWidthInPixel);
-
                             const fullWidth =
                                 backgroundWidthInPixel * this.numPages;
-
-                            console.log("fullWidth", fullWidth);
 
                             return (
                                 <div
