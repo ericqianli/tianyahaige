@@ -6,7 +6,9 @@ import "./css/shaft.css";
 import clsx from "clsx";
 import React from "react";
 import { Provider } from "react-redux";
-import { Route, RouteComponentProps, withRouter } from "react-router-dom";
+import {
+    Route, RouteComponentProps, Switch, withRouter
+} from "react-router-dom";
 import WebFont from "webfontloader";
 
 import {
@@ -238,14 +240,16 @@ function App(props: RouteComponentProps) {
                                 </Drawer>
                             </Grid>
                             <Grid className={classes.main} item xs={12}>
-                                {Object.keys(ROUTE_INFO_MAP).map((path) => (
-                                    <Route
-                                        key={path}
-                                        exact
-                                        path={path}
-                                        component={ContentContainer}
-                                    />
-                                ))}
+                                <Switch>
+                                    {Object.keys(ROUTE_INFO_MAP).map((path) => (
+                                        <Route
+                                            key={path}
+                                            exact
+                                            path={path}
+                                            component={ContentContainer}
+                                        />
+                                    ))}
+                                </Switch>
                             </Grid>
                             <Grid className={classes.footer} item xs={12}>
                                 <Typography variant="subtitle1" align="center">
