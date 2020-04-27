@@ -135,10 +135,14 @@ const useStyles = makeStyles((theme) => ({
         visibility: "hidden",
     },
     symbolIcon: {
-        fontFamily: ["Arial Unicode MS", "Arial Unicode MS Subset", "-apple-system",
-        "BlinkMacSystemFont",
-        "'Segoe UI'",
-        "Roboto",].join(","),
+        fontFamily: [
+            "Arial Unicode MS",
+            "Arial Unicode MS Subset",
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "'Segoe UI'",
+            "Roboto",
+        ].join(","),
     },
     symbolWrapper: {
         width: "1em",
