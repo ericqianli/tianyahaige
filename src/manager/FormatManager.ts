@@ -1,30 +1,33 @@
-const CHARACTERS_TO_REMOVE = [
-    "『",
-    "』",
-    "?",
-    "？",
-    "!",
-    "！",
-    "：",
-    "，",
-    "。",
-    "︒",
-];
+// const CHARACTERS_TO_REMOVE = [
+//     "『",
+//     "』",
+//     "?",
+//     "？",
+//     "!",
+//     "！",
+//     "：",
+//     "，",
+//     "。",
+//     "︒",
+// ];
 
-const DELIMITER = "︒";
+import {
+    SUBTITLE_CHARACTERS_PER_LINE, SUBTITLE_NO_WRAP_LIMIT
+} from "../constant/Constants";
 
-const SUBTITLE_CHARACTERS_PER_LINE = 40;
-const SUBTITLE_NO_WRAP_LIMIT = 4;
+// const DELIMITER = "︒";
 
-export function getFormattedCameraReadyContent(content: string) {
-    var re = new RegExp(`[${CHARACTERS_TO_REMOVE}]`, "g");
-    const lines = content
-        .split(/[\\r\\n|\s+]/)
-        .map((line) => line.replace(re, ""))
-        .filter((line) => line !== "");
+// export function getFormattedCameraReadyContent(content: string) {
+//     var re = new RegExp(`[${CHARACTERS_TO_REMOVE}]`, "g");
+//     const lines = content
+//         .split(/[\\r\\n|\s+]/)
+//         .map((line) => line.replace(re, ""))
+//         .filter((line) => line !== "");
 
-    return lines.join(DELIMITER) + DELIMITER;
-}
+//     console.log(lines);
+
+//     return lines.join(DELIMITER) + DELIMITER;
+// }
 
 export function getFormattedSubtitle(title: string, subtitle: string) {
     const englishRegex = /^[A-Za-z0-9]/;

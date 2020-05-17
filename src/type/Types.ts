@@ -38,3 +38,9 @@ export interface Poem {
     subtitle: string;
     body: string;
 }
+
+export interface Line {
+    title: string;
+    subtitle: string;
+    body: string;
+}

@@ -10,7 +10,7 @@ import {
 import Content from "../component/Content";
 import { fetchContentPromise } from "../manager/ConnectionManager";
 import { State } from "../reducer/Reducer";
-import { getPoems } from "../selector/ContentStateSelector";
+import { getLines, getPoems } from "../selector/ContentStateSelector";
 
 interface OwnProps extends RouteComponentProps {
     themePaletteType: PaletteType
@@ -19,6 +19,7 @@ interface OwnProps extends RouteComponentProps {
 function mapStateToProps(state: State, ownProps: RouteComponentProps) {
     return {
         poems: getPoems(state),
+        lines: getLines(state),
         path: ownProps.location.pathname,
     };
 }

@@ -19,7 +19,7 @@ import BackgroundLeftLight from "../image/background_left_2x_light.png";
 import BackgroundRightDark from "../image/background_right_2x_dark.png";
 import BackgroundRightLight from "../image/background_right_2x_light.png";
 import { getFormattedSubtitle } from "../manager/FormatManager";
-import { Poem } from "../type/Types";
+import { Line, Poem } from "../type/Types";
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -240,6 +240,7 @@ function getRootFontSize() {
 }
 
 interface Props extends WithStyles<typeof styles>, WithTheme {
+    lines: Line[];
     poems: Poem[];
     path: string;
     themePaletteType: PaletteType;
@@ -271,7 +272,8 @@ class Content extends React.Component<Props, State> {
     }
 
     render() {
-        const { classes, poems, path } = this.props;
+        const { classes, poems, lines, path } = this.props;
+        console.log("check lines", lines);
 
         const themePaletteType = this.props.theme.palette.type;
 
