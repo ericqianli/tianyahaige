@@ -19,6 +19,19 @@ export const BODY_CHARACTERS_PER_LINE = 20;
 export const SUBTITLE_CHARACTERS_PER_LINE = 40;
 export const SUBTITLE_NO_WRAP_LIMIT = 4;
 
+export const CHARACTERS_TO_REMOVE = [
+    "『",
+    "』",
+    "?",
+    "？",
+    "!",
+    "！",
+    "：",
+    "，",
+    "。",
+    "︒",
+];
+
 export const CONTENT_HEIGHT_IN_REM = 44;
 export const COLUMN_WIDTH_IN_REM = 2.375;
 export const COLUMNS_PER_BACKGROUD = 48;

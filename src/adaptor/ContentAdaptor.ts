@@ -1,5 +1,5 @@
 import {
-    BODY_CHARACTERS_PER_LINE, SUBTITLE_CHARACTERS_PER_LINE
+    BODY_CHARACTERS_PER_LINE, CHARACTERS_TO_REMOVE, SUBTITLE_CHARACTERS_PER_LINE
 } from "../constant/Constants";
 import { Line, Poem } from "../type/Types";
 
@@ -76,8 +76,34 @@ function getLineFromPoem(poem: Poem): Line {
         }
     }
 
+    console.log(body);
     // title and subtitle have both been processed
-    if (body.length <= BODY_CHARACTERS_PER_LINE) {
+    let displayLength = 0;
+    let totalLength = 0;
+    const removeSet = new Set(CHARACTERS_TO_REMOVE);
+    for (totalLength = 0; totalLength < body.length; totalLength++) {
+        const char = body[totalLength];
+        if (char === "\r") {
+            break;
+        }
+        if (!removeSet.has(char)) {
+            displayLength++;
+        }
+        if (displayLength === BODY_CHARACTERS_PER_LINE) {
+            if (
+                totalLength < body.length - 1 &&
+                removeSet.has(body[totalLength + 1])
+            ) {
+                totalLength++;
+            }
+            totalLength++;
+            break;
+        }
+    }
+    
+    console.log(totalLength);
+
+    if (body.length === totalLength) {
         poem.body = "";
         return {
             title,
@@ -85,11 +111,12 @@ function getLineFromPoem(poem: Poem): Line {
             body,
         };
     } else {
-        const includedBody = poem.body.slice(
-            0,
-            BODY_CHARACTERS_PER_LINE
-        );
-        poem.body = poem.body.slice(BODY_CHARACTERS_PER_LINE);
+        const includedBody = poem.body.slice(0, totalLength);
+        let remainingBody = poem.body.slice(totalLength);
+        if (remainingBody.startsWith("\r")) {
+            remainingBody = remainingBody.slice(2);
+        }
+        poem.body = remainingBody;
         return {
             title,
             subtitle,
