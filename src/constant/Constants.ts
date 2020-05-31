@@ -16,6 +16,8 @@ export const INITIAL_CONTENT_STATE = {
 
 export const BODY_CHARACTERS_PER_LINE = 20;
 
+export const LINES_PER_PAGE = 48;
+
 export const SUBTITLE_CHARACTERS_PER_LINE = 40;
 export const SUBTITLE_NO_WRAP_LIMIT = 4;
 

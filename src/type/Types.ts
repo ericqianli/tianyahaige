@@ -44,3 +44,5 @@ export interface Line {
     subtitle: string;
     body: string;
 }
+
+export type Page = Line[]

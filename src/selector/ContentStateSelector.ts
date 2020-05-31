@@ -1,6 +1,8 @@
 import { createSelector } from "reselect";
 
-import { getLinesFromRows, getPoemFromRows } from "../adaptor/ContentAdaptor";
+import {
+    getLinesFromRows, getPagesFromLines, getPoemFromRows
+} from "../adaptor/ContentAdaptor";
 // import data from "../data/poem_20200416.js";
 import { State } from "../reducer/Reducer";
 
@@ -30,4 +32,8 @@ export const getPoems = createSelector([getContentState], (contentState) =>
 
 export const getLines = createSelector([getContentState], (contentState) =>
     getLinesFromRows(contentState.content.rows || [])
+);
+
+export const getPages = createSelector([getLines], (lines) =>
+    getPagesFromLines(lines)
 );

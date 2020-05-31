@@ -1,7 +1,8 @@
 import {
-    BODY_CHARACTERS_PER_LINE, CHARACTERS_TO_REMOVE, SUBTITLE_CHARACTERS_PER_LINE
+    BODY_CHARACTERS_PER_LINE, CHARACTERS_TO_REMOVE, LINES_PER_PAGE,
+    SUBTITLE_CHARACTERS_PER_LINE
 } from "../constant/Constants";
-import { Line, Poem } from "../type/Types";
+import { Line, Page, Poem } from "../type/Types";
 
 export function getPoemFromRows(rows: any[]): Poem[] {
     return rows.map((row) => ({
@@ -76,7 +77,6 @@ function getLineFromPoem(poem: Poem): Line {
         }
     }
 
-    console.log(body);
     // title and subtitle have both been processed
     let displayLength = 0;
     let totalLength = 0;
@@ -101,8 +101,6 @@ function getLineFromPoem(poem: Poem): Line {
         }
     }
     
-    console.log(totalLength);
-
     if (body.length === totalLength) {
         poem.body = "";
         return {
@@ -142,4 +140,15 @@ export function getLinesFromRows(rows: any[]): Line[] {
     }
 
     return lines;
+}
+
+export function getPagesFromLines(lines: Line[]): Page[] {
+    const pages = [];
+
+    for (let i = 0; i < lines.length; i+= LINES_PER_PAGE) {
+        const page = lines.slice(i, i + LINES_PER_PAGE);
+        pages.push(page);
+    }
+
+    return pages;
 }
