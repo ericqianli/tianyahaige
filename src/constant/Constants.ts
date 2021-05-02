@@ -1,5 +1,3 @@
-import { QueryType } from "data-sweet-query";
-
 import TitleImageOneDark from "../image/title1_2x_dark.png";
 import TitleImageOneLight from "../image/title1_2x_light.png";
 import TitleImageTwoDark from "../image/title2_2x_dark.png";
@@ -10,8 +8,10 @@ import TitleImageFourDark from "../image/title4_2x_dark.png";
 import TitleImageFourLight from "../image/title4_2x_light.png";
 import { FALLEN_STAR, IMMORTALS, INDIA_TRAVEL, LANDING } from "./Routes";
 
+import Immutable from "immutable";
+
 export const INITIAL_CONTENT_STATE = {
-    content: { type: QueryType.MYSQL },
+    content: Immutable.List(),
 };
 
 export const BODY_CHARACTERS_PER_LINE = 20;

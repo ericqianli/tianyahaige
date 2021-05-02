@@ -1,4 +1,5 @@
-import { MySqlQueryResult } from "data-sweet-query";
+import { List } from "immutable";
+
 
 // Actions
 export enum ActionType {
@@ -14,7 +15,7 @@ export interface RequestContentAction {
 
 export interface ReceiveContentAction {
     type: ActionType.RECEIVE_CONTENT;
-    content: MySqlQueryResult;
+    content: List<Poem>;
 }
 
 export interface ReceiveContentErrorAction {
@@ -29,11 +30,12 @@ export type ContentStateAction =
 
 // States
 export interface ContentState {
-    content: MySqlQueryResult;
+    content: List<Poem>;
 }
 
 export interface Poem {
     id: string;
+    date: string;
     title: string;
     subtitle: string;
     body: string;

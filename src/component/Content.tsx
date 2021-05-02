@@ -273,7 +273,7 @@ class Content extends React.Component<Props, State> {
     }
 
     render() {
-        const { classes, poems, lines, pages, path } = this.props;
+        const { classes, poems, pages, path } = this.props;
         console.log("check pages", pages);
 
         const themePaletteType = this.props.theme.palette.type;

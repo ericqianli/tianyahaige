@@ -27,11 +27,11 @@ import { State } from "../reducer/Reducer";
 export const getContentState = (state: State) => state.contentState;
 
 export const getPoems = createSelector([getContentState], (contentState) =>
-    getPoemFromRows(contentState.content.rows || [])
+    getPoemFromRows(contentState.content)
 );
 
 export const getLines = createSelector([getContentState], (contentState) =>
-    getLinesFromRows(contentState.content.rows || [])
+    getLinesFromRows(contentState.content)
 );
 
 export const getPages = createSelector([getLines], (lines) =>

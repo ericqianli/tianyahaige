@@ -1,9 +1,11 @@
-import { MySqlQueryResult } from "data-sweet-query";
-
 import {
-    ActionType, ReceiveContentAction, ReceiveContentErrorAction,
-    RequestContentAction
+    ActionType,
+    ReceiveContentAction,
+    ReceiveContentErrorAction,
+    RequestContentAction,
+    Poem,
 } from "../type/Types";
+import { List } from "immutable";
 
 export function requestContent(): RequestContentAction {
     return {
@@ -11,9 +13,7 @@ export function requestContent(): RequestContentAction {
     };
 }
 
-export function receiveContent(
-    content: MySqlQueryResult
-): ReceiveContentAction {
+export function receiveContent(content: List<Poem>): ReceiveContentAction {
     return {
         type: ActionType.RECEIVE_CONTENT,
         content,

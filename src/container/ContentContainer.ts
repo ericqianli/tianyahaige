@@ -5,15 +5,17 @@ import { Dispatch } from "redux";
 import { PaletteType } from "@material-ui/core";
 
 import {
-    receiveContent, receiveContentError, requestContent
+    receiveContent,
+    receiveContentError,
+    requestContent,
 } from "../action/Actions";
 import Content from "../component/Content";
-import { fetchContentPromise } from "../manager/ConnectionManager";
 import { State } from "../reducer/Reducer";
 import { getLines, getPages, getPoems } from "../selector/ContentStateSelector";
+import DBUtil from "../util/DBUtil";
 
 interface OwnProps extends RouteComponentProps {
-    themePaletteType: PaletteType
+    themePaletteType: PaletteType;
 }
 
 function mapStateToProps(state: State, ownProps: RouteComponentProps) {
@@ -30,7 +32,7 @@ function mapDispatchToProps(dispatch: Dispatch) {
         fetchContent: async (sql: string) => {
             dispatch(requestContent());
             try {
-                const content = await fetchContentPromise(sql);
+                const content = await DBUtil.fetchAllPoems();
                 dispatch(receiveContent(content));
             } catch (error) {
                 dispatch(receiveContentError(error));
