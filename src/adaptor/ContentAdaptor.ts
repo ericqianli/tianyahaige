@@ -11,14 +11,27 @@ export function getPoemFromRows(rows: List<Poem>): Poem[] {
     return rows.toJS();
 }
 
+// For English or Hindi, we can fit more letters.
+function getFontWidthMultiplier(subtitle: string) {
+    const englishRegex = /^[A-Za-z0-9]/;
+    if (englishRegex.test(subtitle)) {
+        return 2.0;
+    }
+    return 1.0;
+}
+
 function getLineFromPoem(poem: Poem): Line {
     const { title, subtitle, body } = poem;
+
+    console.log('subtitle', subtitle);
 
     if (title !== "") {
         poem.title = "";
 
         let remainingSubtitleLength =
-            (SUBTITLE_CHARACTERS_PER_LINE - title.length * 2 - 5) * 2;
+            (SUBTITLE_CHARACTERS_PER_LINE - title.length * 2 - 5) *
+            2 *
+            getFontWidthMultiplier(subtitle);
 
         if (subtitle.length <= remainingSubtitleLength) {
             poem.subtitle = "";
@@ -43,7 +56,10 @@ function getLineFromPoem(poem: Poem): Line {
 
     // title has been processed
     if (subtitle !== "") {
-        let remainingSubtitleLength = SUBTITLE_CHARACTERS_PER_LINE * 2;
+        let remainingSubtitleLength =
+            SUBTITLE_CHARACTERS_PER_LINE *
+            2 *
+            getFontWidthMultiplier(subtitle);
 
         if (subtitle.length <= remainingSubtitleLength) {
             poem.subtitle = "";

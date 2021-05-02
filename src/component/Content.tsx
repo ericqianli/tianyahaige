@@ -3,14 +3,25 @@ import React from "react";
 import ReactResizeDetector from "react-resize-detector";
 
 import {
-    createStyles, PaletteType, Theme, WithStyles, withStyles, withTheme,
-    WithTheme
+    createStyles,
+    PaletteType,
+    Theme,
+    WithStyles,
+    withStyles,
+    withTheme,
+    WithTheme,
 } from "@material-ui/core";
 
 import {
-    BACKGROUND_ADJUSTED_SIZE_BY_WIDTH, BACKGROUND_SIZE_BY_HEIGHT,
-    BACKGROUND_SIZE_BY_WIDTH, COLUMN_WIDTH, COLUMN_WIDTH_IN_REM,
-    COLUMNS_PER_BACKGROUD, CONTENT_HEIGHT, HALF_COLUMN_WIDTH, ROUTE_INFO_MAP
+    BACKGROUND_ADJUSTED_SIZE_BY_WIDTH,
+    BACKGROUND_SIZE_BY_HEIGHT,
+    BACKGROUND_SIZE_BY_WIDTH,
+    COLUMN_WIDTH,
+    COLUMN_WIDTH_IN_REM,
+    COLUMNS_PER_BACKGROUD,
+    CONTENT_HEIGHT,
+    HALF_COLUMN_WIDTH,
+    ROUTE_INFO_MAP,
 } from "../constant/Constants";
 import BackgroundBodyDark from "../image/background_body_2x_dark.png";
 import BackgroundBodyLight from "../image/background_body_2x_light.png";
@@ -170,33 +181,34 @@ const styles = (theme: Theme) =>
                 position: "relative",
                 top: "-0.2rem",
                 left: "0.75rem",
-                display: "none",
+                display: "inline-block",
+                // display: "none",
             },
         },
     });
 
-function PoemsContent({ poems }: { poems: Poem[] }) {
+function PageContent({ page }: { page: Page }) {
     return (
         <>
-            {poems.map((poem) => (
-                <PoemContent key={poem.id} poem={poem} />
+            {page.map((line, index) => (
+                <LineContent key={index} line={line} />
             ))}
         </>
     );
 }
 
-function PoemContent({ poem }: { poem: Poem }) {
+function LineContent({ line }: { line: Line }) {
     return (
-        <div id={poem.id}>
+        <>
             <PoemHeader
                 key="header"
-                title={poem.title}
-                subtitle={poem.subtitle}
+                title={line.title}
+                subtitle={line.subtitle}
             />
-            {poem.body.split("\r\n").map((body, index) => (
+            {line.body.split("\r\n").map((body, index) => (
                 <PoemBody key={index} body={body} />
             ))}
-        </div>
+        </>
     );
 }
 
@@ -217,11 +229,11 @@ function PoemHeader({ title, subtitle }: { title: string; subtitle: string }) {
 }
 
 function PoemBody({ body }: { body: string }) {
-    const lines = body.split("︒").filter((line) => line !== "");
+    const linesOfPoem = body.split("︒").filter((line) => line !== "");
     const compoments = [];
 
-    for (const index in lines) {
-        compoments.push(lines[index], <Period key={index} />);
+    for (const index in linesOfPoem) {
+        compoments.push(linesOfPoem[index], <Period key={index} />);
     }
 
     return <div className="body">{compoments}</div>;
@@ -324,12 +336,24 @@ class Content extends React.Component<Props, State> {
                     <ReactResizeDetector handleWidth handleHeight>
                         {({ width }: { width: number }) => {
                             const rootFontSizeInPixel = getRootFontSize();
+                            console.log(
+                                "rootFontSizeInPixel: ",
+                                rootFontSizeInPixel
+                            );
                             const columnWidthInPixel = Math.floor(
                                 rootFontSizeInPixel * COLUMN_WIDTH_IN_REM
+                            );
+                            console.log(
+                                "columnWidthInPixel: ",
+                                columnWidthInPixel
                             );
 
                             const backgroundWidthInPixel =
                                 columnWidthInPixel * COLUMNS_PER_BACKGROUD;
+                            console.log(
+                                "backgroundWidthInPixel",
+                                backgroundWidthInPixel
+                            );
 
                             if (
                                 this.numPages === 0 &&
@@ -345,18 +369,37 @@ class Content extends React.Component<Props, State> {
                                 backgroundWidthInPixel * this.numPages;
 
                             return (
-                                <div
-                                    className={classes.poemContent}
-                                    style={{
-                                        width:
-                                            fullWidth === 0
-                                                ? "fit-content"
-                                                : `${fullWidth}px`,
-                                    }}
-                                >
-                                    <PoemsContent poems={this.props.poems} />
-                                </div>
+                                <>
+                                    {this.props.pages.map((page, index) => (
+                                        <div
+                                            key={index}
+                                            className={classes.poemContent}
+                                            style={{
+                                                width:
+                                                    fullWidth === 0
+                                                        ? "fit-content"
+                                                        : `${backgroundWidthInPixel}px`,
+                                            }}
+                                        >
+                                            <PageContent page={page} />
+                                        </div>
+                                    ))}
+                                </>
                             );
+
+                            // return (
+                            //     <div
+                            //         className={classes.poemContent}
+                            //         style={{
+                            //             width:
+                            //                 fullWidth === 0
+                            //                     ? "fit-content"
+                            //                     : `${fullWidth}px`,
+                            //         }}
+                            //     >
+                            //         <PoemsContent poems={this.props.poems} />
+                            //     </div>
+                            // );
                         }}
                     </ReactResizeDetector>
                 </div>

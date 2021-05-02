@@ -79,11 +79,11 @@ const useStyles = makeStyles((theme) => ({
         minHeight: "100vh",
     },
     header: {
-        flexBasis: "calc(50vh - 18.5rem)",
+        flexBasis: "calc(50vh - 20.5rem)",
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
         alignItems: "center",
-        justifyContent: "flex-start",
+        justifyContent: "center",
     },
     main: {
         flexBasis: "44rem",
@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
     },
     footer: {
-        flexBasis: "calc(50vh - 25.5rem)",
+        flexBasis: "calc(50vh - 23.5rem)",
         display: "flex",
         alignItems: "flex-end",
         justifyContent: "center",

@@ -39,6 +39,7 @@ export interface Poem {
     title: string;
     subtitle: string;
     body: string;
+    collections: number[];
 }
 
 export interface Line {

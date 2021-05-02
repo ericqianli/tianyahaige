@@ -12,7 +12,7 @@ str_field_sanitizer = (str) =>
     str
         .slice(1, -1)
         .replace(/\\r\\n/g, " ")
-        .replace(/[、|,|，|。|『|』]/g, " ");
+        .replace(/[、|︑|,|，|。|︒|?|？|!|！|：|『|』]/g, " ");
 
 data = str.split("\n").map((line) => {
     fields = line.substring(1, line.length - 2).split(", ");
@@ -21,11 +21,11 @@ data = str.split("\n").map((line) => {
         title: str_field_sanitizer(fields[1]),
         subtitle: str_field_sanitizer(fields[3]) + str_field_sanitizer(fields[6]),
         date: str_field_sanitizer(fields[2]),
-        body: str_field_sanitizer(fields[5]),
-        collection: [1]
+        body: str_field_sanitizer(fields[5]).replace(/\s+/g, "︒"),
+        collections: [1]
     };
 });
 
-
+// body: str_field_sanitizer(fields[5]).replace(/\s/g, "︒"),
 
 // check notes for 2 and 78
