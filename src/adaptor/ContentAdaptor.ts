@@ -23,8 +23,6 @@ function getFontWidthMultiplier(subtitle: string) {
 function getLineFromPoem(poem: Poem): Line {
     const { title, subtitle, body } = poem;
 
-    console.log('subtitle', subtitle);
-
     if (title !== "") {
         poem.title = "";
 

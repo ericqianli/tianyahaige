@@ -165,7 +165,6 @@ function App(props: RouteComponentProps) {
     });
 
     const toggleDrawerOnMouseClick = (open: boolean) => () => {
-        console.log("toggleDrawerOnMouseClick");
         setState({ ...state, drawerShown: open });
     };
 

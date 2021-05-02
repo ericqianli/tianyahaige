@@ -29,10 +29,10 @@ function mapStateToProps(state: State, ownProps: RouteComponentProps) {
 
 function mapDispatchToProps(dispatch: Dispatch) {
     return {
-        fetchContent: async (sql: string) => {
+        fetchContent: async (collection: number) => {
             dispatch(requestContent());
             try {
-                const content = await DBUtil.fetchAllPoems();
+                const content = await DBUtil.fetchPoemsByCollection(collection);
                 dispatch(receiveContent(content));
             } catch (error) {
                 dispatch(receiveContentError(error));

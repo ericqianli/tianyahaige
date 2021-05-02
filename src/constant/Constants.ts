@@ -54,7 +54,7 @@ export const BACKGROUND_SIZE_BY_HEIGHT = `auto ${BACKGROUND_HEIGHT_IN_REM}rem`;
 export const ROUTE_INFO_MAP: {
     [key: string]: {
         key: string;
-        sql: string;
+        collection: number;
         title: string;
         backgroundLight: string;
         backgroundDark: string;
@@ -62,28 +62,28 @@ export const ROUTE_INFO_MAP: {
 } = {
     [LANDING]: {
         key: "all",
-        sql: "select * from poem_by_date",
+        collection: 0,
         title: "天涯海槎",
         backgroundLight: TitleImageOneLight,
         backgroundDark: TitleImageOneDark,
     },
     [FALLEN_STAR]: {
         key: "fallen_star",
-        sql: "select * from poem_by_date where fallen_star=true",
+        collection: 1,
         title: "落星集",
         backgroundLight: TitleImageTwoLight,
         backgroundDark: TitleImageTwoDark,
     },
     [INDIA_TRAVEL]: {
         key: "india_travel",
-        sql: "select * from poem_by_date where india_travel=true",
+        collection: 2,
         title: "天竺散記",
         backgroundLight: TitleImageThreeLight,
         backgroundDark: TitleImageThreeDark,
     },
     [IMMORTALS]: {
         key: "immortals",
-        sql: "select * from poem_by_date limit 30, 40",
+        collection: 3,
         title: "列仙集",
         backgroundLight: TitleImageFourLight,
         backgroundDark: TitleImageFourDark,
