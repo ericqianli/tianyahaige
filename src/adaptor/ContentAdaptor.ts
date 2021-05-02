@@ -55,9 +55,7 @@ function getLineFromPoem(poem: Poem): Line {
     // title has been processed
     if (subtitle !== "") {
         let remainingSubtitleLength =
-            SUBTITLE_CHARACTERS_PER_LINE *
-            2 *
-            getFontWidthMultiplier(subtitle);
+            SUBTITLE_CHARACTERS_PER_LINE * 2 * getFontWidthMultiplier(subtitle);
 
         if (subtitle.length <= remainingSubtitleLength) {
             poem.subtitle = "";
@@ -134,8 +132,9 @@ export function getLinesFromRows(poems: List<Poem>): Line[] {
     const lines: Line[] = [];
 
     for (const poem of poems) {
-        while (poem.body !== "") {
-            const line = getLineFromPoem(poem);
+        const poemClone = { ...poem };
+        while (poemClone.body !== "") {
+            const line = getLineFromPoem(poemClone);
             lines.push(line);
         }
     }
