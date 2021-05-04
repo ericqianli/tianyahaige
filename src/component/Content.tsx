@@ -236,6 +236,10 @@ function PoemBody({ body }: { body: string }) {
         compoments.push(linesOfPoem[index], <Period key={index} />);
     }
 
+    if (!body.endsWith("︒")) {
+        compoments.pop();
+    }
+
     return <div className="body">{compoments}</div>;
 }
 
