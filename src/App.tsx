@@ -263,7 +263,7 @@ function App(props: RouteComponentProps) {
                             </Grid>
                             <Grid className={classes.footer} item xs={12}>
                                 <Typography variant="subtitle1" align="center">
-                                    Horizon Pavilion • 2020
+                                    Horizon Pavilion • 2021
                                 </Typography>
                             </Grid>
                         </Grid>
