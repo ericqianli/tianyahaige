@@ -5,8 +5,7 @@ str = `[copy all text from poem_20200416 copy.js]`;
 //     return { id: fields[0], title: fields[1] };
 // });
 
-// str_field_sanitizer = (str) =>
-//     str.slice(1, -1).replace(/[,|，|(\\r\\n)]/g, " ");
+add_period = (str) => str.replace(/[,|，|(\\r\\n)]/g, "︒") + "︒";
 
 str_field_sanitizer = (str) =>
     str
@@ -53,15 +52,6 @@ poems.map((poem) => {
         poem.subtitle = poem.subtitle.replace(/\s/g, "");
     }
 });
-
-
-
-
-
-
-
-
-
 
 // const CHARACTERS_TO_REMOVE = [
 //     "『",
