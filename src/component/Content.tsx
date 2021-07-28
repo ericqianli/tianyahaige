@@ -55,7 +55,7 @@ const styles = (theme: Theme) =>
         },
         container: {
             height: CONTENT_HEIGHT,
-            overflowX: "auto",
+            overflowX: "scroll",
             overflowY: "hidden",
             writingMode: "vertical-rl",
 

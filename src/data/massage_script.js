@@ -5,7 +5,7 @@ str = `[copy all text from poem_20200416 copy.js]`;
 //     return { id: fields[0], title: fields[1] };
 // });
 
-add_period = (str) => str.replace(/[,|，|(\\r\\n)]/g, "︒") + "︒";
+add_period = (str) => str.replace(/[\s+]/g, "︒") + "︒";
 
 str_field_sanitizer = (str) =>
     str
@@ -52,6 +52,17 @@ poems.map((poem) => {
         poem.subtitle = poem.subtitle.replace(/\s/g, "");
     }
 });
+
+// sort by date
+poems = `[Copy content from poem.json]`
+sorted_poems = poems. sort((p1, p2) => ('' + p1.date).localeCompare(p2.date))
+
+// re index
+reindexed_poems = poems.map((p, index) => {return {...p, id: index + 1}})
+
+// bucketization
+bucketized_poems = poems.slice(0, 50);
+
 
 // const CHARACTERS_TO_REMOVE = [
 //     "『",

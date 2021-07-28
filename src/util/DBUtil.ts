@@ -1,4 +1,6 @@
 import * as poemData from "../data/poem.json";
+// import * as poemData from "../data/poem_debug2.json";
+
 
 import Immutable from "immutable";
 import { Poem } from "../type/Types";
