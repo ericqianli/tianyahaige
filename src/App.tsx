@@ -7,15 +7,27 @@ import clsx from "clsx";
 import React from "react";
 import { Provider } from "react-redux";
 import {
-    Route, RouteComponentProps, Switch, withRouter
+    Route,
+    RouteComponentProps,
+    Switch,
+    withRouter,
 } from "react-router-dom";
 import WebFont from "webfontloader";
 
 import {
-    CssBaseline, Drawer, Grid, IconButton, makeStyles, MuiThemeProvider,
-    PaletteType, Typography
+    CssBaseline,
+    Drawer,
+    Grid,
+    IconButton,
+    makeStyles,
+    MuiThemeProvider,
+    PaletteType,
+    Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import FormatAlignLeftIcon from "@material-ui/icons/FormatAlignLeft";
+import SubjectIcon from "@material-ui/icons/Subject";
+import ShortTextIcon from "@material-ui/icons/ShortText";
 
 import { ROUTE_INFO_MAP } from "./constant/Constants";
 import ContentContainer from "./container/ContentContainer";
@@ -131,8 +143,14 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(0.5),
         borderRadius: theme.spacing(0.5),
     },
+    rotatedMenuButton: {
+        transform: "rotate(90deg)",
+    },
     hide: {
         visibility: "hidden",
+    },
+    remove: {
+        display: "none",
     },
     symbolIcon: {
         fontFamily: [
@@ -162,6 +180,7 @@ function App(props: RouteComponentProps) {
     const [state, setState] = React.useState({
         drawerShown: false,
         themePaletteType: "dark" as PaletteType,
+        sampled: true,
     });
 
     const toggleDrawerOnMouseClick = (open: boolean) => () => {
@@ -174,6 +193,10 @@ function App(props: RouteComponentProps) {
             themePaletteType:
                 state.themePaletteType === "light" ? "dark" : "light",
         });
+    };
+
+    const toggleSampled = () => {
+        setState({ ...state, sampled: !state.sampled });
     };
 
     const drawer = (
@@ -241,6 +264,30 @@ function App(props: RouteComponentProps) {
                                         <span>☯</span>
                                     </div>
                                 </IconButton>
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="open drawer"
+                                    onClick={toggleSampled}
+                                    className={clsx(
+                                        classes.menuButton,
+                                        classes.rotatedMenuButton,
+                                        !state.sampled && classes.remove
+                                    )}
+                                >
+                                    <SubjectIcon fontSize="default" />
+                                </IconButton>
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="open drawer"
+                                    onClick={toggleSampled}
+                                    className={clsx(
+                                        classes.menuButton,
+                                        classes.rotatedMenuButton,
+                                        state.sampled && classes.remove
+                                    )}
+                                >
+                                    <ShortTextIcon fontSize="default" />
+                                </IconButton>
                                 <Drawer
                                     anchor="top"
                                     open={state.drawerShown}
@@ -256,7 +303,14 @@ function App(props: RouteComponentProps) {
                                             key={path}
                                             exact
                                             path={path}
-                                            component={ContentContainer}
+                                            // sampled={state.sampled}
+                                            // component={ContentContainer}
+                                            render={(routeProps) => (
+                                                <ContentContainer
+                                                    sampled={state.sampled}
+                                                    {...routeProps}
+                                                />
+                                            )}
                                         />
                                     ))}
                                 </Switch>

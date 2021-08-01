@@ -4,7 +4,6 @@ import ReactResizeDetector from "react-resize-detector";
 
 import {
     createStyles,
-    PaletteType,
     Theme,
     WithStyles,
     withStyles,
@@ -260,8 +259,9 @@ interface Props extends WithStyles<typeof styles>, WithTheme {
     pages: Page[];
     poems: Poem[];
     path: string;
-    themePaletteType: PaletteType;
-    fetchContent: (collection: number) => void;
+    sampled: boolean;
+    // themePaletteType: PaletteType;
+    fetchContent: (collection: number, sampled: boolean) => void;
 }
 
 interface State {
@@ -280,7 +280,8 @@ class Content extends React.Component<Props, State> {
 
     componentDidMount() {
         const collection = ROUTE_INFO_MAP[this.props.path].collection;
-        this.props.fetchContent(collection);
+        console.log("fetchContent");
+        this.props.fetchContent(collection, this.props.sampled);
         this.fadeTimeout = undefined;
 
         this.setState({ stage: 1 });
@@ -288,6 +289,9 @@ class Content extends React.Component<Props, State> {
 
     render() {
         const { classes, poems, pages, path } = this.props;
+
+        // console.log('themePaletteType: ', this.props.themePaletteType);
+        console.log('sampled: ', this.props.sampled);
 
         const themePaletteType = this.props.theme.palette.type;
 

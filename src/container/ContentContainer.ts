@@ -15,24 +15,29 @@ import { getLines, getPages, getPoems } from "../selector/ContentStateSelector";
 import DBUtil from "../util/DBUtil";
 
 interface OwnProps extends RouteComponentProps {
-    themePaletteType: PaletteType;
+    sampled: boolean;
 }
 
-function mapStateToProps(state: State, ownProps: RouteComponentProps) {
+function mapStateToProps(state: State, ownProps: OwnProps) {
+    console.log("ownProps.sampled", ownProps.sampled);
     return {
-        poems: getPoems(state),
-        lines: getLines(state),
-        pages: getPages(state),
+        poems: getPoems(state, ownProps.sampled),
+        lines: getLines(state, ownProps.sampled),
+        pages: getPages(state, ownProps.sampled),
         path: ownProps.location.pathname,
+        sampled: ownProps.sampled,
     };
 }
 
 function mapDispatchToProps(dispatch: Dispatch) {
     return {
-        fetchContent: async (collection: number) => {
+        fetchContent: async (collection: number, sampled: boolean) => {
             dispatch(requestContent());
             try {
-                const content = await DBUtil.fetchPoemsByCollection(collection);
+                const content = await DBUtil.fetchPoemsByCollection(
+                    collection,
+                    sampled
+                );
                 dispatch(receiveContent(content));
             } catch (error) {
                 dispatch(receiveContentError(error));

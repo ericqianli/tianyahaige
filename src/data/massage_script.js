@@ -54,15 +54,24 @@ poems.map((poem) => {
 });
 
 // sort by date
-poems = `[Copy content from poem.json]`
-sorted_poems = poems. sort((p1, p2) => ('' + p1.date).localeCompare(p2.date))
+poems = `[Copy content from poem.json]`;
+sorted_poems = poems.sort((p1, p2) => ("" + p1.date).localeCompare(p2.date));
 
 // re index
-reindexed_poems = poems.map((p, index) => {return {...p, id: index + 1}})
+reindexed_poems = poems.map((p, index) => {
+    return { ...p, id: index + 1 };
+});
 
 // bucketization
 bucketized_poems = poems.slice(0, 50);
 
+// remove unselected poems from category 0
+all_poems.map((p) => {
+    if (!selected_ids.includes(p.id)) {
+        p.collections = p.collections.filter((i) => i !== 0);
+    }
+    return p;
+});
 
 // const CHARACTERS_TO_REMOVE = [
 //     "『",

@@ -1,7 +1,10 @@
 import { createSelector } from "reselect";
 
 import {
-    getLinesFromRows, getPagesFromLines, getPoemFromRows
+    getLinesFromPoems,
+    getLinesFromRows,
+    getPagesFromLines,
+    getPoemFromRows,
 } from "../adaptor/ContentAdaptor";
 // import data from "../data/poem_20200416.js";
 import { State } from "../reducer/Reducer";
@@ -26,13 +29,17 @@ import { State } from "../reducer/Reducer";
 
 export const getContentState = (state: State) => state.contentState;
 
-export const getPoems = createSelector([getContentState], (contentState) =>
-    getPoemFromRows(contentState.content)
-);
+export const getPoems = (state: State, sampled: boolean) =>
+    createSelector([getContentState], (contentState) =>
+        getPoemFromRows(contentState.content, sampled)
+    )(state);
 
-export const getLines = createSelector([getContentState], (contentState) =>
-    getLinesFromRows(contentState.content)
-);
+export const getLines = createSelector([getPoems], getLinesFromPoems);
+
+// export const getLines = (state: State, sampled: boolean) =>
+//     createSelector([getContentState], (contentState) =>
+//         getLinesFromRows(contentState.content, sampled)
+//     )(state);
 
 export const getPages = createSelector([getLines], (lines) =>
     getPagesFromLines(lines)
