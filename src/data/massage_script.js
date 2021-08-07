@@ -85,3 +85,21 @@ all_poems.map((p) => {
 //     "。",
 //     "︒",
 // ];
+
+// let i = 0;
+// const set = new Set(data);
+// console.log(Array.from(set).join(""));
+// const lines = data.split(/(?<!\r)\n/);
+// let outputLines = [];
+// for (const line of lines) {
+//     if (line.startsWith("(")) {
+//         const fields = line.split(",");
+//         const content = fields[5].slice(2, -1);
+//         const formattedContent = getFormattedCameraReadyContent(content);
+//         fields[5] = " '" + formattedContent + "'";
+//         outputLines.push(fields.join(","));
+//     } else {
+//         outputLines.push(line);
+//     }
+// }
+// console.log(lines.join(""));

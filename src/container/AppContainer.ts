@@ -1,35 +1,27 @@
 import { connect } from "react-redux";
-import { RouteComponentProps } from "react-router-dom";
 import { Dispatch } from "redux";
-
 import {
     receiveContent,
     receiveContentError,
     requestContent,
+    toggleSampled,
 } from "../action/Actions";
-import Content from "../component/Content";
+import App from "../App";
 import { State } from "../reducer/Reducer";
-import { getLines, getPages, getPoems } from "../selector/ContentStateSelector";
-import DBUtil from "../util/DBUtil";
 import { getSampled } from "../selector/AppStateSelector";
+import DBUtil from "../util/DBUtil";
 
-interface OwnProps extends RouteComponentProps {
-    sampled: boolean;
-}
-
-function mapStateToProps(state: State, ownProps: OwnProps) {
+function mapStateToProps(state: State) {
     return {
-        poems: getPoems(state),
-        lines: getLines(state),
-        pages: getPages(state),
         sampled: getSampled(state),
-        path: ownProps.location.pathname,
     };
 }
 
 function mapDispatchToProps(dispatch: Dispatch) {
     return {
-        fetchContent: async (collection: number, sampled: boolean) => {
+        toggleSampled: async (collection: number, sampled: boolean) => {
+            dispatch(toggleSampled());
+
             dispatch(requestContent());
             try {
                 const content = await DBUtil.fetchPoemsByCollection(
@@ -44,6 +36,6 @@ function mapDispatchToProps(dispatch: Dispatch) {
     };
 }
 
-const ContentContainer = connect(mapStateToProps, mapDispatchToProps)(Content);
+const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 
-export default ContentContainer;
+export default AppContainer;

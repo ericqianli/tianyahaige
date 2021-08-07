@@ -7,16 +7,8 @@ import {
 import { Line, Page, Poem } from "../type/Types";
 import { List } from "immutable";
 
-export function getPoemFromRows(rows: List<Poem>, sampled: boolean): Poem[] {
-    const poems = rows.toJS();
-    if (sampled) {
-        return poems
-            .sort(() => 0.5 - Math.random())
-            .slice(0, 18)
-            .sort((p1, p2) => p1.date.localeCompare(p2.date));
-    }
-    // console.log("getPoemFromRows size: ", poems.length);
-    return poems;
+export function getPoemFromRows(rows: List<Poem>): Poem[] {
+    return rows.toJS();
 }
 
 // For English or Hindi, we can fit more letters.
@@ -134,24 +126,6 @@ function getLineFromPoem(poem: Poem): Line {
 
 export function getLinesFromPoems(poems: Poem[]): Line[] {
     if (poems.length === 0) {
-        return [];
-    }
-
-    const lines: Line[] = [];
-
-    for (const poem of poems) {
-        const poemClone = { ...poem };
-        while (poemClone.body !== "") {
-            const line = getLineFromPoem(poemClone);
-            lines.push(line);
-        }
-    }
-
-    return lines;
-}
-
-export function getLinesFromRows(poems: List<Poem>, sampled: boolean): Line[] {
-    if (poems.size === 0) {
         return [];
     }
 

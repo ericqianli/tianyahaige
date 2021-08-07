@@ -4,6 +4,7 @@ import {
     ReceiveContentErrorAction,
     RequestContentAction,
     Poem,
+    ToggleSampledAction,
 } from "../type/Types";
 import { List } from "immutable";
 
@@ -24,5 +25,11 @@ export function receiveContentError(error: Error): ReceiveContentErrorAction {
     return {
         type: ActionType.RECEIVE_CONTENT_ERROR,
         error,
+    };
+}
+
+export function toggleSampled(): ToggleSampledAction {
+    return {
+        type: ActionType.TOGGLE_SAMPLED,
     };
 }

@@ -5,7 +5,6 @@ import "./css/shaft.css";
 
 import clsx from "clsx";
 import React from "react";
-import { Provider } from "react-redux";
 import {
     Route,
     RouteComponentProps,
@@ -25,14 +24,11 @@ import {
     Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import FormatAlignLeftIcon from "@material-ui/icons/FormatAlignLeft";
-import SubjectIcon from "@material-ui/icons/Subject";
-import ShortTextIcon from "@material-ui/icons/ShortText";
+import SwapCallsIcon from "@material-ui/icons/SwapCalls";
 
 import { ROUTE_INFO_MAP } from "./constant/Constants";
 import ContentContainer from "./container/ContentContainer";
 import { getThemeReselect } from "./selector/ThemeReselectors";
-import Store from "./store/Store";
 
 WebFont.load({
     custom: {
@@ -174,13 +170,20 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function App(props: RouteComponentProps) {
+interface Props extends RouteComponentProps {
+    sampled: boolean;
+    toggleSampled: (collection: number, sampled: boolean) => void;
+}
+
+function App(props: Props) {
+    const collection = ROUTE_INFO_MAP[props.location.pathname].collection;
+
     const classes = useStyles();
 
     const [state, setState] = React.useState({
         drawerShown: false,
         themePaletteType: "dark" as PaletteType,
-        sampled: true,
+        sampled: false,
     });
 
     const toggleDrawerOnMouseClick = (open: boolean) => () => {
@@ -193,10 +196,6 @@ function App(props: RouteComponentProps) {
             themePaletteType:
                 state.themePaletteType === "light" ? "dark" : "light",
         });
-    };
-
-    const toggleSampled = () => {
-        setState({ ...state, sampled: !state.sampled });
     };
 
     const drawer = (
@@ -225,106 +224,90 @@ function App(props: RouteComponentProps) {
     );
 
     return (
-        <Provider store={Store}>
-            <MuiThemeProvider theme={getThemeReselect(state)}>
-                <CssBaseline />
+        <MuiThemeProvider theme={getThemeReselect(state)}>
+            <CssBaseline />
 
-                <div className="App">
-                    <div className="AppBody">
-                        <Grid
-                            className={classes.grid}
-                            container
-                            direction="column"
-                            justify="space-between"
-                            alignItems="stretch"
-                        >
-                            <Grid className={classes.header} item xs={12}>
-                                <IconButton
-                                    color="inherit"
-                                    aria-label="open drawer"
-                                    onClick={toggleDrawerOnMouseClick(true)}
-                                    className={clsx(
-                                        classes.menuButton,
-                                        state.drawerShown && classes.hide
-                                    )}
-                                >
-                                    <MenuIcon fontSize="default" />
-                                </IconButton>
-                                <IconButton
-                                    color="inherit"
-                                    aria-label="toggle light/dark mode"
-                                    onClick={toggleThemePaletteType}
-                                    className={clsx(
-                                        classes.menuButton,
-                                        classes.symbolIcon,
-                                        state.drawerShown && classes.hide
-                                    )}
-                                >
-                                    <div className={classes.symbolWrapper}>
-                                        <span>☯</span>
-                                    </div>
-                                </IconButton>
-                                <IconButton
-                                    color="inherit"
-                                    aria-label="open drawer"
-                                    onClick={toggleSampled}
-                                    className={clsx(
-                                        classes.menuButton,
-                                        classes.rotatedMenuButton,
-                                        !state.sampled && classes.remove
-                                    )}
-                                >
-                                    <SubjectIcon fontSize="default" />
-                                </IconButton>
-                                <IconButton
-                                    color="inherit"
-                                    aria-label="open drawer"
-                                    onClick={toggleSampled}
-                                    className={clsx(
-                                        classes.menuButton,
-                                        classes.rotatedMenuButton,
-                                        state.sampled && classes.remove
-                                    )}
-                                >
-                                    <ShortTextIcon fontSize="default" />
-                                </IconButton>
-                                <Drawer
-                                    anchor="top"
-                                    open={state.drawerShown}
-                                    onClose={toggleDrawerOnMouseClick(false)}
-                                >
-                                    {drawer}
-                                </Drawer>
-                            </Grid>
-                            <Grid className={classes.main} item xs={12}>
-                                <Switch>
-                                    {Object.keys(ROUTE_INFO_MAP).map((path) => (
-                                        <Route
-                                            key={path}
-                                            exact
-                                            path={path}
-                                            // sampled={state.sampled}
-                                            // component={ContentContainer}
-                                            render={(routeProps) => (
-                                                <ContentContainer
-                                                    sampled={state.sampled}
-                                                    {...routeProps}
-                                                />
-                                            )}
-                                        />
-                                    ))}
-                                </Switch>
-                            </Grid>
-                            <Grid className={classes.footer} item xs={12}>
-                                <Typography variant="subtitle1" align="center">
-                                    Horizon Pavilion • 2021
-                                </Typography>
-                            </Grid>
+            <div className="App">
+                <div className="AppBody">
+                    <Grid
+                        className={classes.grid}
+                        container
+                        direction="column"
+                        justify="space-between"
+                        alignItems="stretch"
+                    >
+                        <Grid className={classes.header} item xs={12}>
+                            <IconButton
+                                color="inherit"
+                                aria-label="open drawer"
+                                onClick={toggleDrawerOnMouseClick(true)}
+                                className={clsx(
+                                    classes.menuButton,
+                                    state.drawerShown && classes.hide
+                                )}
+                            >
+                                <MenuIcon fontSize="default" />
+                            </IconButton>
+                            <IconButton
+                                color="inherit"
+                                aria-label="toggle light/dark mode"
+                                onClick={toggleThemePaletteType}
+                                className={clsx(
+                                    classes.menuButton,
+                                    classes.symbolIcon,
+                                    state.drawerShown && classes.hide
+                                )}
+                            >
+                                <div className={classes.symbolWrapper}>
+                                    <span>☯</span>
+                                </div>
+                            </IconButton>
+                            <IconButton
+                                color="inherit"
+                                aria-label="open drawer"
+                                onClick={() =>
+                                    props.toggleSampled(collection, true)
+                                }
+                                className={clsx(classes.menuButton)}
+                            >
+                                <SwapCallsIcon fontSize="default" />
+                            </IconButton>
+                            <Drawer
+                                anchor="top"
+                                open={state.drawerShown}
+                                onClose={toggleDrawerOnMouseClick(false)}
+                            >
+                                {drawer}
+                            </Drawer>
                         </Grid>
-                    </div>
+                        <Grid className={classes.main} item xs={12}>
+                            <Switch>
+                                {Object.keys(ROUTE_INFO_MAP).map((path) => (
+                                    <Route
+                                        key={path}
+                                        exact
+                                        path={path}
+                                        // sampled={state.sampled}
+                                        // component={ContentContainer}
+                                        render={(routeProps) => (
+                                            <ContentContainer
+                                                sampled={props.sampled}
+                                                {...routeProps}
+                                            />
+                                        )}
+                                    />
+                                ))}
+                            </Switch>
+                        </Grid>
+                        <Grid className={classes.footer} item xs={12}>
+                            <Typography variant="subtitle1" align="center">
+                                Horizon Pavilion • 2021
+                            </Typography>
+                        </Grid>
+                    </Grid>
                 </div>
-            </MuiThemeProvider>
-        </Provider>
+            </div>
+        </MuiThemeProvider>
     );
 }
 

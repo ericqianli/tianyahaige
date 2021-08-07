@@ -14,6 +14,10 @@ export const INITIAL_CONTENT_STATE = {
     content: Immutable.List(),
 };
 
+export const INITIAL_APP_STATE = {
+    sampled: false,
+}
+
 export const BODY_CHARACTERS_PER_LINE = 20;
 
 export const LINES_PER_PAGE = 48;
