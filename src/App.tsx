@@ -182,7 +182,7 @@ function App(props: Props) {
 
     const [state, setState] = React.useState({
         drawerShown: false,
-        themePaletteType: "dark" as PaletteType,
+        themePaletteType: "light" as PaletteType,
         sampled: false,
     });
 
