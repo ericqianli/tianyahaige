@@ -18,6 +18,8 @@ export const INITIAL_APP_STATE = {
     sampled: false,
 }
 
+export const INITIAL_THEME_PALETTE_TYPE = "dark";
+
 export const BODY_CHARACTERS_PER_LINE = 20;
 
 export const LINES_PER_PAGE = 48;

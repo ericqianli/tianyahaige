@@ -26,7 +26,7 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import SwapCallsIcon from "@material-ui/icons/SwapCalls";
 
-import { ROUTE_INFO_MAP } from "./constant/Constants";
+import { INITIAL_THEME_PALETTE_TYPE, ROUTE_INFO_MAP } from "./constant/Constants";
 import ContentContainer from "./container/ContentContainer";
 import { getThemeReselect } from "./selector/ThemeReselectors";
 
@@ -182,7 +182,7 @@ function App(props: Props) {
 
     const [state, setState] = React.useState({
         drawerShown: false,
-        themePaletteType: "light" as PaletteType,
+        themePaletteType: INITIAL_THEME_PALETTE_TYPE as PaletteType,
         sampled: false,
     });
 

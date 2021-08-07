@@ -12,10 +12,11 @@ export const getTheme = (paletteType: PaletteType) =>
             type: paletteType,
             background: {
                 default: paletteType === "light" ? "#e8e8e8" : "#303030",
+                paper: paletteType === "light" ? "#d8d8d8" : "#101010",
             },
             text: {
-                primary: paletteType === "light" ? "#000000" : "#ffffff",
-            },
+                primary: paletteType === "light" ? "#080808" : "#ffffff",
+            },            
         },
         typography: {
             fontFamily: [
@@ -87,9 +88,3 @@ export const getTheme = (paletteType: PaletteType) =>
             },
         },
     });
-
-// export const theme = getTheme("dark");
-
-// export const theme = getTheme("light");
-
-// export default theme;
