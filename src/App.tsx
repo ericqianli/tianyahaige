@@ -301,7 +301,7 @@ function App(props: Props) {
                         </Grid>
                         <Grid className={classes.footer} item xs={12}>
                             <Typography variant="subtitle1" align="center">
-                                Horizon Pavilion • 2021
+                                Hao Shou • 2021
                             </Typography>
                         </Grid>
                     </Grid>
