@@ -26,37 +26,41 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import SwapCallsIcon from "@material-ui/icons/SwapCalls";
 
-import { INITIAL_THEME_PALETTE_TYPE, ROUTE_INFO_MAP } from "./constant/Constants";
+import {
+    INITIAL_THEME_PALETTE_TYPE,
+    ROUTE_INFO_MAP,
+} from "./constant/Constants";
 import ContentContainer from "./container/ContentContainer";
 import { getThemeReselect } from "./selector/ThemeReselectors";
 
 WebFont.load({
     custom: {
         families: [
+            "Kang Xi Zi Dian",
             "Arial Unicode MS Subset",
             "Zi Yue Song Ke Ben",
             "Adobe Kaiti Std",
         ],
         urls: ["/fonts.css"],
     },
-    // loading: () => {
-    //     console.log("start loading");
-    // },
-    // active: () => {
-    //     console.log("active");
-    // },
-    // inactive: () => {
-    //     console.log("inactive");
-    // },
-    // fontloading: (familyName, fvd) => {
-    //     console.log("fontloading", familyName, fvd);
-    // },
-    // fontactive: (familyName, fvd) => {
-    //     console.log("fontactive", familyName, fvd);
-    // },
-    // fontinactive: (familyName, fvd) => {
-    //     console.log("fontinactive", familyName, fvd);
-    // },
+    loading: () => {
+        console.log("start loading");
+    },
+    active: () => {
+        console.log("active");
+    },
+    inactive: () => {
+        console.log("inactive");
+    },
+    fontloading: (familyName, fvd) => {
+        console.log("fontloading", familyName, fvd);
+    },
+    fontactive: (familyName, fvd) => {
+        console.log("fontactive", familyName, fvd);
+    },
+    fontinactive: (familyName, fvd) => {
+        console.log("fontinactive", familyName, fvd);
+    },
 });
 
 const useStyles = makeStyles((theme) => ({
@@ -106,8 +110,8 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
     },
     drawerContent: {
-        height: "calc(50vh - 17.5rem)",
-        minHeight: "9.625rem",
+        height: "calc(50vh - 20.5rem)",
+        minHeight: "16rem",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -125,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
             margin: "0 1rem",
         },
     },
-    menuItem: {
+    clickableItem: {
         cursor: "pointer",
     },
     list: {
@@ -168,6 +172,20 @@ const useStyles = makeStyles((theme) => ({
         position: "relative",
         top: "-1px",
     },
+    fishtailWrapper: {
+        fontSize: "2.2rem",
+        position: "relative",
+        left: "-0.18rem",
+        margin: "0.2rem 0",
+    },
+    menuWrapper: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    menuText: {
+        marginBottom: "0.2rem",
+    },
 }));
 
 interface Props extends RouteComponentProps {
@@ -208,14 +226,36 @@ function App(props: Props) {
                 {Object.entries(ROUTE_INFO_MAP).map(([path, info]) => (
                     <li key={path}>
                         <Typography
-                            className={classes.menuItem}
+                            className={classes.clickableItem}
                             variant="h3"
                             align="center"
                             onClick={() => {
                                 props.history.push(path);
                             }}
                         >
-                            {info.title}
+                            <div className={classes.menuWrapper}>
+                                <div
+                                    className={clsx(
+                                        classes.fishtailWrapper,
+                                        props.location.pathname !== path &&
+                                            classes.hide
+                                    )}
+                                >
+                                    {"\uE058"}
+                                </div>
+                                <div className={classes.menuText}>
+                                    {info.title}
+                                </div>
+                                <div
+                                    className={clsx(
+                                        classes.fishtailWrapper,
+                                        props.location.pathname !== path &&
+                                            classes.hide
+                                    )}
+                                >
+                                    {"\uE059"}
+                                </div>
+                            </div>
                         </Typography>
                     </li>
                 ))}

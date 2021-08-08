@@ -1,4 +1,12 @@
 @font-face {
+    font-family: "Kang Xi Zi Dian";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../font/KangXiDictFull.subset.otf") format("opentype");
+    /* font-display: swap; */
+}
+
+@font-face {
     font-family: "Zi Yue Song Ke Ben";
     font-style: normal;
     font-weight: 400;
@@ -20,4 +28,5 @@
     src: url("../font/arial-unicode-ms.subset.ttf") format("truetype");
     font-display: swap;
 }
+
 

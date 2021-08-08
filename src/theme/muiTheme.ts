@@ -21,6 +21,7 @@ export const getTheme = (paletteType: PaletteType) =>
         typography: {
             fontFamily: [
                 "Zi Yue Song Ke Ben",
+                "Kang Xi Zi Dian",
                 "Adobe Kaiti Std",
                 "KaiTi_GB2312",
                 "KaiTi",
@@ -39,7 +40,7 @@ export const getTheme = (paletteType: PaletteType) =>
             },
             h3: {
                 fontSize: "2rem",
-                lineHeight: 1,
+                lineHeight: 1.2,
                 writingMode: "vertical-rl",
             },
             h4: {
@@ -54,6 +55,7 @@ export const getTheme = (paletteType: PaletteType) =>
                 fontSize: "1rem",
                 fontWeight: 500,
                 lineHeight: 1.6,
+                whiteSpace: "nowrap",
             },
             body1: {
                 fontSize: "2rem",
@@ -65,7 +67,7 @@ export const getTheme = (paletteType: PaletteType) =>
             },
             subtitle1: {
                 fontSize: "0.75rem",
-                lineHeight: "1.5rem",
+                lineHeight: "2rem",
                 fontFamily: [
                     "-apple-system",
                     "BlinkMacSystemFont",
