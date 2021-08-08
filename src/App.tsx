@@ -23,8 +23,8 @@ import {
     PaletteType,
     Typography,
 } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
 import SwapCallsIcon from "@material-ui/icons/SwapCalls";
+import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
 
 import {
     INITIAL_THEME_PALETTE_TYPE,
@@ -283,10 +283,11 @@ function App(props: Props) {
                                 onClick={toggleDrawerOnMouseClick(true)}
                                 className={clsx(
                                     classes.menuButton,
+                                    classes.rotatedMenuButton,
                                     state.drawerShown && classes.hide
                                 )}
                             >
-                                <MenuIcon fontSize="default" />
+                                <FormatAlignLeftIcon fontSize="default" />
                             </IconButton>
                             <IconButton
                                 color="inherit"

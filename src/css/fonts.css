@@ -3,7 +3,7 @@
     font-style: normal;
     font-weight: 400;
     src: url("../font/KangXiDictFull.subset.otf") format("opentype");
-    /* font-display: swap; */
+    font-display: swap;
 }
 
 @font-face {
