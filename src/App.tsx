@@ -1,4 +1,3 @@
-// import "./font/ziyuesongkeben.ttf";
 import "./App.css";
 import "./css/fonts.css";
 import "./css/shaft.css";
@@ -175,8 +174,9 @@ const useStyles = makeStyles((theme) => ({
     fishtailWrapper: {
         fontSize: "2.2rem",
         position: "relative",
-        left: "-0.18rem",
+        left: "calc(1rem * -5/32)",
         margin: "0.2rem 0",
+        textOrientation: "sideways",
     },
     menuWrapper: {
         display: "flex",

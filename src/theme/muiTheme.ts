@@ -41,7 +41,7 @@ export const getTheme = (paletteType: PaletteType) =>
             h3: {
                 fontSize: "2rem",
                 lineHeight: 1.2,
-                writingMode: "vertical-rl",
+                // writingMode: "vertical-rl",
             },
             h4: {
                 fontWeight: 500,
