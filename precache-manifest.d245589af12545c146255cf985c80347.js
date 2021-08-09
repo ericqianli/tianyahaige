@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a92f0fb7fb71d84eb771f8270f894385",
+    "revision": "1882b271fa385eea59e8a1ea7119e03a",
     "url": "/index.html"
   },
   {
-    "revision": "89d0d34bbf446f076722",
-    "url": "/static/css/main.66456eb0.chunk.css"
+    "revision": "fc29dd3dfad9c240d464",
+    "url": "/static/css/main.add510b3.chunk.css"
   },
   {
     "revision": "48169cc0bd011d2648b6",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.d6900d68.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "89d0d34bbf446f076722",
-    "url": "/static/js/main.49949cfd.chunk.js"
+    "revision": "fc29dd3dfad9c240d464",
+    "url": "/static/js/main.e4c70262.chunk.js"
   },
   {
     "revision": "b94ed12321e1cf2bdd20",
@@ -28,8 +28,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/KangXiDictFull.subset.486af400.otf"
   },
   {
-    "revision": "274b1128d3a4f8a1776d186db4b9dc47",
-    "url": "/static/media/adobekaitistd.subset.274b1128.otf"
+    "revision": "cf4818d7008045165fc9261aa18f9b9f",
+    "url": "/static/media/adobekaitistd.subset.cf4818d7.otf"
   },
   {
     "revision": "424e5a2174cd7dac23356576416f5bd6",
