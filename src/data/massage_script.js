@@ -1,3 +1,5 @@
+import { copyFile } from "fs";
+
 str = `[copy all text from poem_20200416 copy.js]`;
 // str.split("\n").map((line) => line.slice(1, -2).split(", "));
 // str.split("\n").map((line) => {
@@ -72,6 +74,11 @@ all_poems.map((p) => {
     }
     return p;
 });
+
+// get all poem text for font subset
+var text = "";
+poems.map((poem) => text += poem.title + "\r\n" + poem.subtitle + "\r\n" + poem.body + "\r\n");
+copy(text);
 
 // const CHARACTERS_TO_REMOVE = [
 //     "『",
