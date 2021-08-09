@@ -18,7 +18,7 @@
     font-family: "Adobe Kaiti Std";
     font-style: normal;
     font-weight: 400;
-    src: local("Adobe Kaiti Std"), url("../font/adobekaitistd.otf") format("opentype");
+    src: local("Adobe Kaiti Std"), url("../font/adobekaitistd.subset.otf") format("opentype");
 }
 
 @font-face {
