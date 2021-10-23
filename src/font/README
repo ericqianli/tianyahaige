@@ -1,12 +1,11 @@
 To generate font subset:
 
 1. write all content to ziyuesongkeben.txt
+See src/data/massage_script.js
 
 2. generate font subset:
 pyftsubset ziyuesongkeben.ttf --text-file="./ziyuesongkeben.txt"
 pyftsubset adobekaitistd.otf --text-file="./adobekaitistd.txt"
-
-
 
 3. For unicode:
 pyftsubset ziyuesongkeben.ttf --unicodes-file="./uni.text"
