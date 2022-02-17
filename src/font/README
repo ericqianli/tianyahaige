@@ -9,5 +9,3 @@ pyftsubset adobekaitistd.otf --text-file="./adobekaitistd.txt"
 
 3. For unicode:
 pyftsubset ziyuesongkeben.ttf --unicodes-file="./uni.text"
-
-test
