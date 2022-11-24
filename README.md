@@ -1,3 +1,9 @@
+## Push and Deploy Scripts
+git add ./*
+git commit -m "comments"
+git push
+npm run deploy
+
 Favicon generation:
 https://formito.com/tools/favicon
 
