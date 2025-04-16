@@ -21,7 +21,7 @@ export function receiveContent(content: List<Poem>): ReceiveContentAction {
     };
 }
 
-export function receiveContentError(error: Error): ReceiveContentErrorAction {
+export function receiveContentError(error: Error | unknown): ReceiveContentErrorAction {
     return {
         type: ActionType.RECEIVE_CONTENT_ERROR,
         error,

@@ -6,11 +6,12 @@ import TitleImageThreeDark from "../image/title3_2x_dark.png";
 import TitleImageThreeLight from "../image/title3_2x_light.png";
 import TitleImageFourDark from "../image/title4_2x_dark.png";
 import TitleImageFourLight from "../image/title4_2x_light.png";
+import { ContentState } from "../type/Types";
 import { FALLEN_STAR, IMMORTALS, INDIA_TRAVEL, LANDING } from "./Routes";
 
 import Immutable from "immutable";
 
-export const INITIAL_CONTENT_STATE = {
+export const INITIAL_CONTENT_STATE: ContentState = {
     content: Immutable.List(),
 };
 

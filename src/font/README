@@ -1,6 +1,17 @@
 To generate font subset:
 
-1. write all content to ziyuesongkeben.txt
+0. Install fonttools:
+https://gist.github.com/fmal/7ab5980a93c6b502d99ad41fde710554
+
+1. write all content to ziyuesongkeben.txt:
+In Chrome console:
+poems = `[Copy content from poem.json]`;
+
+// get all poem text for font subset
+var text = "";
+poems.map((poem) => text += poem.title + "\r\n" + poem.subtitle + "\r\n" + poem.body + "\r\n");
+copy(text);
+
 See src/data/massage_script.js
 
 2. generate font subset:

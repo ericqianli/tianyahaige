@@ -49,7 +49,7 @@ export interface Poem {
     title: string;
     subtitle: string;
     body: string;
-    collections: number[];
+    collections: number[] | unknown;
 }
 
 export interface Line {
