@@ -113,7 +113,7 @@ copy(text);
 
 
 // get all four words poems:
-isBodyFourWords = body => body[4]=="︒" && body[9]=="︒" && body[14]=="︒"
+isBodyFourWords = body => body[4]=="︒" && body[9]=="︒" && body[14]=="︒" && body[19]=="︒"
 
 isPoemFourWords = poem => {
     if (poem.body.includes("\r\n")) {
