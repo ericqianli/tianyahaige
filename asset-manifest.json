@@ -1,10 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.17864670.css",
-    "main.js": "/static/js/main.0ff227ec.js",
+    "main.js": "/static/js/main.b7d9edd9.js",
     "static/media/ziyuesongkeben.subset.ttf": "/static/media/ziyuesongkeben.subset.83769ddc3bafbb6c6c3a.ttf",
     "static/media/background_body_2x_light.png": "/static/media/background_body_2x_light.f49e335ed85de27b4314.png",
     "static/media/background_body_2x_dark.png": "/static/media/background_body_2x_dark.7921c377ed80876b5b93.png",
+    "static/media/title5_2x_light.png": "/static/media/title5_2x_light.451228b1498d5d73840e.png",
+    "static/media/title5_2x_dark.png": "/static/media/title5_2x_dark.124599b16ad1978da56c.png",
     "static/media/title1_2x_dark.png": "/static/media/title1_2x_dark.7f30031ec35a33a9c2f5.png",
     "static/media/title1_2x_light.png": "/static/media/title1_2x_light.5815149b5742705db424.png",
     "static/media/title3_2x_dark.png": "/static/media/title3_2x_dark.c2de735786546804cb84.png",
@@ -22,10 +24,10 @@
     "static/media/KangXiDictFull.subset.otf": "/static/media/KangXiDictFull.subset.2e6cc7af0c160dd447f7.otf",
     "index.html": "/index.html",
     "main.17864670.css.map": "/static/css/main.17864670.css.map",
-    "main.0ff227ec.js.map": "/static/js/main.0ff227ec.js.map"
+    "main.b7d9edd9.js.map": "/static/js/main.b7d9edd9.js.map"
   },
   "entrypoints": [
     "static/css/main.17864670.css",
-    "static/js/main.0ff227ec.js"
+    "static/js/main.b7d9edd9.js"
   ]
 }
