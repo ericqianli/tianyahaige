@@ -7,7 +7,7 @@ import TitleImageThreeLight from "../image/title3_2x_light.png";
 import TitleImageFourDark from "../image/title4_2x_dark.png";
 import TitleImageFourLight from "../image/title4_2x_light.png";
 import { ContentState } from "../type/Types";
-import { FALLEN_STAR, IMMORTALS, INDIA_TRAVEL, LANDING } from "./Routes";
+import { FALLEN_STAR, FOUR_WORDS, IMMORTALS, INDIA_TRAVEL, LANDING } from "./Routes";
 
 import Immutable from "immutable";
 
@@ -92,6 +92,13 @@ export const ROUTE_INFO_MAP: {
         key: "immortals",
         collection: 3,
         title: "列仙集",
+        backgroundLight: TitleImageFourLight,
+        backgroundDark: TitleImageFourDark,
+    },
+    [FOUR_WORDS]: {
+        key: "immortals",
+        collection: 4,
+        title: "四言",
         backgroundLight: TitleImageFourLight,
         backgroundDark: TitleImageFourDark,
     },

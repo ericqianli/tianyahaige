@@ -110,3 +110,18 @@ copy(text);
 //     }
 // }
 // console.log(lines.join(""));
+
+
+// get all four words poems:
+isBodyFourWords = body => body[4]=="︒" && body[9]=="︒" && body[14]=="︒"
+
+isPoemFourWords = poem => {
+    if (poem.body.includes("\r\n")) {
+        // if multiple poems
+        return poem.body.split("\r\n").some(isBodyFourWords);
+    } else {
+        return isBodyFourWords(poem.body)
+    }
+
+}
+poems.filter(isPoemFourWords)
