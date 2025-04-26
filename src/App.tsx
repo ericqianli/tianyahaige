@@ -342,7 +342,7 @@ function App(props: Props) {
                         </Grid>
                         <Grid className={classes.footer} item xs={12}>
                             <Typography variant="subtitle1" align="center">
-                                Hao Shou • 2022
+                                Hao Shou • 2028
                             </Typography>
                         </Grid>
                     </Grid>
