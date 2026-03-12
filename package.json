@@ -9,6 +9,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "@types/babel__core": "7.1.18",
+    "@types/babel__traverse": "7.14.2",
     "@types/jest": "^24.9.1",
     "@types/node": "^12.12.35",
     "@types/react": "^16.9.34",
@@ -18,8 +20,6 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/redux-logger": "^3.0.7",
     "@types/webfontloader": "^1.6.29",
-    "@types/babel__core": "7.1.18",
-    "@types/babel__traverse": "7.14.2",
     "clsx": "^1.1.0",
     "data-sweet-query": "^1.9.1",
     "fs": "0.0.1-security",
@@ -63,6 +63,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^6.3.0"
   }
 }
