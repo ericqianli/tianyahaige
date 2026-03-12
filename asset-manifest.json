@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.17864670.css",
-    "main.js": "/static/js/main.b7d9edd9.js",
-    "static/media/ziyuesongkeben.subset.ttf": "/static/media/ziyuesongkeben.subset.83769ddc3bafbb6c6c3a.ttf",
+    "main.css": "/static/css/main.72af838f.css",
+    "main.js": "/static/js/main.4f73975f.js",
+    "static/media/ziyuesongkeben.subset.ttf": "/static/media/ziyuesongkeben.subset.9628685f100f5e9c0108.ttf",
     "static/media/background_body_2x_light.png": "/static/media/background_body_2x_light.f49e335ed85de27b4314.png",
     "static/media/background_body_2x_dark.png": "/static/media/background_body_2x_dark.7921c377ed80876b5b93.png",
     "static/media/title5_2x_light.png": "/static/media/title5_2x_light.451228b1498d5d73840e.png",
@@ -19,15 +19,15 @@
     "static/media/background_left_2x_light.png": "/static/media/background_left_2x_light.959e7c8898c5869f865d.png",
     "static/media/background_right_2x_dark.png": "/static/media/background_right_2x_dark.ffd88072a517097e47fb.png",
     "static/media/background_left_2x_dark.png": "/static/media/background_left_2x_dark.5cd67408af430816ebcf.png",
-    "static/media/adobekaitistd.subset.otf": "/static/media/adobekaitistd.subset.eadfc5e291b46e2177cf.otf",
+    "static/media/adobekaitistd.subset.otf": "/static/media/adobekaitistd.subset.68dcd084041a9416c120.otf",
     "static/media/arial-unicode-ms.subset.ttf": "/static/media/arial-unicode-ms.subset.b0349eae163cd8d55196.ttf",
     "static/media/KangXiDictFull.subset.otf": "/static/media/KangXiDictFull.subset.2e6cc7af0c160dd447f7.otf",
     "index.html": "/index.html",
-    "main.17864670.css.map": "/static/css/main.17864670.css.map",
-    "main.b7d9edd9.js.map": "/static/js/main.b7d9edd9.js.map"
+    "main.72af838f.css.map": "/static/css/main.72af838f.css.map",
+    "main.4f73975f.js.map": "/static/js/main.4f73975f.js.map"
   },
   "entrypoints": [
-    "static/css/main.17864670.css",
-    "static/js/main.b7d9edd9.js"
+    "static/css/main.72af838f.css",
+    "static/js/main.4f73975f.js"
   ]
 }
